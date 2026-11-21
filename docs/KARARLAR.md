@@ -168,3 +168,21 @@ Kullanıcı: "her şeyi baştan sona kontrol et, eksik/kötü görünen kalması
 - **Rakip saldırısı (lapa):** Kurulumda anahtar. `insertOpponentCalls` (saf, tohumlu) her rauntta yaklaşık 12–20 sn'de bir slip/block/roll/parry çağrısını boşluğa koyar (boşluk ≥ ifade + 1,5 sn). Hızlı ve usta tempoda çağrılar arası boşluk 1 sn'nin altında kaldığından savunma hiç sığmıyordu; savunma 3 sn'den fazla geciktiyse sıradaki kombo çağrısının yerine geçer. Çakışma yok, raunt sonunu aşmaz, hoca onayı kilidine uyar. Koçun sabit konuşmaları sonra eklenir ve kendileriyle çakışan çağrıları zaten ayıklar.
 - **Teknik videom:** IndexedDB sürüm 2, yeni `videos` deposu (Blob). Bilerek `STORES` listesinde değil: JSON yedeği videoları içermez, arayüzde "Videolar yedeğe girmez" yazar. "Tüm verileri sil" videoları da siler. Kayıt türü sırası: mp4 (iOS Safari) → webm vp9 → vp8 → webm → tarayıcı varsayılanı. 3 sn geri sayım, 10 sn kayıt, ses yok. Karşılaştırma: eski klip solda, iki klip yan yana, aynalı, tek düğmeyle baştan birlikte. Şema 1 yedekleri yüklenmeye devam eder. Başka sekmede yeni sürüm açılırsa eski bağlantı kapanır (yükseltme takılmasın).
 - **Doğrulanamayan:** Gerçek ön kamera ve MediaRecorder kaydı önizlemede açılamıyor (izin engelli; Türkçe izin mesajı göründü). Liste, silme ve karşılaştırma kanvastan üretilmiş webm kliplerle denendi. iPhone'da mp4 kaydı ve iki videonun birlikte oynaması cihazda denenmeli.
+
+## Ayna modu ve yapay zekâ koç (21.11.2026)
+Kullanıcı: "kamerayla gölge boks daha mantıklı", "yapay zekâyı eklesek… hepsini yap". MediaPipe Pose (Apache 2.0) bağımlılığı kullanıcının onayıyla eklendi.
+- **Ayna:** Ön kamera tam ekran ve aynalı. Faz rengi çerçeve olarak görünür. Hareket ölçer var. Kamera açılamazsa ayna kapanır ve not gösterilir.
+- **Yapay zekâ:**
+  - `@mediapipe/tasks-vision` yalnızca ayna açılınca dinamik olarak yüklenir.
+  - Wasm derlemede `node_modules`'tan kopyalanır, depoya girmez. Model `public/models` içinde (~5,5 MB).
+  - Service worker bu ~20 MB'ı baştan önbelleğe almaz; ilk kullanımda indirir, sonra çevrimdışı çalışır.
+  - Görüntü cihazdan çıkmaz.
+- **Analiz (`src/core/vision`):**
+  - Saf ve testli: kol açılması (3B), dirsek açısı, gard, tekme ve diz yüksekliği, çene, kafa kaçırma, blok, öndeki ayak.
+  - Eşikler iki gerçek fotoğrafla ayarlandı: kameraya uzanan direktte dirsek açısı 124° ölçüldüğü için kroşe eşiği 100°'ye indi; eldiven çenedeyken bilek aşağıda kaldığı için gard eşiği 0,4 omuz genişliğine çıktı.
+  - Kroşe ve aparkat bükük kolla, hızlı yan/yukarı bilek hareketinden algılanır.
+- **Özellikler:** Gard bekçisi, diğer el uyarısı, çene, algılanan kombo sayısı (dil "algılandı"), hız/yorgunluk, tekme yüksekliği grafiği, hayalet rakip (hedef + saldırı + kaçış), lapa avı, iskelet kaydı ve karşılaştırma, davranışa göre koç (az kullanılan vuruş/el ağırlığı, ipucu odağı).
+- **Hizalama:** Video `object-fit: cover` ile kırpıldığı için iskelet ve hedefler aynı kırpmayla (`xMidYMid slice`) çizilir; av hedefleri görünen alanda üretilir.
+- **Ses:** 5 yeni klip kullanıcının klon sesiyle üretildi ("diğer el", "güzel", "isabet", "kaçtın", "yakalandın"). `scripts/import-voice-add.mjs` yalnızca yeni klipleri ekler.
+- **Birleştirme:** Paralel oturumun beş özelliğiyle birleştirildi. Kombo ağırlığı = unutma eğrisi × davranış çarpanı.
+- **Sınırlar:** Tek kamera derinliği tam göremez. Yalnızca iPhone'da gerçek antrenmanla doğrulanabilir: kamera izni, kare hızı, eşiklerin gerçek hareketteki doğruluğu.

@@ -6,6 +6,7 @@ Tamamen Türkçe, çevrimdışı, reklamsız, hesapsız kickboks koçu. iPhone'd
 - **Bugün:** 3 haftalık başlangıç programı (Pzt/Çar/Cum salon + ev seansları), haftalık hedef halkası, seri, beslenme ve su zamanlaması, takvime ekle (.ics), ders günlüğü.
 - **Antrenman:** Raunt zamanlayıcı, Kombinasyon koçu, Gölge boks, Torba, **Lapa modu** (ekranda yanan lapa), **Refleks**, Isınma, Kondisyon devresi, Esneme. Kurallı raundlar ve raunt ortasında duruş değiştirme.
 - **Türkçe antrenör sesi:** önceden üretilmiş klipler (kullanıcının kendi sesinden klon), yedek olarak cihazın konuşma motoru; duruşa göre sol/sağ.
+- **Ayna modu ve yapay zekâ koç:** ön kamera ayna; gard, el, çene uyarıları; algılanan vuruş ve hız; hayalet rakip; lapa avı; iskelet kaydı. Görüntü telefondan çıkmaz.
 - **Kütüphane:** 31 hareket ve egzersiz (çöp adam animasyonu, adımlar, sık hatalar), 42 kombinasyon, kendi kombinasyonunu oluştur ve bağlantıyla paylaş, sözlük.
 - **İlerleme:** haftalık yük (sRPE), başlangıç/final testleri, ölçüler, kuşak yolculuğu, geçmiş.
 - **Ayarlar:** profil, duruş, ses, alışkanlık planı, JSON yedek ve geri yükleme.
