@@ -11,6 +11,7 @@ import { ComboEditor } from '../combos/ComboEditor'
 import { BigButton } from '../../design/BigButton'
 import { comboTokens, tokenLabel } from '../combos/comboModel'
 import type { WorkoutPlan } from '../activeWorkout/plan'
+import { SkeletonRecorder } from '../camera/SkeletonRecorder'
 
 type View =
   | { kind: 'home' }
@@ -198,7 +199,7 @@ function ExerciseCard({ ex, onBack, onCombo }: { ex: Exercise; onBack: () => voi
             {paused ? `▶ ${l.play}` : `❚❚ ${l.pause}`}
           </button>
           <button type="button" className="chip" aria-pressed={mirror} onClick={() => setMirror(!mirror)}>
-            ⇋ {l.mirror}
+            {l.mirror}
           </button>
         </div>
       </div>
@@ -212,6 +213,7 @@ function ExerciseCard({ ex, onBack, onCombo }: { ex: Exercise; onBack: () => voi
           <li key={i}>{st}</li>
         ))}
       </ol>
+      <SkeletonRecorder storeKey={`ex:${ex.id}`} />
       {ex.commonMistakes && (
         <>
           <h2 className="section-title">{l.mistakes}</h2>
@@ -264,7 +266,7 @@ function MoveCard({ move, onBack, onCombo }: { move: Move; onBack: () => void; o
         {move.nameTr}
       </h1>
       <div className="pill-row" style={{ marginTop: 0 }}>
-        <span className="pill">🗣 “{spokenPhrase(move, s.stance, 'names', s.nameStyle)}”</span>
+        <span className="pill">“{spokenPhrase(move, s.stance, 'names', s.nameStyle)}”</span>
         {move.pad ? <span className="pill">#{move.pad}</span> : null}
         {move.coachApproval && <span className="pill badge-lock">🔒 {l.locked}</span>}
       </div>
@@ -275,6 +277,7 @@ function MoveCard({ move, onBack, onCombo }: { move: Move; onBack: () => void; o
           <li key={i}>{st}</li>
         ))}
       </ol>
+      <SkeletonRecorder storeKey={`move:${move.id}`} />
       <h2 className="section-title">{l.mistakes}</h2>
       <ul className="steps">
         {move.mistakes.map((m, i) => (

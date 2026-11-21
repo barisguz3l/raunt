@@ -2586,3 +2586,34 @@ a.combo-row {
   position: absolute !important;
   inset: 0;
 }
+
+/* ---- İskelet kaydı ---- */
+.skeleton-box {
+  display: grid;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.skeleton-player {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  justify-self: center;
+  background: var(--mat);
+  border-radius: var(--r-control);
+}
+
+.skeleton-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--stroke);
+}
+
+.skeleton-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 48px;
+  border-bottom: 1px solid var(--stroke);
+}

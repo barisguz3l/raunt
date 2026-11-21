@@ -9,6 +9,8 @@ import { phraseMs } from '../../core/audio/voiceService'
 import type { AppSettings } from '../../core/settings/settings'
 import type { CallMode } from '../../core/speech/stanceMapper'
 import { resolveCombo } from '../combos/comboModel'
+import { habitBoost } from '../../core/vision/coachAdapt'
+import { visionHabits } from '../camera/visionStore'
 import { addCoachVoice } from '../../core/engine/coachVoice'
 import { seededRandom, type ResolvedCombo } from '../../core/engine/comboScheduler'
 
@@ -91,6 +93,9 @@ function buildCoachPart(plan: WorkoutPlan, store: ContentStore, s: AppSettings):
     .map((id) => store.combo(id))
     .filter((c): c is NonNullable<typeof c> => !!c)
     .map((c) => resolveCombo(store, c, v))
+  // Davranışa göre koç: kameranın az gördüğü vuruş/el içeren kombolar daha sık
+  const habits = visionHabits()
+  for (const r of resolved) r.weight = (r.weight ?? 1) * habitBoost(r.moves, s.stance, habits)
   const pool = plan.coach.chain && resolved[0] ? chainPool(resolved[0]) : resolved
   return buildCoachTimeline(plan.config, {
     pool,

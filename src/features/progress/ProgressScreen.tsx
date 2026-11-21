@@ -11,6 +11,7 @@ import { BigButton } from '../../design/BigButton'
 import { Ring } from '../../design/Ring'
 import { Sheet } from '../../design/Sheet'
 import { Toggle } from '../../design/Toggle'
+import { KickProgress } from '../camera/KickProgress'
 import { tr } from '../../i18n/tr'
 
 const p = tr.progress
@@ -121,6 +122,8 @@ export function ProgressScreen({ today = toISODate(new Date()) }: { today?: stri
           + {p.addMeasurement}
         </BigButton>
       </div>
+
+      <KickProgress />
 
       <h2 className="section-title">{p.belt}</h2>
       <div className="card setting-group">

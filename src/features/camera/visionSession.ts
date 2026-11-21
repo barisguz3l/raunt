@@ -9,6 +9,9 @@ import { LM, type Pose } from '../../core/vision/pose'
 import { PoseTracker, type VisionEvent } from '../../core/vision/tracker'
 import { tr } from '../../i18n/tr'
 import { cueMoves } from '../combos/comboModel'
+import { settingsStore } from '../../core/settings/settings'
+import { suggestedFocus } from '../../core/vision/coachAdapt'
+import { loadVisionHistory, visionHabits } from './visionStore'
 
 export interface CallInfo {
   t: number
@@ -200,6 +203,9 @@ export class VisionSession {
       const hist = (await repo.getKV<VisionHistoryItem[]>('vision.history')) ?? []
       hist.push({ date: new Date().toISOString(), stats: this.stats })
       await repo.setKV('vision.history', hist.slice(-120))
+      await loadVisionHistory()
+      const focus = suggestedFocus(visionHabits())
+      if (focus && !settingsStore.get().coachFocus) await settingsStore.update({ coachFocus: focus })
     }
     return this.stats
   }
