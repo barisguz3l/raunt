@@ -59,7 +59,7 @@ export type BellSound = 'roundStart' | 'roundEnd' | 'warn' | 'tick' | 'finish'
 export type CueKind =
   | { type: 'phase'; phase: WorkoutPhase; round: number }
   | { type: 'bell'; sound: BellSound }
-  | { type: 'call'; round: number; comboId: string; phrases: string[]; speakSec: number; windowSec: number }
+  | { type: 'call'; round: number; comboId: string; phrases: string[]; speakSec: number; windowSec: number; rate?: number; wordGap?: number }
 
 export type CueEvent = CueKind & { t: number }
 

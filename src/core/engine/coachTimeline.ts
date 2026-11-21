@@ -40,8 +40,8 @@ export function buildCoachTimeline(config: TimerConfig, coach: CoachOptions): Ti
   const tl = buildTimeline(config)
   const rand = seededRandom(coach.seed)
   const calls: CueEvent[] = []
-  const push = (r: number, c: { t: number; comboId: string; phrases: string[]; speakSec: number; windowSec: number }) =>
-    calls.push({ t: c.t, type: 'call', round: r, comboId: c.comboId, phrases: c.phrases, speakSec: c.speakSec, windowSec: c.windowSec })
+  const push = (r: number, c: { t: number; comboId: string; phrases: string[]; speakSec: number; windowSec: number; rate?: number; wordGap?: number }) =>
+    calls.push({ t: c.t, type: 'call', round: r, comboId: c.comboId, phrases: c.phrases, speakSec: c.speakSec, windowSec: c.windowSec, rate: c.rate, wordGap: c.wordGap })
   const roundBounds = (r: number) => {
     const parts = tl.segments.filter((s) => s.round === r && (s.phase === 'round' || s.phase === 'warn'))
     return [parts[0].start, parts[parts.length - 1].end] as const
@@ -50,7 +50,7 @@ export function buildCoachTimeline(config: TimerConfig, coach: CoachOptions): Ti
   if (coach.reflex) {
     for (let r = 1; r <= tl.config.rounds; r++) {
       const [start, end] = roundBounds(r)
-      for (const c of planReflexCalls(start, end, coach.reflex.moves, rand, coach.phraseMs, coach.reflex)) push(r, c)
+      for (const c of planReflexCalls(start, end, coach.reflex.moves, rand, coach.phraseMs, { ...coach.reflex, tempo: coach.tempo })) push(r, c)
     }
   } else {
     const pool = filterAllowed(coach.pool, coach.coachApproved)

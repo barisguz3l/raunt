@@ -85,7 +85,7 @@ export function useWorkoutRunner(timeline: Timeline, clock: Clock = systemClock)
       if (engine.state === 'running') {
         for (const p of sched.take(engine.elapsed())) {
           if (p.kind === 'bell') audio.play(p.sound, p.delay)
-          else voice.speak(p.phrases, p.delay)
+          else voice.speak(p.phrases, p.delay, { rate: p.rate, wordGap: p.wordGap })
         }
       }
       // Yalnızca görünen değer değişince yeniden çiz (≈10 Hz)

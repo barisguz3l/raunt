@@ -56,31 +56,33 @@ class VoiceService {
   }
 
   /** Çağrıyı `delaySec` sonra söyler. Klipler hazırsa ses saatine, değilse cihaz sesine düşer. */
-  speak(phrases: string[], delaySec = 0) {
+  speak(phrases: string[], delaySec = 0, opts: { rate?: number; wordGap?: number } = {}) {
+    const rate = opts.rate ?? 1
+    const gap = opts.wordGap ?? WORD_GAP_SEC
     if (this.source === 'clips' && audio.running) {
       const bufs = phrases.map((p) => this.buffers.get(p))
       if (bufs.every(Boolean)) {
         let off = 0
         const parts = bufs.map((b) => {
           const part = { buffer: b!, offset: off }
-          off += b!.duration + WORD_GAP_SEC
+          off += b!.duration / rate + gap
           return part
         })
-        audio.playVoice(parts, delaySec)
+        audio.playVoice(parts, delaySec, rate)
         return
       }
     }
-    this.speakSystem(phrases, delaySec)
+    this.speakSystem(phrases, delaySec, rate)
   }
 
-  private speakSystem(phrases: string[], delaySec: number) {
+  private speakSystem(phrases: string[], delaySec: number, rate = 1) {
     if (!systemSpeechAvailable()) return
     const run = () => {
       const u = new SpeechSynthesisUtterance(phrases.map(toSpeakText).join(', '))
       const v = turkishVoice()
       if (v) u.voice = v
       u.lang = 'tr-TR'
-      u.rate = 1.05
+      u.rate = 1.05 * rate
       u.volume = audio.voiceVolume
       speechSynthesis.speak(u)
     }

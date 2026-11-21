@@ -10,7 +10,7 @@ export const STALE_SEC = 0.75
 
 type SoundCue = CueEvent & ({ type: 'bell' } | { type: 'call' })
 
-export type Planned = ({ kind: 'bell'; sound: BellSound } | { kind: 'call'; phrases: string[]; comboId: string }) & {
+export type Planned = ({ kind: 'bell'; sound: BellSound } | { kind: 'call'; phrases: string[]; comboId: string; rate?: number; wordGap?: number }) & {
   /** Şu andan kaç saniye sonra çalınacak (≥ 0). */
   delay: number
   t: number
@@ -34,7 +34,7 @@ export class SoundScheduler {
       out.push(
         cue.type === 'bell'
           ? { kind: 'bell', sound: cue.sound, delay, t: cue.t }
-          : { kind: 'call', phrases: cue.phrases, comboId: cue.comboId, delay, t: cue.t },
+          : { kind: 'call', phrases: cue.phrases, comboId: cue.comboId, rate: cue.rate, wordGap: cue.wordGap, delay, t: cue.t },
       )
     }
     return out

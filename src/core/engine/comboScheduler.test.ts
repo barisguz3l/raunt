@@ -30,11 +30,11 @@ describe('ComboScheduler: süreler', () => {
   it('pencere = Σ süre × çarpan + toparlanma (tekme/diz +0,5, savunma +0,2)', () => {
     const c = byCode('1-2-3-LKR') // 350+400+450+900 = 2100 ms, tekme
     expect(recoverySec(c.moves)).toBe(0.5)
-    expect(windowSec(c.moves, 'slow')).toBeCloseTo(2.1 * 1.6 + 0.5)
-    expect(windowSec(c.moves, 'master')).toBeCloseTo(2.1 * 0.85 + 0.5)
+    expect(windowSec(c.moves, 'slow')).toBeCloseTo(2.1 * TEMPO.slow.multiplier + 0.5)
+    expect(windowSec(c.moves, 'master')).toBeCloseTo(2.1 * TEMPO.master.multiplier + 0.5)
     const plain = byCode('1-2')
     expect(recoverySec(plain.moves)).toBe(0)
-    expect(windowSec(plain.moves, 'fast')).toBeCloseTo(0.75)
+    expect(windowSec(plain.moves, 'fast')).toBeCloseTo(0.75 * TEMPO.fast.multiplier)
   })
 
   it('konuşma süresi ifadeler + aralar', () => {
@@ -43,13 +43,12 @@ describe('ComboScheduler: süreler', () => {
 
   it('M3 kabul (3): tempo seviyeleri ölçülür ve tabloya uyar', () => {
     const c = byCode('1-2-3') // 1200 ms, toparlanma yok
-    const sp = speakSec(c.phrases, phraseMs)
     const intervals = (['slow', 'medium', 'fast', 'master'] as Tempo[]).map((tempo) => {
       const picker = new ComboPicker([c], 'sequential', seededRandom(1))
       const calls = planRoundCalls(0, 120, picker, tempo, phraseMs)
       const gaps = calls.slice(1).map((x, i) => x.t - calls[i].t)
       // Tüm aralıklar eşit ve formüle uygun
-      const expected = sp + 1.2 * TEMPO[tempo].multiplier + TEMPO[tempo].gapSec
+      const expected = speakSec(c.phrases, phraseMs, tempo) + 1.2 * TEMPO[tempo].multiplier + TEMPO[tempo].gapSec
       for (const g of gaps) expect(g).toBeCloseTo(expected)
       return gaps[0]
     })

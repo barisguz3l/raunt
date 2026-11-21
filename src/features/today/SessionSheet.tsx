@@ -39,7 +39,7 @@ export function SessionSheet({ day, date, onClose, onStart, cycle = 1 }: Props) 
       coach: {
         comboIds: store.allCombos().filter((c) => levels.includes(c.level)).map((c) => c.id),
         selection: 'random',
-        tempo: day.week >= 3 ? 'medium' : 'slow',
+        tempo: st.tempo,
         callMode: st.callMode,
         seed: Math.floor(Math.random() * 2 ** 31),
       },

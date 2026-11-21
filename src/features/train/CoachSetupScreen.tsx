@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { audio } from '../../core/audio/audioService'
 import { voice } from '../../core/audio/voiceService'
 import { getContentStore } from '../../core/content/contentStore'
-import { filterAllowed, type RoundRule } from '../../core/engine/comboScheduler'
+import { filterAllowed, speechFor, type RoundRule } from '../../core/engine/comboScheduler'
 import { clampConfig, type TimerConfig } from '../../core/engine/timeline'
 import { getRepo } from '../../core/persistence/db'
 import { settingsStore, useSettings } from '../../core/settings/settings'
@@ -133,7 +133,7 @@ export function CoachSetupScreen({ kind, onBack, onStart }: Props) {
     if (!first) return
     await audio.unlock()
     await voice.preload(first.phrases)
-    voice.speak(first.phrases)
+    voice.speak(first.phrases, 0, speechFor(s.tempo))
   }
 
   const start = () => {

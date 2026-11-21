@@ -132,7 +132,7 @@ class AudioService {
   }
 
   /** Koç sesi kliplerini sırayla ses saatine planlar (offset: çağrı başından itibaren sn). */
-  playVoice(parts: { buffer: AudioBuffer; offset: number }[], delaySec = 0) {
+  playVoice(parts: { buffer: AudioBuffer; offset: number }[], delaySec = 0, rate = 1) {
     if (!this.ctx || !this.voiceBus || this.ctx.state !== 'running' || !parts.length) return
     const at = this.ctx.currentTime + 0.02 + delaySec
     const voice = this.ctx.createGain()
@@ -140,6 +140,7 @@ class AudioService {
     for (const p of parts) {
       const src = this.ctx.createBufferSource()
       src.buffer = p.buffer
+      src.playbackRate.value = rate
       src.connect(voice)
       src.start(at + p.offset)
     }

@@ -8,14 +8,23 @@ import type { Combo, Move } from '../content/types'
 export type Tempo = 'slow' | 'medium' | 'fast' | 'master'
 export type Selection = 'sequential' | 'random'
 
-export const TEMPO: Record<Tempo, { multiplier: number; gapSec: number }> = {
-  slow: { multiplier: 1.6, gapSec: 2.5 },
-  medium: { multiplier: 1.2, gapSec: 1.8 },
-  fast: { multiplier: 1.0, gapSec: 1.2 },
-  master: { multiplier: 0.85, gapSec: 0.8 },
+/**
+ * Tempo hem çağrılar arası boşluğu hem de söyleyişi belirler:
+ *   multiplier  uygulama penceresi çarpanı, gapSec çağrılar arası nefes
+ *   rate        klip çalma hızı (1 = kayıt hızı; 1,2'yi aşınca ses incelir)
+ *   wordGapSec  bir çağrıdaki kelimeler arası boşluk
+ */
+export const TEMPO: Record<Tempo, { multiplier: number; gapSec: number; rate: number; wordGapSec: number }> = {
+  slow: { multiplier: 1.7, gapSec: 3.2, rate: 1, wordGapSec: 0.3 },
+  medium: { multiplier: 1.25, gapSec: 2.0, rate: 1.07, wordGapSec: 0.16 },
+  fast: { multiplier: 1.0, gapSec: 1.0, rate: 1.14, wordGapSec: 0.06 },
+  master: { multiplier: 0.8, gapSec: 0.45, rate: 1.2, wordGapSec: 0 },
 }
 
-/** Bir çağrıdaki ifadeler arası boşluk (spec: sayılar arası 220–300 ms). */
+/** Söyleyiş ayarı (ses servisi ve "Dinle" düğmeleri için). */
+export const speechFor = (tempo: Tempo) => ({ rate: TEMPO[tempo].rate, wordGap: TEMPO[tempo].wordGapSec })
+
+/** Tempo verilmeyen konuşmalarda ifadeler arası boşluk (koçun araya girmesi vb.). */
 export const WORD_GAP_SEC = 0.25
 /** Raunt zilinden sonra ilk çağrıya kadar bekleme. */
 export const FIRST_CALL_DELAY_SEC = 1.5
@@ -37,6 +46,9 @@ export interface CallPlan {
   speakSec: number
   /** Uygulama penceresi (sn): konuşma bittikten sonra kullanıcının vuruş süresi. */
   windowSec: number
+  /** Söyleyiş: klip hızı ve kelime arası boşluk (tempoya göre) */
+  rate?: number
+  wordGap?: number
 }
 
 export const isKickCombo = (c: ResolvedCombo) => c.moves.some((m) => m.category === 'kick')
@@ -53,9 +65,11 @@ export function windowSec(moves: Move[], tempo: Tempo): number {
   return sum * TEMPO[tempo].multiplier + recoverySec(moves)
 }
 
-export function speakSec(phrases: string[], phraseMs: (p: string) => number): number {
+export function speakSec(phrases: string[], phraseMs: (p: string) => number, tempo?: Tempo): number {
   if (!phrases.length) return 0
-  return phrases.reduce((s, p) => s + phraseMs(p) / 1000, 0) + WORD_GAP_SEC * (phrases.length - 1)
+  const rate = tempo ? TEMPO[tempo].rate : 1
+  const gap = tempo ? TEMPO[tempo].wordGapSec : WORD_GAP_SEC
+  return phrases.reduce((s, p) => s + phraseMs(p) / 1000 / rate, 0) + gap * (phrases.length - 1)
 }
 
 /** Basit tohumlu rastgele sayı üreteci (mulberry32). */
@@ -146,13 +160,13 @@ export function planRoundCalls(
   let t = start + FIRST_CALL_DELAY_SEC
   for (let guard = 0; guard < 1000; guard++) {
     const c = picker.next()
-    const sp = speakSec(c.phrases, phraseMs)
+    const sp = speakSec(c.phrases, phraseMs, tempo)
     const win = windowSec(c.moves, tempo)
     if (t + sp + win > end) {
       picker.undo() // çağrılmadı; sıradaki rauntta ilk o gelsin
       break
     }
-    out.push({ t, comboId: c.combo.id, phrases: c.phrases, speakSec: sp, windowSec: win })
+    out.push({ t, comboId: c.combo.id, phrases: c.phrases, speakSec: sp, windowSec: win, ...speechFor(tempo) })
     t += sp + win + TEMPO[tempo].gapSec
   }
   return out
@@ -174,7 +188,7 @@ export function planReflexCalls(
   moves: ReflexMove[],
   rand: () => number,
   phraseMs: (p: string) => number,
-  opts: { minGap?: number; maxGap?: number; defenseShare?: number } = {},
+  opts: { minGap?: number; maxGap?: number; defenseShare?: number; tempo?: Tempo } = {},
 ): CallPlan[] {
   const minGap = opts.minGap ?? 2
   const maxGap = opts.maxGap ?? 6
@@ -189,10 +203,10 @@ export function planReflexCalls(
     if (!pool.length) break
     let m = pool[Math.floor(rand() * pool.length)]
     if (m.id === last && pool.length > 1) m = pool[(pool.indexOf(m) + 1) % pool.length]
-    const sp = phraseMs(m.phrase) / 1000
+    const sp = speakSec([m.phrase], phraseMs, opts.tempo)
     const win = m.durationMs / 1000 + (m.category === 'kick' || m.category === 'knee' ? 0.5 : 0)
     if (t + sp + win > end) break
-    out.push({ t, comboId: `move:${m.id}`, phrases: [m.phrase], speakSec: sp, windowSec: win })
+    out.push({ t, comboId: `move:${m.id}`, phrases: [m.phrase], speakSec: sp, windowSec: win, ...(opts.tempo ? speechFor(opts.tempo) : {}) })
     last = m.id
     t += sp + win + minGap + rand() * (maxGap - minGap)
   }
