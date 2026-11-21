@@ -426,6 +426,17 @@ export const tr = {
     kahverengi: 'Kahverengi',
     siyah: 'Siyah',
   } as Record<string, string>,
+  camera: {
+    toggle: 'Ayna',
+    toggleOn: 'Aynayı kapat',
+    setupLabel: 'Ayna modu (ön kamera)',
+    setupHint: 'Telefonu 2 metreye, göz hizasına koy. Gardını ve çeneni ekranda görürsün. Görüntü kaydedilmez, telefondan çıkmaz.',
+    unsupported: 'Bu tarayıcı kamerayı açamıyor. iPhone’da Safari ya da ana ekrandaki Raunt ile dene.',
+    denied: 'Kamera izni verilmedi. iPhone Ayarlar › Safari › Kamera › İzin Ver; sonra antrenmanı yeniden başlat.',
+    failed: 'Kamera açılamadı. Başka bir uygulama kamerayı kullanıyor olabilir.',
+    meter: 'Hareket',
+    still: 'Hareketsiz kaldın: ayakların, gardın, kafan oynasın.',
+  },
   onboarding: {
     step: (i: number, n: number) => `${i} / ${n}`,
     next: 'Devam',

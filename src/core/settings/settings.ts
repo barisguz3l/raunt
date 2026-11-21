@@ -54,6 +54,8 @@ export interface AppSettings {
   padMode: boolean
   /** Koç araya girsin: hazır ol, dinlen, son raunt, son on saniye ve raunt içi ipuçları */
   coachChatter: boolean
+  /** Ayna modu: gölge boks ve kombo antrenmanında ön kamera */
+  cameraMirror: boolean
   /** Hocanın son düzeltmesi (ders günlüğünden): bu ipucu daha sık söylenir */
   coachFocus: 'guardUp' | 'chinDown' | 'breathe' | 'relax' | null
 }
@@ -86,6 +88,7 @@ export const defaultSettings: AppSettings = {
   healthAccepted: false,
   padMode: false,
   coachChatter: true,
+  cameraMirror: false,
   coachFocus: null,
 }
 
@@ -123,6 +126,7 @@ export function sanitize(raw: unknown): AppSettings {
     healthAccepted: r.healthAccepted === true,
     padMode: r.padMode === true,
     coachChatter: r.coachChatter !== false,
+    cameraMirror: r.cameraMirror === true,
     coachFocus: (['guardUp', 'chinDown', 'breathe', 'relax'] as const).includes(r.coachFocus as never) ? (r.coachFocus as AppSettings['coachFocus']) : null,
   }
 }

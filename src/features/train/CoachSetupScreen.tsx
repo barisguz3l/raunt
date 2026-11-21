@@ -332,6 +332,17 @@ export function CoachSetupScreen({ kind, onBack, onStart }: Props) {
         </>
       )}
 
+      {kind !== 'bag' && kind !== 'pad' && (
+        <div className="card setting-group" style={{ marginTop: 16 }}>
+          <Toggle
+            label={tr.camera.setupLabel}
+            hint={tr.camera.setupHint}
+            checked={s.cameraMirror}
+            onChange={(v) => void settingsStore.update({ cameraMirror: v })}
+          />
+        </div>
+      )}
+
       <h2 className="section-title">{t.timer}</h2>
       <TimerSettingsCard config={st.config} onChange={(config) => update({ config })} />
 

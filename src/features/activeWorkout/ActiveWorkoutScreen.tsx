@@ -8,6 +8,7 @@ import { settingsStore, useSettings } from '../../core/settings/settings'
 import { buildPlanTimeline, timelinePhrases, type WorkoutPlan } from './plan'
 import { ComboBand } from './ComboBand'
 import { PadScene } from '../pad/PadScene'
+import { CameraMirror } from '../camera/CameraMirror'
 import { cueMoves } from '../combos/comboModel'
 
 import { WorkoutSummary } from './WorkoutSummary'
@@ -108,6 +109,9 @@ export function ActiveWorkoutScreen({ plan, onClose, onRestart, onRetryAudio, cl
     const m = ms[s.round % ms.length]
     return `${m.nameTr}: ${m.mistakes[s.round % m.mistakes.length]}`
   })()
+  // Ayna: gölge boks, kombo, refleks ve zamanlayıcıda (torba/lapa/rutinde değil)
+  const mirrorAllowed = ['combo', 'shadow', 'reflex', 'timer'].includes(plan.kind)
+  const mirror = mirrorAllowed && settings.cameraMirror
   const labels = timeline.config.labels
   const label = labels ? labels[Math.min(s.round, labels.length) - 1] : undefined
 
@@ -133,11 +137,23 @@ export function ActiveWorkoutScreen({ plan, onClose, onRestart, onRetryAudio, cl
       data-paused={paused || undefined}
       data-coach={coach || undefined}
       data-pad={plan.coach?.pad || undefined}
+      data-mirror={mirror || undefined}
       style={{ ['--phase' as string]: style.color, ['--phase-text' as string]: style.text }}
       role="dialog"
       aria-modal="true"
       aria-label={tr.timer.setupTitle}
     >
+      {mirror && <CameraMirror inRound={s.phase === 'round' || s.phase === 'warn'} paused={paused} />}
+      {mirrorAllowed && (
+        <button
+          type="button"
+          className="mirror-toggle"
+          aria-pressed={mirror}
+          onClick={() => void settingsStore.update({ cameraMirror: !settings.cameraMirror })}
+        >
+          {mirror ? tr.camera.toggleOn : tr.camera.toggle}
+        </button>
+      )}
       {flash > 0 && <div key={flash} className="phase-flash" aria-hidden="true" />}
       <header className="workout-top">
         {plan.title && <div className="workout-title">{plan.title}</div>}
