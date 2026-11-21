@@ -2,7 +2,7 @@
 // Statik içerik burada tutulmaz; içerik güncellemesi kullanıcı verisini asla silmez.
 
 export const DB_NAME = 'raunt'
-export const DB_VERSION = 1
+export const DB_VERSION = 2
 
 /** Koleksiyonlar (her kayıt "id" alanıyla saklanır). */
 export const STORES = [
@@ -18,6 +18,12 @@ export type StoreName = (typeof STORES)[number]
 
 /** Tekil anahtar-değer verisi (profil, ayarlar, program kaydı…). */
 export const KV_STORE = 'kv'
+
+/**
+ * Teknik videoları (Blob). Bilerek STORES listesinde değil: JSON yedeğine girmez (büyük ikili veri).
+ * Sürüm 2'de eklendi.
+ */
+export const VIDEO_STORE = 'videos'
 
 export interface Identified {
   id: string
@@ -41,8 +47,14 @@ export function openDb(name = DB_NAME): Promise<IDBDatabase> {
       // Sürüm geçişleri burada, eskiden yeniye sırayla eklenir. Var olan veri silinmez.
       for (const s of STORES) if (!db.objectStoreNames.contains(s)) db.createObjectStore(s, { keyPath: 'id' })
       if (!db.objectStoreNames.contains(KV_STORE)) db.createObjectStore(KV_STORE)
+      // Sürüm 2: teknik videoları
+      if (!db.objectStoreNames.contains(VIDEO_STORE)) db.createObjectStore(VIDEO_STORE, { keyPath: 'id' })
     }
-    open.onsuccess = () => resolve(open.result)
+    open.onsuccess = () => {
+      // Başka sekmede yeni sürüm açılırsa bu bağlantı yükseltmeyi engellemesin
+      open.result.onversionchange = () => open.result.close()
+      resolve(open.result)
+    }
     open.onerror = () => reject(open.error)
   })
   if (name === DB_NAME) dbPromise = p
@@ -78,7 +90,7 @@ export class Repo {
 
   /** Tüm kullanıcı verisini siler (Ayarlar › Verilerim › Tüm verileri sil). */
   async clearAll(): Promise<void> {
-    for (const s of [...STORES, KV_STORE]) await req((await this.store(s, 'readwrite')).clear())
+    for (const s of [...STORES, KV_STORE, VIDEO_STORE]) await req((await this.store(s, 'readwrite')).clear())
   }
 
   /** JSON yedek (spec F-1502; araştırma: iOS veriyi silebilir → yedek MVP'de). */

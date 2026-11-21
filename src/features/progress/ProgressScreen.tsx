@@ -12,6 +12,7 @@ import { Ring } from '../../design/Ring'
 import { Sheet } from '../../design/Sheet'
 import { Toggle } from '../../design/Toggle'
 import { tr } from '../../i18n/tr'
+import { TechniqueVideoSection } from './TechniqueVideo'
 
 const p = tr.progress
 const fmtDate = (d: string) => new Date(d + 'T12:00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' })
@@ -121,6 +122,8 @@ export function ProgressScreen({ today = toISODate(new Date()) }: { today?: stri
           + {p.addMeasurement}
         </BigButton>
       </div>
+
+      <TechniqueVideoSection />
 
       <h2 className="section-title">{p.belt}</h2>
       <div className="card setting-group">
