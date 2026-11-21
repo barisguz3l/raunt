@@ -78,6 +78,10 @@
       "id": "devam",
       "ms": 530
     },
+    "diğer el": {
+      "id": "diger-el",
+      "ms": 790
+    },
     "dinlen": {
       "id": "dinlen",
       "ms": 670
@@ -110,6 +114,10 @@
       "id": "geri-adim",
       "ms": 810
     },
+    "güzel": {
+      "id": "guzel",
+      "ms": 530
+    },
     "hazır ol": {
       "id": "hazir-ol",
       "ms": 540
@@ -125,6 +133,14 @@
     "ileri adım": {
       "id": "ileri-adim",
       "ms": 770
+    },
+    "isabet": {
+      "id": "isabet",
+      "ms": 600
+    },
+    "kaçtın": {
+      "id": "kactin",
+      "ms": 660
     },
     "kafa kaçır": {
       "id": "kafa-kacir",
@@ -253,6 +269,10 @@
     "üç gövde": {
       "id": "uc-govde",
       "ms": 860
+    },
+    "yakalandın": {
+      "id": "yakalandin",
+      "ms": 840
     }
   }
 }

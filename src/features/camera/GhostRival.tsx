@@ -48,7 +48,10 @@ export function GhostRival({ session, elapsed, inRound, paused, stance, call, se
   // İsabet: sırayla algılanan adım sayısı arttıkça
   const progress = session.progress
   useEffect(() => {
-    if (progress > lastProgress.current) setHitAt(elapsed)
+    if (progress > lastProgress.current) {
+      setHitAt(elapsed)
+      session.say('hit', 'isabet', 4)
+    }
     lastProgress.current = progress
   }, [progress])
 
@@ -72,10 +75,12 @@ export function GhostRival({ session, elapsed, inRound, paused, stance, call, se
       if (reacted) {
         session.dodged++
         session.show(tr.vision.dodged, 'good', 1)
+        session.say('ghost', 'kaçtın', 0)
         setAttack({ ...attack, result: 'dodged' })
       } else if (elapsed > attack.t + ATTACK_WINDOW) {
         session.caught++
         session.show(tr.vision.caught, 'warn', 1)
+        session.say('ghost', 'yakalandın', 0)
         setAttack({ ...attack, result: 'caught' })
       }
     }

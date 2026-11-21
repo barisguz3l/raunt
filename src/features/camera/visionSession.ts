@@ -99,6 +99,7 @@ export class VisionSession {
     if (r.complete) {
       this.stats.completed++
       this.show(v.good, 'good', 0.9)
+      this.say('good', 'güzel', 15)
     }
   }
 

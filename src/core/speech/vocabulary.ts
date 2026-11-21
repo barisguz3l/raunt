@@ -18,6 +18,12 @@ export const SYSTEM_PHRASES = {
   relax: 'omuzlar gevşek',
   paused: 'duraklatıldı',
   resume: 'devam',
+  // Yapay zekâ koç (aynada)
+  otherHand: 'diğer el',
+  good: 'güzel',
+  hit: 'isabet',
+  dodged: 'kaçtın',
+  caught: 'yakalandın',
 } as const
 
 export type SystemPhraseKey = keyof typeof SYSTEM_PHRASES
