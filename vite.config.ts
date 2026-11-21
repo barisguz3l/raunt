@@ -8,7 +8,7 @@ import { serviceWorkerPlugin } from './build/swPlugin.ts'
 export default defineConfig({
   base: './',
   plugins: [react(), serviceWorkerPlugin()],
-  define: { __APP_VERSION__: JSON.stringify(pkg.version) },
+  define: { __APP_VERSION__: JSON.stringify(pkg.version), __BUILD_TIME__: JSON.stringify(new Date().toISOString()) },
   server: { host: true, port: 5173 },
   test: {
     globals: true,

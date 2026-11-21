@@ -28,7 +28,11 @@ self.addEventListener('fetch', (event) => {
   const req = event.request
   if (req.method !== 'GET' || new URL(req.url).origin !== self.location.origin) return
   event.respondWith(
-    caches.match(req, { ignoreSearch: true }).then((hit) => {
+    // Önce bu sürümün önbelleği (eski sürümün index.html'i asla öne geçmesin), sonra diğerleri
+    caches
+      .open(CACHE)
+      .then((cur) => cur.match(req, { ignoreSearch: true }).then((own) => own || caches.match(req, { ignoreSearch: true })))
+      .then((hit) => {
       if (hit) return hit
       // Yapay zekâ dosyaları: ilk istekte indir ve sakla (sonra çevrimdışı)
       const path = new URL(req.url).pathname
@@ -42,8 +46,16 @@ self.addEventListener('fetch', (event) => {
         })
       }
       // Sayfa gezintisi önbellekte yoksa uygulama kabuğunu döndür.
-      if (req.mode === 'navigate') return caches.match('./index.html')
+      if (req.mode === 'navigate') return caches.open(CACHE).then((c) => c.match('./index.html'))
       return fetch(req)
     }),
   )
+})
+
+self.addEventListener('message', (event) => {
+  if (event.data === 'raunt-clear-old') {
+    event.waitUntil(
+      caches.keys().then((keys) => Promise.all(keys.filter((k) => k.startsWith('raunt-') && k !== CACHE && k !== 'raunt-ai').map((k) => caches.delete(k)))),
+    )
+  }
 })

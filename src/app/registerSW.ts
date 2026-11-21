@@ -14,6 +14,31 @@ export function setUpdateBusy(b: boolean) {
   if (!b && pendingReload) window.location.reload()
 }
 
+/** Ayarlar › Güncellemeyi denetle: yeni sürümü indir, eski önbellekleri sil, sayfayı yenile. */
+export async function forceUpdate(): Promise<void> {
+  if (!('serviceWorker' in navigator)) return window.location.reload()
+  const reg = await navigator.serviceWorker.getRegistration()
+  if (reg) {
+    await reg.update().catch(() => undefined)
+    // Yeni sürüm kuruluyorsa bitmesini kısa süre bekle
+    const sw = reg.installing ?? reg.waiting
+    if (sw)
+      await new Promise<void>((resolve) => {
+        const done = () => sw.state === 'activated' && resolve()
+        sw.addEventListener('statechange', done)
+        setTimeout(resolve, 8000)
+      })
+    reg.active?.postMessage('raunt-clear-old')
+  }
+  // Eski uygulama önbelleklerini sayfadan da sil (yapay zekâ modeli kalsın)
+  if ('caches' in window) {
+    const keys = await caches.keys()
+    const current = keys.filter((k) => k.startsWith('raunt-') && k !== 'raunt-ai').sort().pop()
+    await Promise.all(keys.filter((k) => k.startsWith('raunt-') && k !== 'raunt-ai' && k !== current).map((k) => caches.delete(k)))
+  }
+  window.location.reload()
+}
+
 export function registerServiceWorker() {
   if (!import.meta.env.PROD || !('serviceWorker' in navigator)) return
   const hadController = !!navigator.serviceWorker.controller
