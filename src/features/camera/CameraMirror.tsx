@@ -10,6 +10,8 @@ interface Props {
   paused: boolean
   /** Yapay zekâ koç (varsa) */
   ai?: { session: VisionSession; elapsed: () => number; skeleton: boolean }
+  /** Kamera açılamazsa (izin, cihaz): üst bileşen aynayı kapatır */
+  onError?: (message: string) => void
 }
 
 const c = tr.camera
@@ -18,7 +20,7 @@ const c = tr.camera
  * Ayna modu: ön kamera tam ekran, aynalanmış (sağ elin ekranda sağda).
  * Görüntü cihazdan çıkmaz, kaydedilmez. Hareket ölçer: 64×48 tuvalde ardışık kare farkı.
  */
-export function CameraMirror({ inRound, paused, ai }: Props) {
+export function CameraMirror({ inRound, paused, ai, onError }: Props) {
   const video = useRef<HTMLVideoElement>(null)
   const [error, setError] = useState<string | null>(null)
   const [energy, setEnergy] = useState(0)
@@ -31,6 +33,7 @@ export function CameraMirror({ inRound, paused, ai }: Props) {
     let cancelled = false
     if (!navigator.mediaDevices?.getUserMedia) {
       setError(c.unsupported)
+      onError?.(c.unsupported)
       return
     }
     navigator.mediaDevices
@@ -47,7 +50,11 @@ export function CameraMirror({ inRound, paused, ai }: Props) {
           setVideoEl(video.current)
         }
       })
-      .catch((e: Error) => setError(e.name === 'NotAllowedError' ? c.denied : c.failed))
+      .catch((e: Error) => {
+        const msg = e.name === 'NotAllowedError' ? c.denied : c.failed
+        setError(msg)
+        onError?.(msg)
+      })
     return () => {
       cancelled = true
       stream?.getTracks().forEach((t) => t.stop())

@@ -2185,7 +2185,10 @@ a.combo-row {
   pointer-events: none;
 }
 
-.workout[data-mirror] > :not(.mirror-video) {
+/* Yalnızca akıştaki üç bölüm öne alınır; üst katmanlar (çubuk, uyarı, rakip) mutlak kalır */
+.workout[data-mirror] > .workout-top,
+.workout[data-mirror] > .workout-center,
+.workout[data-mirror] > .workout-controls {
   position: relative;
   z-index: 1;
 }

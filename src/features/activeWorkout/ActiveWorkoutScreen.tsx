@@ -115,7 +115,8 @@ export function ActiveWorkoutScreen({ plan, onClose, onRestart, onRetryAudio, cl
   })()
   // Ayna: gölge boks, kombo, refleks ve zamanlayıcıda (torba/lapa/rutinde değil)
   const mirrorAllowed = ['combo', 'shadow', 'reflex', 'timer'].includes(plan.kind)
-  const mirror = mirrorAllowed && settings.cameraMirror
+  const [mirrorError, setMirrorError] = useState<string | null>(null)
+  const mirror = mirrorAllowed && settings.cameraMirror && !mirrorError
   // Yapay zekâ koç (aynada): tek oturum, çizelgeyle aynı saat
   const [vision] = useState(() => new VisionSession(() => settingsStore.get().voiceVolume > 0))
   const ai = mirror && settings.poseAI
@@ -181,6 +182,7 @@ export function ActiveWorkoutScreen({ plan, onClose, onRestart, onRetryAudio, cl
         <CameraMirror
           inRound={s.phase === 'round' || s.phase === 'warn'}
           paused={paused}
+          onError={setMirrorError}
           ai={ai ? { session: vision, elapsed: elapsedFn, skeleton: settings.poseSkeleton } : undefined}
         />
       )}
@@ -200,7 +202,10 @@ export function ActiveWorkoutScreen({ plan, onClose, onRestart, onRetryAudio, cl
           type="button"
           className="mirror-toggle"
           aria-pressed={mirror}
-          onClick={() => void settingsStore.update({ cameraMirror: !settings.cameraMirror })}
+          onClick={() => {
+            setMirrorError(null)
+            void settingsStore.update({ cameraMirror: !mirror })
+          }}
         >
           {mirror ? tr.camera.toggleOn : tr.camera.toggle}
         </button>
@@ -315,6 +320,7 @@ export function ActiveWorkoutScreen({ plan, onClose, onRestart, onRetryAudio, cl
             )}
             {wakeOk === false && <p className="workout-note">{w.wakeOff}</p>}
             {voiceWarning && <p className="workout-note">{voiceWarning}</p>}
+            {mirrorError && <p className="workout-note">{mirrorError}</p>}
           </>
         )}
       </footer>
