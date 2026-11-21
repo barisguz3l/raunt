@@ -2768,3 +2768,185 @@ a.combo-row {
   flex: 1;
   text-align: left;
 }
+
+/* =====================================================================
+   Ayna düzeni: orta alan boş kalsın, kişi kendini görsün.
+   Üstte ince şerit (faz, raunt, saat), altta kombo şeridi ve tek satır kontrol.
+   ===================================================================== */
+.workout[data-mirror] {
+  grid-template-rows: auto 1fr auto;
+  padding: calc(var(--safe-top) + 8px) 12px calc(var(--safe-bottom) + 10px);
+  box-shadow: inset 0 0 0 6px var(--phase);
+}
+
+.workout[data-mirror] .workout-top {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 6px 12px;
+  margin-right: 128px; /* Aynayı kapat düğmesine yer */
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.45);
+  text-align: left;
+}
+
+.workout[data-mirror] .workout-title,
+.workout[data-mirror] .round-dots,
+.workout[data-mirror] .workout-sub,
+.workout[data-mirror] .workout-progress {
+  display: none;
+}
+
+.workout[data-mirror] .workout-phase {
+  font-size: 22px;
+}
+
+.workout[data-mirror] .workout-round {
+  font-size: 15px;
+  opacity: 0.85;
+}
+
+/* Saat üst şeridin hemen altında, küçük; orta boş, kombo en altta */
+.workout[data-mirror] .workout-center {
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 6px 0 0;
+}
+
+.workout[data-mirror] .workout-clock {
+  align-self: flex-start;
+  font-size: min(9vh, 20vw);
+  line-height: 1;
+  padding: 2px 12px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.workout[data-mirror] .workout-label {
+  align-self: flex-start;
+  font-size: 22px;
+}
+
+.workout[data-mirror] .workout-tip {
+  margin: auto 0 8px;
+  max-width: none;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.workout[data-mirror] .combo-band {
+  margin-top: auto;
+  padding: 8px 12px;
+  min-height: 0;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.workout[data-mirror] .combo-band-code {
+  font-size: clamp(28px, 9vw, 44px);
+  gap: 4px 8px;
+}
+
+.workout[data-mirror] .combo-band-names {
+  font-size: 15px;
+}
+
+.workout[data-mirror] .combo-band-label {
+  font-size: 13px;
+}
+
+/* Kontroller: tek satır; ortada yuvarlak 96 px Duraklat, yanlarda Atla ve Bitir */
+.workout[data-mirror] .workout-controls {
+  grid-template-columns: 1fr 96px 1fr;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.workout[data-mirror] .workout-controls > .workout-row {
+  display: contents;
+}
+
+.workout[data-mirror] .workout-pause {
+  order: 2;
+  width: 96px;
+  min-height: 96px;
+  height: 96px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 15px;
+  line-height: 1.1;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.workout[data-mirror] .workout-controls .workout-btn {
+  min-height: 64px;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.workout[data-mirror] .workout-controls .workout-btn:first-child {
+  order: 1;
+}
+
+.workout[data-mirror] .workout-controls .workout-btn:last-child {
+  order: 3;
+}
+
+.workout[data-mirror] .workout-controls > :not(.workout-pause):not(.workout-row) {
+  order: 4;
+  grid-column: 1 / -1;
+}
+
+/* Uyarılar üstte küçük etiket (yüzün üstüne değil) */
+.workout[data-mirror] .pose-feedback {
+  top: calc(var(--safe-top) + 120px);
+  font-size: 26px;
+  padding: 4px 14px;
+}
+
+.workout[data-mirror] .pose-status,
+.workout[data-mirror] .mirror-still {
+  top: calc(var(--safe-top) + 168px);
+  bottom: auto;
+  left: auto;
+  right: 12px;
+  max-width: 60%;
+  font-size: 13px;
+  padding: 6px 10px;
+  text-align: right;
+}
+
+.workout[data-mirror] .mirror-meter {
+  top: 40%;
+  height: 90px;
+  width: 6px;
+  opacity: 0.7;
+}
+
+/* Hayalet rakip: yüzünün üstünde değil, sağda küçük ve saydam */
+.workout[data-mirror] .ghost-rival {
+  left: auto;
+  right: 6px;
+  top: 26%;
+  height: 40%;
+  transform: none;
+  opacity: 0.85;
+}
+
+.workout[data-mirror] .ghost-body {
+  fill: rgba(17, 26, 41, 0.3);
+}
+
+/* Duraklatılınca orta yine boş; uyarı yazısı alt şeritte */
+.workout[data-mirror][data-paused] .workout-center .workout-sub {
+  display: block;
+  margin-top: auto;
+  font-size: 15px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
+}

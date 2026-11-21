@@ -292,11 +292,11 @@ export function ActiveWorkoutScreen({ plan, onClose, onRestart, onRetryAudio, cl
         ) : (
           <>
             <button type="button" className="workout-pause" onClick={pauseOrResume}>
-              {resumeIn !== null ? w.resumeIn(resumeIn) : paused ? `▶ ${w.resume}` : `❚❚ ${w.pause}`}
+              {resumeIn !== null ? w.resumeIn(resumeIn) : paused ? `▶\uFE0E ${w.resume}` : `❚❚ ${w.pause}`}
             </button>
             <div className="workout-row">
               <button type="button" className="workout-btn" onClick={controls.skip}>
-                {w.skip} ⏭
+                {w.skip} ⏭︎
               </button>
               <HoldButton className="workout-btn" label={w.finishHold} onConfirm={controls.finish}>
                 ■ {w.finishHold}
