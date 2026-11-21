@@ -11,6 +11,7 @@ import { audio } from '../core/audio/audioService'
 import { saveLastConfig } from '../core/engine/presets'
 import type { WorkoutPlan } from '../features/activeWorkout/plan'
 import { parseShare } from '../features/combos/userCombos'
+import { setUpdateBusy } from './registerSW'
 import { Onboarding } from '../features/onboarding/Onboarding'
 import { settingsStore, useSettings } from '../core/settings/settings'
 
@@ -45,6 +46,10 @@ export function App() {
   })
   const [tab, setTab] = useState<TabId>(() => (shared ? 'kutuphane' : tabFromHash()))
   const [run, setRun] = useState<ActiveRun | null>(null)
+  // Yeni sürüm antrenman ortasında sayfayı yenilemesin
+  useEffect(() => {
+    setUpdateBusy(!!run)
+  }, [run])
   const settings = useSettings()
   // Karşılama (sağlık notu onayı dahil) paylaşım bağlantısıyla gelende de önce gösterilir
   const loaded = settingsStore.loaded()
