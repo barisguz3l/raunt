@@ -16,6 +16,10 @@ import { tr } from '../../i18n/tr'
 import type { WorkoutPlan } from '../activeWorkout/plan'
 import { JournalSheet } from './JournalSheet'
 import { SessionSheet } from './SessionSheet'
+import { useComboMemory } from '../../core/records/comboMemoryStore'
+import { lessonActive } from '../../core/engine/comboMemory'
+import { comboTokens, isLocked, tokenLabel } from '../combos/comboModel'
+import { useCombosVersion } from '../combos/userCombos'
 
 interface Props {
   today?: string
@@ -62,6 +66,11 @@ export function TodayScreen({ today = toISODate(new Date()), onStart, onNavigate
   const headHitRecent = rec.journals.some((j) => j.headHit && j.date >= addDays(today, -2))
 
   const dayType = typeOf(day)
+  // Hocanın kombinasyonu (ders günlüğünden): dersten sonraki 7 gün, ev günlerinde
+  const memory = useComboMemory()
+  useCombosVersion()
+  const lessonCombo = dayType === 'home' && lessonActive(memory.lesson, today) ? store.combo(memory.lesson!.comboId) : undefined
+  const lessonLocked = !!lessonCombo && isLocked(store, lessonCombo) && !s.coachApproved
   const nut = nutritionPlan(s.trainingTime, day?.plannedMinutes ?? 60)
 
   const tomorrow = pos?.kind === 'active' ? store.programDay(Math.floor((pos.dayIndex + 1) / 7) + 1, ((pos.dayIndex + 1) % 7) + 1) : undefined
@@ -205,6 +214,49 @@ export function TodayScreen({ today = toISODate(new Date()), onStart, onNavigate
               {t.testDay} ›
             </button>
           )}
+        </article>
+      )}
+
+      {lessonCombo && (
+        <article className="card lesson-card" aria-labelledby="lesson-combo-title" style={{ marginTop: 14 }}>
+          <h2 id="lesson-combo-title" className="lesson-card-title">
+            {tr.lessonCombo.todayTitle}
+          </h2>
+          <strong className="combo-code tabular lesson-card-code">{tokenLabel(comboTokens(store, lessonCombo))}</strong>
+          <p className="card-muted" style={{ margin: '4px 0 12px' }}>
+            {tr.lessonCombo.todayHint}
+          </p>
+          {lessonLocked && <p className="notice">{tr.safety.kickLock}</p>}
+          <div style={{ display: 'grid', gap: 10 }}>
+            <BigButton
+              variant="neutral"
+              disabled={lessonLocked}
+              onClick={() =>
+                onStart?.({
+                  kind: 'combo',
+                  title: tr.lessonCombo.chainTitle(lessonCombo.nameTr),
+                  config: { prepSec: 10, rounds: 2, roundSec: 150, warnSec: 10, restSec: 45 },
+                  coach: { comboIds: [lessonCombo.id], selection: 'sequential', tempo: 'slow', callMode: s.callMode, seed: 1, chain: true },
+                })
+              }
+            >
+              {tr.lessonCombo.chain}
+            </BigButton>
+            <BigButton
+              variant="neutral"
+              disabled={lessonLocked}
+              onClick={() =>
+                onStart?.({
+                  kind: 'combo',
+                  title: lessonCombo.nameTr,
+                  config: { prepSec: 10, rounds: 3, roundSec: 120, warnSec: 10, restSec: 45 },
+                  coach: { comboIds: [lessonCombo.id], selection: 'sequential', tempo: s.tempo, callMode: s.callMode, seed: 1 },
+                })
+              }
+            >
+              {tr.lessonCombo.train}
+            </BigButton>
+          </div>
         </article>
       )}
 

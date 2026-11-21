@@ -13,6 +13,11 @@ import { habitBoost } from '../../core/vision/coachAdapt'
 import { visionHabits } from '../camera/visionStore'
 import { addCoachVoice } from '../../core/engine/coachVoice'
 import { seededRandom, type ResolvedCombo } from '../../core/engine/comboScheduler'
+import { comboWeight, type ComboStats, type LessonCombo } from '../../core/engine/comboMemory'
+import { insertOpponentCalls } from '../../core/engine/opponentCalls'
+import { speechFor } from '../../core/engine/comboScheduler'
+import { comboMemory } from '../../core/records/comboMemoryStore'
+import { toISODate } from '../../core/program/schedule'
 
 export type WorkoutKind = 'timer' | 'combo' | 'shadow' | 'bag' | 'reflex' | 'pad' | 'routine'
 
@@ -35,7 +40,19 @@ export interface CoachSpec {
   pad?: boolean
   /** Zincir: tek kombo parça parça öğretilir (1 → 1-2 → 1-2-3 …) */
   chain?: boolean
+  /** Lapa modu: rakip saldırısı (kombolar arasına savunma çağrısı, kırmızı eldiven) */
+  opponent?: boolean
 }
+
+/** Rastgele seçim ağırlıkları için kombo hafızası (varsayılan: uygulamanın deposu, bugün). */
+export interface PlanMemory {
+  stats: ComboStats
+  lesson: LessonCombo | null
+  today: string
+}
+
+/** Rakip saldırısında kullanılan savunmalar */
+export const DEFENSE_IDS = ['slip', 'block', 'roll', 'parry']
 
 export interface WorkoutPlan {
   kind: WorkoutKind
@@ -47,9 +64,16 @@ export interface WorkoutPlan {
   programSessionId?: string
 }
 
-export function buildPlanTimeline(plan: WorkoutPlan, store: ContentStore, s: AppSettings): Timeline {
+export function buildPlanTimeline(plan: WorkoutPlan, store: ContentStore, s: AppSettings, memory?: PlanMemory): Timeline {
   if (!plan.coach) return buildTimeline(plan.config)
-  const tl = buildCoachPart(plan, store, s)
+  const mem = memory ?? { ...comboMemory.get(), today: toISODate(new Date()) }
+  let tl = buildCoachPart(plan, store, s, mem)
+  if (plan.coach.opponent && !plan.coach.reflex) {
+    const moves = DEFENSE_IDS.map((id) => store.move(id))
+      .filter((m): m is NonNullable<typeof m> => !!m && (s.coachApproved || !m.coachApproval))
+      .map((m) => ({ id: m.id, phrase: spokenPhrase(m, s.stance, plan.coach!.callMode, s.nameStyle), durationMs: m.durationMsEstimate }))
+    tl = insertOpponentCalls(tl, { moves, phraseMs, rand: seededRandom(plan.coach.seed ^ 0x2545f491), ...speechFor(plan.coach.tempo) })
+  }
   return s.coachChatter
     ? addCoachVoice(tl, { phraseMs, rand: seededRandom(plan.coach.seed ^ 0x5bd1e995), focus: s.coachFocus })
     : tl
@@ -71,7 +95,7 @@ export function chainPool(base: ResolvedCombo): ResolvedCombo[] {
   return out
 }
 
-function buildCoachPart(plan: WorkoutPlan, store: ContentStore, s: AppSettings): Timeline {
+function buildCoachPart(plan: WorkoutPlan, store: ContentStore, s: AppSettings, mem: PlanMemory): Timeline {
   if (!plan.coach) return buildTimeline(plan.config)
   const v = { stance: s.stance, callMode: plan.coach.callMode, nameStyle: s.nameStyle }
   const store2 = store
@@ -93,6 +117,8 @@ function buildCoachPart(plan: WorkoutPlan, store: ContentStore, s: AppSettings):
     .map((id) => store.combo(id))
     .filter((c): c is NonNullable<typeof c> => !!c)
     .map((c) => resolveCombo(store, c, v))
+    // Unutma eğrisi: uzun süredir çağrılmayanlar ve hocanın kombinasyonu rastgele seçimde daha sık gelir
+    .map((rc) => ({ ...rc, weight: comboWeight(rc.combo.id, mem.stats, mem.today, mem.lesson) }))
   // Davranışa göre koç: kameranın az gördüğü vuruş/el içeren kombolar daha sık
   const habits = visionHabits()
   for (const r of resolved) r.weight = (r.weight ?? 1) * habitBoost(r.moves, s.stance, habits)
@@ -106,7 +132,7 @@ function buildCoachPart(plan: WorkoutPlan, store: ContentStore, s: AppSettings):
     seed: plan.coach.seed,
     rules: plan.coach.rules,
     switchPool: plan.coach.switchStance
-      ? pool.map((c) => resolveCombo(store, c.combo, { ...v, stance: s.stance === 'orthodox' ? 'southpaw' : 'orthodox' }))
+      ? pool.map((c) => ({ ...resolveCombo(store, c.combo, { ...v, stance: s.stance === 'orthodox' ? 'southpaw' : 'orthodox' }), weight: c.weight }))
       : undefined,
     switchPhrase: plan.coach.switchStance ? spokenPhrase(store.move('switch')!, s.stance, 'names') : undefined,
   })

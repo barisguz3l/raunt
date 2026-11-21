@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { formatClock } from '../../core/engine/timeline'
 import type { Clock } from '../../core/engine/clock'
 import { callCount, callsAround } from '../../core/engine/coachTimeline'
+import { comboCallCounts } from '../../core/engine/comboMemory'
 import { getContentStore } from '../../core/content/contentStore'
 import { turkishVoice, voice } from '../../core/audio/voiceService'
 import { settingsStore, useSettings } from '../../core/settings/settings'
@@ -158,6 +159,7 @@ export function ActiveWorkoutScreen({ plan, onClose, onRestart, onRetryAudio, cl
           startedAt={startedAt}
           actual={engine.actual()}
           calls={coach ? callCount(timeline, engine.elapsed()) : 0}
+          comboCounts={coach ? comboCallCounts(timeline, engine.elapsed()) : undefined}
           onDone={onClose}
           onRestart={onRestart}
         />

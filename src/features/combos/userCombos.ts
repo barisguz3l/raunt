@@ -20,7 +20,7 @@ export function autoName(moves: Move[]): string {
   return moves.map((m) => m.shortTr).join(' · ')
 }
 
-export async function saveUserCombo(input: { id?: string; nameTr: string; moves: Move[] }): Promise<Combo> {
+export async function saveUserCombo(input: { id?: string; nameTr: string; moves: Move[]; description?: string }): Promise<Combo> {
   const moves = input.moves
   const level = Math.min(3, Math.max(1, Math.max(...moves.map((m) => m.level))))
   const focus: Combo['focus'] = moves.some((m) => m.category === 'defense')
@@ -38,7 +38,7 @@ export async function saveUserCombo(input: { id?: string; nameTr: string; moves:
     level,
     code: moves.map((m) => m.id).join('-'),
     steps: moves.map((m) => ({ move: m.id })),
-    description: 'Kendi kombinasyonun',
+    description: input.description ?? 'Kendi kombinasyonun',
     focus,
     // Hoca onayı adımlardan türetilir (spec §5.2)
     requiresCoachApproval: moves.some((m) => m.coachApproval),
