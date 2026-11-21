@@ -56,6 +56,11 @@ export interface AppSettings {
   coachChatter: boolean
   /** Ayna modu: gölge boks ve kombo antrenmanında ön kamera */
   cameraMirror: boolean
+  /** Aynada yapay zekâ koç (MediaPipe) */
+  poseAI: boolean
+  poseSkeleton: boolean
+  /** Aynada hayalet rakip */
+  ghostRival: boolean
   /** Hocanın son düzeltmesi (ders günlüğünden): bu ipucu daha sık söylenir */
   coachFocus: 'guardUp' | 'chinDown' | 'breathe' | 'relax' | null
 }
@@ -89,6 +94,9 @@ export const defaultSettings: AppSettings = {
   padMode: false,
   coachChatter: true,
   cameraMirror: false,
+  poseAI: true,
+  poseSkeleton: true,
+  ghostRival: false,
   coachFocus: null,
 }
 
@@ -127,6 +135,9 @@ export function sanitize(raw: unknown): AppSettings {
     padMode: r.padMode === true,
     coachChatter: r.coachChatter !== false,
     cameraMirror: r.cameraMirror === true,
+    poseAI: r.poseAI !== false,
+    poseSkeleton: r.poseSkeleton !== false,
+    ghostRival: r.ghostRival === true,
     coachFocus: (['guardUp', 'chinDown', 'breathe', 'relax'] as const).includes(r.coachFocus as never) ? (r.coachFocus as AppSettings['coachFocus']) : null,
   }
 }

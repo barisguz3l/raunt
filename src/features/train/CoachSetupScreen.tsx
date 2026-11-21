@@ -340,6 +340,17 @@ export function CoachSetupScreen({ kind, onBack, onStart }: Props) {
             checked={s.cameraMirror}
             onChange={(v) => void settingsStore.update({ cameraMirror: v })}
           />
+          {s.cameraMirror && (
+            <>
+              <Toggle label={tr.vision.aiLabel} hint={tr.vision.aiHint} checked={s.poseAI} onChange={(v) => void settingsStore.update({ poseAI: v })} />
+              {s.poseAI && (
+                <Toggle label={tr.vision.skeleton} checked={s.poseSkeleton} onChange={(v) => void settingsStore.update({ poseSkeleton: v })} />
+              )}
+              {s.poseAI && kind !== 'reflex' && (
+                <Toggle label={tr.vision.ghostLabel} hint={tr.vision.ghostHint} checked={s.ghostRival} onChange={(v) => void settingsStore.update({ ghostRival: v })} />
+              )}
+            </>
+          )}
         </div>
       )}
 

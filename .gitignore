@@ -11,3 +11,9 @@ CLAUDE.md
 KICKBOKS_UYGULAMA_SPEC.md
 reports/
 research_notes/
+
+# Derlemede node_modules'tan kopyalanır
+public/mediapipe/
+
+# Geçici test görselleri
+public/__test/

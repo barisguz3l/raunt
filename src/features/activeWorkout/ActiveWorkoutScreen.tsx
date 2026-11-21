@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { formatClock } from '../../core/engine/timeline'
 import type { Clock } from '../../core/engine/clock'
 import { callCount, callsAround } from '../../core/engine/coachTimeline'
@@ -9,6 +9,10 @@ import { buildPlanTimeline, timelinePhrases, type WorkoutPlan } from './plan'
 import { ComboBand } from './ComboBand'
 import { PadScene } from '../pad/PadScene'
 import { CameraMirror } from '../camera/CameraMirror'
+import { VisionSession } from '../camera/visionSession'
+import { VisionSummary } from '../camera/VisionSummary'
+import { GhostRival } from '../camera/GhostRival'
+import type { VisionStats } from '../../core/vision/matching'
 import { cueMoves } from '../combos/comboModel'
 
 import { WorkoutSummary } from './WorkoutSummary'
@@ -112,12 +116,42 @@ export function ActiveWorkoutScreen({ plan, onClose, onRestart, onRetryAudio, cl
   // Ayna: gölge boks, kombo, refleks ve zamanlayıcıda (torba/lapa/rutinde değil)
   const mirrorAllowed = ['combo', 'shadow', 'reflex', 'timer'].includes(plan.kind)
   const mirror = mirrorAllowed && settings.cameraMirror
+  // Yapay zekâ koç (aynada): tek oturum, çizelgeyle aynı saat
+  const [vision] = useState(() => new VisionSession(() => settingsStore.get().voiceVolume > 0))
+  const ai = mirror && settings.poseAI
+  const elapsedFn = useCallback(() => engine.elapsed(), [engine])
+  const curStance =
+    timeline.cues.some((c) => c.type === 'call' && c.comboId === 'move:switch' && c.round === s.round && c.t <= s.elapsed) && !between
+      ? settings.stance === 'orthodox'
+        ? 'southpaw'
+        : 'orthodox'
+      : settings.stance
+  useEffect(() => {
+    if (!ai) return
+    const c = calls.current
+    vision.setContext({
+      elapsed: s.elapsed,
+      inRound: s.phase === 'round' || s.phase === 'warn',
+      round: s.round,
+      stance: curStance,
+      call: c ? { t: c.t, comboId: c.comboId, speakSec: c.speakSec, windowSec: c.windowSec } : undefined,
+    })
+  })
+  const [visionStats, setVisionStats] = useState<VisionStats | null>(null)
+  useEffect(() => {
+    if (done && ai) void vision.finish().then(setVisionStats)
+  }, [done])
   const labels = timeline.config.labels
   const label = labels ? labels[Math.min(s.round, labels.length) - 1] : undefined
 
   if (done) {
     return (
       <div className="workout-summary-screen" role="dialog" aria-modal="true" aria-label={tr.summary.kicker}>
+        {visionStats && (
+          <div className="summary" style={{ paddingBottom: 0 }}>
+            <VisionSummary stats={visionStats} ghost={{ dodged: vision.dodged, caught: vision.caught }} />
+          </div>
+        )}
         <WorkoutSummary
           plan={plan}
           startedAt={startedAt}
@@ -143,7 +177,24 @@ export function ActiveWorkoutScreen({ plan, onClose, onRestart, onRetryAudio, cl
       aria-modal="true"
       aria-label={tr.timer.setupTitle}
     >
-      {mirror && <CameraMirror inRound={s.phase === 'round' || s.phase === 'warn'} paused={paused} />}
+      {mirror && (
+        <CameraMirror
+          inRound={s.phase === 'round' || s.phase === 'warn'}
+          paused={paused}
+          ai={ai ? { session: vision, elapsed: elapsedFn, skeleton: settings.poseSkeleton } : undefined}
+        />
+      )}
+      {ai && settings.ghostRival && coach && (
+        <GhostRival
+          session={vision}
+          elapsed={s.elapsed}
+          inRound={s.phase === 'round' || s.phase === 'warn'}
+          paused={paused}
+          stance={curStance}
+          call={calls.current ? { t: calls.current.t, comboId: calls.current.comboId, speakSec: calls.current.speakSec, windowSec: calls.current.windowSec } : undefined}
+          seed={plan.coach?.seed ?? 1}
+        />
+      )}
       {mirrorAllowed && (
         <button
           type="button"

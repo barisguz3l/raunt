@@ -2275,3 +2275,175 @@ a.combo-row {
     transition: none;
   }
 }
+
+/* ---- Yapay zekâ katmanı (ayna) ---- */
+.pose-skeleton {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.pose-skeleton line {
+  stroke: rgba(255, 255, 255, 0.75);
+  stroke-width: 0.006;
+  stroke-linecap: round;
+}
+
+.pose-skeleton circle {
+  fill: var(--red);
+}
+
+.pose-status {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 38%;
+  z-index: 2;
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+}
+
+.pose-feedback {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  z-index: 3;
+  margin: 0;
+  transform: translateX(-50%);
+  padding: 6px 18px;
+  border-radius: 12px;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(36px, 11vw, 72px);
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  white-space: nowrap;
+}
+
+.pose-feedback[data-tone='warn'] {
+  background: rgba(229, 51, 63, 0.85);
+}
+
+.pose-feedback[data-tone='good'] {
+  background: rgba(74, 139, 255, 0.85);
+}
+
+.vision-summary dl {
+  margin: 0;
+  display: grid;
+  border-top: 1px solid var(--stroke);
+}
+
+.vision-summary dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--stroke);
+}
+
+.vision-summary dt {
+  color: var(--rope);
+}
+
+.vision-summary dd {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 22px;
+}
+
+/* ---- Hayalet rakip ---- */
+.ghost-rival {
+  position: absolute;
+  left: 50%;
+  top: 16%;
+  height: 62%;
+  aspect-ratio: 9 / 16;
+  transform: translateX(-50%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.ghost-rival[data-attack] {
+  box-shadow: 0 0 0 9999px rgba(229, 51, 63, 0.18);
+}
+
+.ghost-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.ghost-svg[data-shake] {
+  animation: ghost-shake 0.3s ease-out;
+}
+
+@keyframes ghost-shake {
+  25% {
+    transform: translateX(-3%) rotate(-2deg);
+  }
+  60% {
+    transform: translateX(2%) rotate(1deg);
+  }
+}
+
+.ghost-body {
+  fill: rgba(17, 26, 41, 0.55);
+  stroke: rgba(236, 232, 223, 0.5);
+  stroke-width: 0.8;
+}
+
+.ghost-glove {
+  fill: rgba(229, 51, 63, 0.85);
+  stroke: none;
+  transition: r 0.15s ease-out, cx 0.15s ease-out, cy 0.15s ease-out;
+}
+
+.ghost-target {
+  fill: rgba(255, 255, 255, 0.2);
+  stroke: #fff;
+  stroke-width: 1.2;
+}
+
+.ghost-target[data-side='left'] {
+  stroke: var(--blue);
+}
+
+.ghost-target[data-side='right'] {
+  stroke: var(--red);
+}
+
+.ghost-target-label {
+  fill: #fff;
+  font-size: 7px;
+  font-weight: 800;
+}
+
+.ghost-hit {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 34px;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ghost-svg[data-shake] {
+    animation: none;
+  }
+  .ghost-glove {
+    transition: none;
+  }
+}

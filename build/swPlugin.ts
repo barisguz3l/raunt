@@ -22,7 +22,11 @@ export function serviceWorkerPlugin(): Plugin {
         for (const name of readdirSync(dir)) {
           const p = join(dir, name)
           if (statSync(p).isDirectory()) walk(p)
-          else files.add('./' + relative(publicDir, p).split('\\').join('/'))
+          else {
+            const rel = relative(publicDir, p).split('\\').join('/')
+            // Yapay zekâ dosyaları (~20 MB) önbelleğe baştan alınmaz; ayna ilk açılınca alınır (sw-template)
+            if (!rel.startsWith('mediapipe/') && !rel.startsWith('models/')) files.add('./' + rel)
+          }
         }
       }
       try {

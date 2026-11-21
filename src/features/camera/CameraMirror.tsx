@@ -1,11 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import { tr } from '../../i18n/tr'
+import { PoseOverlay } from './PoseOverlay'
+import type { VisionSession } from './visionSession'
 
 interface Props {
   /** Raunt sürüyor mu (hareket uyarısı yalnızca rauntta) */
   inRound: boolean
   /** Duraklatılmışsa ölçüm durur */
   paused: boolean
+  /** Yapay zekâ koç (varsa) */
+  ai?: { session: VisionSession; elapsed: () => number; skeleton: boolean }
 }
 
 const c = tr.camera
@@ -14,11 +18,12 @@ const c = tr.camera
  * Ayna modu: ön kamera tam ekran, aynalanmış (sağ elin ekranda sağda).
  * Görüntü cihazdan çıkmaz, kaydedilmez. Hareket ölçer: 64×48 tuvalde ardışık kare farkı.
  */
-export function CameraMirror({ inRound, paused }: Props) {
+export function CameraMirror({ inRound, paused, ai }: Props) {
   const video = useRef<HTMLVideoElement>(null)
   const [error, setError] = useState<string | null>(null)
   const [energy, setEnergy] = useState(0)
   const [still, setStill] = useState(false)
+  const [videoEl, setVideoEl] = useState<HTMLVideoElement | null>(null)
 
   // Kamerayı aç / kapat
   useEffect(() => {
@@ -39,6 +44,7 @@ export function CameraMirror({ inRound, paused }: Props) {
         if (video.current) {
           video.current.srcObject = s
           void video.current.play().catch(() => undefined)
+          setVideoEl(video.current)
         }
       })
       .catch((e: Error) => setError(e.name === 'NotAllowedError' ? c.denied : c.failed))
@@ -96,7 +102,8 @@ export function CameraMirror({ inRound, paused }: Props) {
           <span style={{ transform: `scaleY(${Math.max(0.04, energy)})` }} />
         </div>
       )}
-      {!error && inRound && !paused && still && (
+      {!error && ai && <PoseOverlay video={videoEl} session={ai.session} paused={paused} elapsed={ai.elapsed} skeleton={ai.skeleton} />}
+      {!error && !ai && inRound && !paused && still && (
         <p className="mirror-still" role="status">
           {c.still}
         </p>
