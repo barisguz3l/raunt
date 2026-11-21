@@ -5,6 +5,7 @@ import { registerServiceWorker } from './app/registerSW'
 import { requestPersistentStorage } from './core/persistence/db'
 import { settingsStore } from './core/settings/settings'
 import { loadUserCombos } from './features/combos/userCombos'
+import { comboMemory } from './core/records/comboMemoryStore'
 import './design/global.css'
 
 createRoot(document.getElementById('root')!).render(
@@ -17,3 +18,4 @@ registerServiceWorker()
 void requestPersistentStorage()
 void settingsStore.load()
 void loadUserCombos()
+void comboMemory.load()

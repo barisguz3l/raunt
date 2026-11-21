@@ -25,6 +25,8 @@ interface SetupState {
   rules?: RoundRule[]
   switchStance?: boolean
   reflexGap?: 'short' | 'medium' | 'long'
+  /** Lapa: rakip saldırısı */
+  opponent?: boolean
 }
 
 const RULES: RoundRule[] = ['punchesOnly', 'leadHand', 'noKicks', 'bodyWork', 'kickFinish', 'defenseFirst', 'any']
@@ -160,6 +162,7 @@ export function CoachSetupScreen({ kind, onBack, onStart }: Props) {
         reflex: reflex || undefined,
         reflexGap: reflex ? [gap[0], gap[1]] : undefined,
         pad: kind === 'pad' || undefined,
+        opponent: kind === 'pad' && st.opponent ? true : undefined,
       },
     })
   }
@@ -328,6 +331,14 @@ export function CoachSetupScreen({ kind, onBack, onStart }: Props) {
               checked={!!st.switchStance}
               onChange={(v) => update({ switchStance: v })}
             />
+            {kind === 'pad' && (
+              <Toggle
+                label={tr.opponent.label}
+                hint={tr.opponent.hint}
+                checked={!!st.opponent}
+                onChange={(v) => update({ opponent: v })}
+              />
+            )}
           </div>
         </>
       )}

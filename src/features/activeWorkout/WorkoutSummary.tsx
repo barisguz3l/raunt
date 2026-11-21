@@ -3,7 +3,9 @@ import { formatClock } from '../../core/engine/timeline'
 import { estimateKcal } from '../../core/records/health'
 import { newId, notifyRecordsChanged, records, type SessionKind } from '../../core/records/records'
 import { toISODate } from '../../core/program/schedule'
-import { useSettings } from '../../core/settings/settings'
+import { settingsStore, useSettings } from '../../core/settings/settings'
+import { comboMemory } from '../../core/records/comboMemoryStore'
+import { adjustTempo, type TempoFeel } from '../../core/engine/tempoFeedback'
 import { BigButton } from '../../design/BigButton'
 import { Toggle } from '../../design/Toggle'
 import { tr } from '../../i18n/tr'
@@ -14,6 +16,8 @@ interface Props {
   startedAt: Date
   actual: { roundsCompleted: number; workSec: number; totalSec: number }
   calls: number
+  /** Geçen süreye kadar çağrılan kombolar (unutma eğrisi) */
+  comboCounts?: Record<string, number>
   onDone: () => void
   onRestart: () => void
 }
@@ -25,13 +29,23 @@ export function kindForPlan(p: WorkoutPlan): SessionKind {
 }
 
 /** S-10 Antrenman sonu: RPE, kas ağrısı, bel ağrısı, not, tahmini kalori, su + protein kartı. */
-export function WorkoutSummary({ plan, startedAt, actual, calls, onDone, onRestart }: Props) {
+export function WorkoutSummary({ plan, startedAt, actual, calls, comboCounts, onDone, onRestart }: Props) {
   const settings = useSettings()
   const [rpe, setRpe] = useState<number | null>(null)
   const [soreness, setSoreness] = useState<number | null>(null)
   const [backPain, setBackPain] = useState(false)
   const [notes, setNotes] = useState('')
   const [saving, setSaving] = useState(false)
+  // Uyarlanan tempo: cevap, antrenman başındaki tempoya göre bir kademe değiştirir (tekrar seçilebilir)
+  const [baseTempo] = useState(settings.tempo)
+  const [feel, setFeel] = useState<TempoFeel | null>(null)
+  // Zincir hep yavaş tempoda çalışır; ayar tempoyu değiştirmek anlamsız
+  const askTempo = !!plan.coach && !plan.coach.chain
+  const chooseFeel = (f: TempoFeel) => {
+    setFeel(f)
+    void settingsStore.update({ tempo: adjustTempo(baseTempo, f) })
+  }
+  const tf = tr.tempoFeedback
   const kcal = settings.weightKg ? estimateKcal(plan.kind, settings.weightKg, actual.workSec, rpe ?? undefined) : null
 
   const save = async () => {
@@ -56,6 +70,7 @@ export function WorkoutSummary({ plan, startedAt, actual, calls, onDone, onResta
       kcalLow: kcal?.low,
       kcalHigh: kcal?.high,
     })
+    if (comboCounts) await comboMemory.recordCalls(comboCounts, toISODate(startedAt)).catch(() => {})
     notifyRecordsChanged()
     onDone()
   }
@@ -79,6 +94,24 @@ export function WorkoutSummary({ plan, startedAt, actual, calls, onDone, onResta
           <span>{calls ? s.calls : s.total}</span>
         </div>
       </div>
+
+      {askTempo && (
+        <div className="card" style={{ marginTop: 12 }}>
+          <div className="setting-label">{tf.question}</div>
+          <div className="chips" role="group" aria-label={tf.question} style={{ marginTop: 8 }}>
+            {(['easy', 'right', 'hard'] as const).map((f) => (
+              <button key={f} type="button" className="chip" aria-pressed={feel === f} onClick={() => chooseFeel(f)}>
+                {tf[f]}
+              </button>
+            ))}
+          </div>
+          {feel && (
+            <p className="card-muted" style={{ margin: '10px 0 0' }} aria-live="polite">
+              {adjustTempo(baseTempo, feel) === baseTempo ? tf.same(tr.coach.tempos[baseTempo]) : tf.next(tr.coach.tempos[adjustTempo(baseTempo, feel)])}
+            </p>
+          )}
+        </div>
+      )}
 
       <div className="card" style={{ marginTop: 12 }}>
         <div className="setting-label">{s.rpe}</div>
