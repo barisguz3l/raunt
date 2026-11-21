@@ -64,21 +64,23 @@ export function PoseOverlay({ video, session, paused, elapsed, skeleton }: Props
   }, [video, paused, session, elapsed])
 
   const pose: Pose | null = version
+  const vw = video?.videoWidth || 640
+  const vh = video?.videoHeight || 480
   const fb = session.feedback
 
   return (
     <>
       {skeleton && pose && (
-        <svg className="pose-skeleton" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true">
+        <svg className="pose-skeleton" viewBox={`0 0 ${vw} ${vh}`} preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           {BONES.map(([a, b]) => {
             const p = toScreen(pose.img[a])
             const q = toScreen(pose.img[b])
             const vis = Math.min(pose.img[a].v ?? 1, pose.img[b].v ?? 1)
-            return vis > 0.4 ? <line key={`${a}-${b}`} x1={p.x} y1={p.y} x2={q.x} y2={q.y} /> : null
+            return vis > 0.4 ? <line key={`${a}-${b}`} x1={p.x * vw} y1={p.y * vh} x2={q.x * vw} y2={q.y * vh} /> : null
           })}
           {[LM.lWr, LM.rWr].map((i) => {
             const p = toScreen(pose.img[i])
-            return <circle key={i} cx={p.x} cy={p.y} r={0.018} />
+            return <circle key={i} cx={p.x * vw} cy={p.y * vh} r={vw * 0.018} />
           })}
         </svg>
       )}

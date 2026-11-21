@@ -2288,7 +2288,7 @@ a.combo-row {
 
 .pose-skeleton line {
   stroke: rgba(255, 255, 255, 0.75);
-  stroke-width: 0.006;
+  stroke-width: 5;
   stroke-linecap: round;
 }
 
@@ -2446,4 +2446,143 @@ a.combo-row {
   .ghost-glove {
     transition: none;
   }
+}
+
+/* ---- Lapa avı ---- */
+.hunt {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+}
+
+.hunt > :not(.mirror-video) {
+  position: relative;
+  z-index: 1;
+}
+
+.hunt-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(var(--safe-top) + 12px) 14px 0;
+}
+
+.hunt-hud {
+  display: flex;
+  gap: 16px;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 30px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.hunt-target {
+  position: absolute !important;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 22px;
+  border: 5px solid #fff;
+  background: rgba(74, 139, 255, 0.55);
+  animation: hunt-pop 0.18s ease-out;
+}
+
+.hunt-target[data-hand='right'] {
+  background: rgba(229, 51, 63, 0.6);
+}
+
+@keyframes hunt-pop {
+  from {
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+}
+
+.hunt-flash {
+  position: absolute !important;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.25);
+  animation: hunt-flash 0.2s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes hunt-flash {
+  to {
+    opacity: 0;
+  }
+}
+
+.hunt-count {
+  position: absolute !important;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 40vh;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+}
+
+.hunt-panel {
+  position: absolute !important;
+  left: 16px;
+  right: 16px;
+  bottom: calc(var(--safe-bottom) + 20px);
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: var(--r-sheet);
+  background: rgba(17, 26, 41, 0.92);
+}
+
+.hunt-result {
+  margin: 12px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.hunt-result dt {
+  color: var(--rope);
+  font-size: 13px;
+}
+
+.hunt-result dd {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 30px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hunt-target,
+  .hunt-flash {
+    animation: none;
+  }
+}
+
+.hunt-target circle {
+  fill: rgba(74, 139, 255, 0.55);
+  stroke: #fff;
+  stroke-width: 6;
+}
+
+.hunt-target[data-hand='right'] circle {
+  fill: rgba(229, 51, 63, 0.6);
+}
+
+.hunt-target text {
+  fill: #fff;
+  font-family: var(--display);
+  font-weight: 800;
+}
+
+.hunt .pose-skeleton {
+  position: absolute !important;
+  inset: 0;
 }

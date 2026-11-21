@@ -8,6 +8,7 @@ import { tr } from '../../i18n/tr'
 import type { WorkoutPlan } from '../activeWorkout/plan'
 import { CoachSetupScreen, type CoachKind } from './CoachSetupScreen'
 import { TimerSetupScreen } from './TimerSetupScreen'
+import { HuntScreen } from '../camera/HuntScreen'
 
 type Mode = keyof typeof tr.train.modes
 const coachModes: Partial<Record<Mode, CoachKind>> = { combo: 'combo', shadow: 'shadow', bag: 'bag', reflex: 'reflex', pad: 'pad' }
@@ -15,7 +16,7 @@ const routineModes: Partial<Record<Mode, Routine['id']>> = { warmup: 'warmup', s
 
 // Köşe rengi türü anlatır: kırmızı = vuruş çalışması, mavi = hazırlık ve toparlanma
 const GROUPS: { title: string; corner: 'red' | 'blue'; modes: Mode[] }[] = [
-  { title: tr.train.groups.box, corner: 'red', modes: ['combo', 'pad', 'shadow', 'bag', 'reflex', 'timer'] },
+  { title: tr.train.groups.box, corner: 'red', modes: ['combo', 'pad', 'shadow', 'bag', 'reflex', 'hunt', 'timer'] },
   { title: tr.train.groups.body, corner: 'blue', modes: ['warmup', 'conditioning', 'stretch'] },
 ]
 
@@ -30,6 +31,7 @@ export function TrainScreen({ onStart }: Props) {
 
   if (view === 'timer')
     return <TimerSetupScreen onBack={() => setView(null)} onStart={(config: TimerConfig) => onStart({ kind: 'timer', config })} />
+  if (view === 'hunt') return <HuntScreen onClose={() => setView(null)} />
   const ck = view ? coachModes[view] : undefined
   if (ck) return <CoachSetupScreen kind={ck} onBack={() => setView(null)} onStart={onStart} />
 
