@@ -1,0 +1,258 @@
+{
+  "voice": "Higgsfield · ElevenLabs v4 · Raunt Antrenör (kullanıcının Türkçe ses klonu)",
+  "sampleRate": 24000,
+  "clips": {
+    "altı": {
+      "id": "alti",
+      "ms": 590
+    },
+    "antrenman bitti, harika iş": {
+      "id": "antrenman-bitti-harika-is",
+      "ms": 2260
+    },
+    "arka alçak tekme": {
+      "id": "arka-alcak-tekme",
+      "ms": 1360
+    },
+    "arka aparkat": {
+      "id": "arka-aparkat",
+      "ms": 1200
+    },
+    "arka direkt": {
+      "id": "arka-direkt",
+      "ms": 760
+    },
+    "arka direkt gövde": {
+      "id": "arka-direkt-govde",
+      "ms": 1730
+    },
+    "arka diz": {
+      "id": "arka-diz",
+      "ms": 830
+    },
+    "arka itme tekmesi": {
+      "id": "arka-itme-tekmesi",
+      "ms": 1370
+    },
+    "arka kroşe": {
+      "id": "arka-krose",
+      "ms": 1020
+    },
+    "arka kroşe gövde": {
+      "id": "arka-krose-govde",
+      "ms": 1680
+    },
+    "arka orta tekme": {
+      "id": "arka-orta-tekme",
+      "ms": 1310
+    },
+    "arka yüksek tekme": {
+      "id": "arka-yuksek-tekme",
+      "ms": 1380
+    },
+    "beş": {
+      "id": "bes",
+      "ms": 580
+    },
+    "bir": {
+      "id": "bir",
+      "ms": 490
+    },
+    "bir gövde": {
+      "id": "bir-govde",
+      "ms": 910
+    },
+    "blok": {
+      "id": "blok",
+      "ms": 580
+    },
+    "çene içeri": {
+      "id": "cene-iceri",
+      "ms": 940
+    },
+    "dalış": {
+      "id": "dalis",
+      "ms": 710
+    },
+    "devam": {
+      "id": "devam",
+      "ms": 530
+    },
+    "dinlen": {
+      "id": "dinlen",
+      "ms": 670
+    },
+    "dönüş": {
+      "id": "donus",
+      "ms": 600
+    },
+    "dört": {
+      "id": "dort",
+      "ms": 380
+    },
+    "dört gövde": {
+      "id": "dort-govde",
+      "ms": 950
+    },
+    "duraklatıldı": {
+      "id": "duraklatildi",
+      "ms": 980
+    },
+    "duruş değiştir": {
+      "id": "durus-degistir",
+      "ms": 1070
+    },
+    "gard yukarı": {
+      "id": "gard-yukari",
+      "ms": 1010
+    },
+    "geri adım": {
+      "id": "geri-adim",
+      "ms": 810
+    },
+    "hazır ol": {
+      "id": "hazir-ol",
+      "ms": 540
+    },
+    "iki": {
+      "id": "iki",
+      "ms": 470
+    },
+    "iki gövde": {
+      "id": "iki-govde",
+      "ms": 870
+    },
+    "ileri adım": {
+      "id": "ileri-adim",
+      "ms": 770
+    },
+    "kafa kaçır": {
+      "id": "kafa-kacir",
+      "ms": 880
+    },
+    "kalkan": {
+      "id": "kalkan",
+      "ms": 620
+    },
+    "nefes al": {
+      "id": "nefes-al",
+      "ms": 770
+    },
+    "omuzlar gevşek": {
+      "id": "omuzlar-gevsek",
+      "ms": 1240
+    },
+    "ön alçak tekme": {
+      "id": "on-alcak-tekme",
+      "ms": 1310
+    },
+    "ön aparkat": {
+      "id": "on-aparkat",
+      "ms": 860
+    },
+    "ön direkt": {
+      "id": "on-direkt",
+      "ms": 670
+    },
+    "ön direkt gövde": {
+      "id": "on-direkt-govde",
+      "ms": 1510
+    },
+    "ön diz": {
+      "id": "on-diz",
+      "ms": 630
+    },
+    "ön itme tekmesi": {
+      "id": "on-itme-tekmesi",
+      "ms": 1260
+    },
+    "ön kroşe": {
+      "id": "on-krose",
+      "ms": 840
+    },
+    "ön kroşe gövde": {
+      "id": "on-krose-govde",
+      "ms": 1510
+    },
+    "ön orta tekme": {
+      "id": "on-orta-tekme",
+      "ms": 1050
+    },
+    "ön yüksek tekme": {
+      "id": "on-yuksek-tekme",
+      "ms": 1250
+    },
+    "raunt başlıyor": {
+      "id": "raunt-basliyor",
+      "ms": 1140
+    },
+    "sağ aparkat": {
+      "id": "sag-aparkat",
+      "ms": 1090
+    },
+    "sağ direkt": {
+      "id": "sag-direkt",
+      "ms": 960
+    },
+    "sağ direkt gövde": {
+      "id": "sag-direkt-govde",
+      "ms": 1620
+    },
+    "sağ kroşe": {
+      "id": "sag-krose",
+      "ms": 930
+    },
+    "sağ kroşe gövde": {
+      "id": "sag-krose-govde",
+      "ms": 1560
+    },
+    "sağa adım": {
+      "id": "saga-adim",
+      "ms": 880
+    },
+    "savuştur": {
+      "id": "savustur",
+      "ms": 650
+    },
+    "sol aparkat": {
+      "id": "sol-aparkat",
+      "ms": 980
+    },
+    "sol direkt": {
+      "id": "sol-direkt",
+      "ms": 940
+    },
+    "sol direkt gövde": {
+      "id": "sol-direkt-govde",
+      "ms": 1590
+    },
+    "sol kroşe": {
+      "id": "sol-krose",
+      "ms": 870
+    },
+    "sol kroşe gövde": {
+      "id": "sol-krose-govde",
+      "ms": 1440
+    },
+    "sola adım": {
+      "id": "sola-adim",
+      "ms": 760
+    },
+    "son on saniye": {
+      "id": "son-on-saniye",
+      "ms": 1220
+    },
+    "son raunt": {
+      "id": "son-raunt",
+      "ms": 900
+    },
+    "üç": {
+      "id": "uc",
+      "ms": 480
+    },
+    "üç gövde": {
+      "id": "uc-govde",
+      "ms": 860
+    }
+  }
+}

@@ -1,0 +1,957 @@
+{
+  "_readme": "lead=ön, rear=arka. Orthodox (normal duruş): ön el/ayak=sol. Southpaw (solak duruş): ön=sağ. sideWord:true olan hareketlerde isim modu \"sol/sağ\" (veya ön/arka) önekini duruşa göre ekler. Tüm terimler Türkçe (18.11.2026 karar). shortTr: ekrandaki kısa etiket. durationMsEstimate TAHMİNDİR, ayar değeridir.",
+  "moves": [
+    {
+      "id": "jab",
+      "category": "punch",
+      "nameTr": "Sol direkt (ön el)",
+      "pad": 1,
+      "limb": "lead",
+      "target": "head",
+      "level": 1,
+      "durationMsEstimate": 350,
+      "speak": {
+        "numbers": "bir",
+        "names": "direkt",
+        "sideWord": true
+      },
+      "steps": [
+        "Garttan başla.",
+        "Ön yumruğu hedefe düz çizgide uzat; yumruk yarım döner.",
+        "Omuz çeneye yaklaşır, arka el çenede kalır.",
+        "Aynı yoldan hızla garda dön."
+      ],
+      "mistakes": [
+        "Omuz düşer",
+        "Yumruk geri çekilmez",
+        "Arka el iner"
+      ],
+      "animationKey": "jab",
+      "padVisual": {
+        "zone": "center-high",
+        "orientation": "front",
+        "hand": "lead"
+      },
+      "coachApproval": false,
+      "shortTr": "1"
+    },
+    {
+      "id": "cross",
+      "category": "punch",
+      "nameTr": "Sağ direkt (arka el)",
+      "pad": 2,
+      "limb": "rear",
+      "target": "head",
+      "level": 1,
+      "durationMsEstimate": 400,
+      "speak": {
+        "numbers": "iki",
+        "names": "direkt",
+        "sideWord": true
+      },
+      "steps": [
+        "Arka ayak topuğunu dışa çevir, arka dizi içe it.",
+        "Kalça ve omuz dönerken arka yumruk düz uzanır.",
+        "Ön el çenede kalır.",
+        "Garda dön."
+      ],
+      "mistakes": [
+        "Sadece kolla vurmak",
+        "Öne yıkılmak",
+        "Ön eli indirmek"
+      ],
+      "animationKey": "cross",
+      "padVisual": {
+        "zone": "center-high",
+        "orientation": "front",
+        "hand": "rear"
+      },
+      "coachApproval": false,
+      "shortTr": "2"
+    },
+    {
+      "id": "lead_hook",
+      "category": "punch",
+      "nameTr": "Sol kroşe (ön el)",
+      "pad": 3,
+      "limb": "lead",
+      "target": "head",
+      "level": 1,
+      "durationMsEstimate": 450,
+      "speak": {
+        "numbers": "üç",
+        "names": "kroşe",
+        "sideWord": true
+      },
+      "steps": [
+        "Dirsek omuz hizasında ~90°.",
+        "Ön ayak topunda dön; gövde yumruğu getirir.",
+        "Kol açısı sabit kalır, savurma.",
+        "Garda dön."
+      ],
+      "mistakes": [
+        "Geniş savurma",
+        "Dirsek düşer",
+        "Ayak dönmez (diz zorlanır)"
+      ],
+      "animationKey": "hook",
+      "padVisual": {
+        "zone": "side-high",
+        "orientation": "side",
+        "hand": "lead"
+      },
+      "coachApproval": false,
+      "sideWord": true,
+      "shortTr": "3"
+    },
+    {
+      "id": "rear_hook",
+      "category": "punch",
+      "nameTr": "Sağ kroşe (arka el)",
+      "pad": 4,
+      "limb": "rear",
+      "target": "head",
+      "level": 1,
+      "durationMsEstimate": 450,
+      "speak": {
+        "numbers": "dört",
+        "names": "kroşe",
+        "sideWord": true
+      },
+      "steps": [
+        "Arka ayak topunda dön, kalça ve gövde döner.",
+        "Dirsek omuz hizasında, yumruk yatay yay çizer.",
+        "Garda dön."
+      ],
+      "mistakes": [
+        "Geniş savurma",
+        "Dirsek düşer"
+      ],
+      "animationKey": "hook",
+      "padVisual": {
+        "zone": "side-high",
+        "orientation": "side",
+        "hand": "rear"
+      },
+      "coachApproval": false,
+      "sideWord": true,
+      "shortTr": "4"
+    },
+    {
+      "id": "lead_uppercut",
+      "category": "punch",
+      "nameTr": "Sol aparkat (ön el)",
+      "pad": 5,
+      "limb": "lead",
+      "target": "head",
+      "level": 1,
+      "durationMsEstimate": 450,
+      "speak": {
+        "numbers": "beş",
+        "names": "aparkat",
+        "sideWord": true
+      },
+      "steps": [
+        "Dizleri hafif kır, gövdeyi yana çevir.",
+        "Yumruğu avuç içi sana bakacak şekilde yukarı it; güç bacaktan.",
+        "Dirsek yanda, yumruk çene hizasına kadar.",
+        "Garda dön."
+      ],
+      "mistakes": [
+        "Eli yere sarkıtmak",
+        "Öne eğilmek"
+      ],
+      "animationKey": "upper",
+      "padVisual": {
+        "zone": "center-low-up",
+        "orientation": "under",
+        "hand": "lead"
+      },
+      "coachApproval": false,
+      "sideWord": true,
+      "shortTr": "5"
+    },
+    {
+      "id": "rear_uppercut",
+      "category": "punch",
+      "nameTr": "Sağ aparkat (arka el)",
+      "pad": 6,
+      "limb": "rear",
+      "target": "head",
+      "level": 1,
+      "durationMsEstimate": 450,
+      "speak": {
+        "numbers": "altı",
+        "names": "aparkat",
+        "sideWord": true
+      },
+      "steps": [
+        "Arka ayakla yere bas, kalçayı çevir.",
+        "Yumruk kısa ve yakın yoldan yukarı çıkar.",
+        "Garda dön."
+      ],
+      "mistakes": [
+        "Eli yere sarkıtmak",
+        "Öne eğilmek"
+      ],
+      "animationKey": "upper",
+      "padVisual": {
+        "zone": "center-low-up",
+        "orientation": "under",
+        "hand": "rear"
+      },
+      "coachApproval": false,
+      "sideWord": true,
+      "shortTr": "6"
+    },
+    {
+      "id": "jab_body",
+      "category": "punch",
+      "nameTr": "Sol direkt gövdeye",
+      "pad": null,
+      "limb": "lead",
+      "target": "body",
+      "level": 2,
+      "durationMsEstimate": 400,
+      "speak": {
+        "numbers": "bir gövde",
+        "names": "direkt gövde",
+        "sideWord": true
+      },
+      "steps": [
+        "Dizleri bük, çömelerek sol direkt at; başını eğme, gözün ileride."
+      ],
+      "mistakes": [
+        "Belden eğilmek"
+      ],
+      "animationKey": "jab",
+      "padVisual": {
+        "zone": "center-body",
+        "orientation": "front",
+        "hand": "lead"
+      },
+      "coachApproval": false,
+      "shortTr": "1 gövde"
+    },
+    {
+      "id": "cross_body",
+      "category": "punch",
+      "nameTr": "Sağ direkt gövdeye",
+      "pad": null,
+      "limb": "rear",
+      "target": "body",
+      "level": 2,
+      "durationMsEstimate": 450,
+      "speak": {
+        "numbers": "iki gövde",
+        "names": "direkt gövde",
+        "sideWord": true
+      },
+      "steps": [
+        "Dizleri bük, kalçayla dön, düz yumruğu gövdeye gönder."
+      ],
+      "mistakes": [
+        "Belden eğilmek"
+      ],
+      "animationKey": "cross",
+      "padVisual": {
+        "zone": "center-body",
+        "orientation": "front",
+        "hand": "rear"
+      },
+      "coachApproval": false,
+      "shortTr": "2 gövde"
+    },
+    {
+      "id": "lead_hook_body",
+      "category": "punch",
+      "nameTr": "Sol kroşe gövdeye",
+      "pad": null,
+      "limb": "lead",
+      "target": "body",
+      "level": 2,
+      "durationMsEstimate": 500,
+      "speak": {
+        "numbers": "üç gövde",
+        "names": "kroşe gövde",
+        "sideWord": true
+      },
+      "steps": [
+        "Dizleri bük, ön kroşeyi karaciğer hizasına (gövdeye) gönder."
+      ],
+      "mistakes": [
+        "Belden eğilmek",
+        "Gardı açmak"
+      ],
+      "animationKey": "hook",
+      "padVisual": {
+        "zone": "side-body",
+        "orientation": "side",
+        "hand": "lead"
+      },
+      "coachApproval": false,
+      "sideWord": true,
+      "shortTr": "3 gövde"
+    },
+    {
+      "id": "rear_hook_body",
+      "category": "punch",
+      "nameTr": "Sağ kroşe gövdeye",
+      "pad": null,
+      "limb": "rear",
+      "target": "body",
+      "level": 3,
+      "durationMsEstimate": 500,
+      "speak": {
+        "numbers": "dört gövde",
+        "names": "kroşe gövde",
+        "sideWord": true
+      },
+      "steps": [
+        "Dizleri bük, arka kroşeyi gövdeye gönder."
+      ],
+      "mistakes": [
+        "Belden eğilmek"
+      ],
+      "animationKey": "hook",
+      "padVisual": {
+        "zone": "side-body",
+        "orientation": "side",
+        "hand": "rear"
+      },
+      "coachApproval": false,
+      "sideWord": true,
+      "shortTr": "4 gövde"
+    },
+    {
+      "id": "teep_lead",
+      "category": "kick",
+      "nameTr": "Ön itme tekmesi",
+      "pad": null,
+      "limb": "lead",
+      "target": "body",
+      "level": 1,
+      "durationMsEstimate": 700,
+      "speak": {
+        "numbers": "ön itme tekmesi",
+        "names": "ön itme tekmesi",
+        "sideWord": null
+      },
+      "steps": [
+        "Diz karna doğru kalkar.",
+        "Ayak tabanıyla hedefi ittir, kalça öne gelir.",
+        "Ayağı aynı yoldan indir, gard açılmasın."
+      ],
+      "mistakes": [
+        "Gövdeyi geriye yatırmak",
+        "Ayağı savurmak"
+      ],
+      "animationKey": "teep",
+      "padVisual": {
+        "zone": "center-body",
+        "orientation": "front-both",
+        "hand": "both"
+      },
+      "coachApproval": false,
+      "shortTr": "Ön itme"
+    },
+    {
+      "id": "teep_rear",
+      "category": "kick",
+      "nameTr": "Arka itme tekmesi",
+      "pad": null,
+      "limb": "rear",
+      "target": "body",
+      "level": 2,
+      "durationMsEstimate": 800,
+      "speak": {
+        "numbers": "arka itme tekmesi",
+        "names": "arka itme tekmesi",
+        "sideWord": null
+      },
+      "steps": [
+        "Arka diz kalkar, kalçayla öne it.",
+        "Ayağı geri indir."
+      ],
+      "mistakes": [
+        "Dengeyi kaybetmek"
+      ],
+      "animationKey": "teep",
+      "padVisual": {
+        "zone": "center-body",
+        "orientation": "front-both",
+        "hand": "both"
+      },
+      "coachApproval": false,
+      "shortTr": "Arka itme"
+    },
+    {
+      "id": "low_kick_lead",
+      "category": "kick",
+      "nameTr": "Ön alçak tekme",
+      "pad": null,
+      "limb": "lead",
+      "target": "leg",
+      "level": 2,
+      "durationMsEstimate": 800,
+      "speak": {
+        "numbers": "ön alçak tekme",
+        "names": "ön alçak tekme",
+        "sideWord": null
+      },
+      "steps": [
+        "Ön ayak topunda dön, kalça döner.",
+        "Kaval/ayak sırtıyla uyluğa vur (yumuşak havada çalış).",
+        "Ayağı yere koy, eller yanakta."
+      ],
+      "mistakes": [
+        "Ayak dönmez",
+        "Gard düşer"
+      ],
+      "animationKey": "low",
+      "padVisual": {
+        "zone": "low-side",
+        "orientation": "kickpad",
+        "hand": "both"
+      },
+      "coachApproval": false,
+      "shortTr": "Ön alçak"
+    },
+    {
+      "id": "low_kick_rear",
+      "category": "kick",
+      "nameTr": "Arka alçak tekme",
+      "pad": null,
+      "limb": "rear",
+      "target": "leg",
+      "level": 1,
+      "durationMsEstimate": 900,
+      "speak": {
+        "numbers": "arka alçak tekme",
+        "names": "arka alçak tekme",
+        "sideWord": null
+      },
+      "steps": [
+        "Arka ayak topunda tam dön.",
+        "Kalçayla vur, kolunu savur (dengeyi sağlar), eller yüzü korusun.",
+        "Tekmeyi geri toparla, garda dön."
+      ],
+      "mistakes": [
+        "Ayağı dönmeden vurmak",
+        "Dengesiz bitirmek"
+      ],
+      "animationKey": "low",
+      "padVisual": {
+        "zone": "low-side",
+        "orientation": "kickpad",
+        "hand": "both"
+      },
+      "coachApproval": false,
+      "shortTr": "Arka alçak"
+    },
+    {
+      "id": "mid_kick_rear",
+      "category": "kick",
+      "nameTr": "Arka orta tekme",
+      "pad": null,
+      "limb": "rear",
+      "target": "body",
+      "level": 3,
+      "durationMsEstimate": 1000,
+      "speak": {
+        "numbers": "arka orta tekme",
+        "names": "arka orta tekme",
+        "sideWord": null
+      },
+      "steps": [
+        "Arka ayak topunda dön, kalça yüksek taşınır.",
+        "Kaval ile kaburga hizasına vur."
+      ],
+      "mistakes": [
+        "Ayak dönmez",
+        "Geri yatmak"
+      ],
+      "animationKey": "mid",
+      "padVisual": {
+        "zone": "mid-side",
+        "orientation": "kickpad",
+        "hand": "both"
+      },
+      "coachApproval": true,
+      "shortTr": "Arka orta"
+    },
+    {
+      "id": "mid_kick_lead",
+      "category": "kick",
+      "nameTr": "Ön orta tekme",
+      "pad": null,
+      "limb": "lead",
+      "target": "body",
+      "level": 3,
+      "durationMsEstimate": 1000,
+      "speak": {
+        "numbers": "ön orta tekme",
+        "names": "ön orta tekme",
+        "sideWord": null
+      },
+      "steps": [
+        "Ön ayak topunda dön, kalçayı çevir.",
+        "Kaburga hizasına vur."
+      ],
+      "mistakes": [
+        "Dengesizlik"
+      ],
+      "animationKey": "mid",
+      "padVisual": {
+        "zone": "mid-side",
+        "orientation": "kickpad",
+        "hand": "both"
+      },
+      "coachApproval": true,
+      "shortTr": "Ön orta"
+    },
+    {
+      "id": "high_kick_rear",
+      "category": "kick",
+      "nameTr": "Arka yüksek tekme",
+      "pad": null,
+      "limb": "rear",
+      "target": "head",
+      "level": 3,
+      "durationMsEstimate": 1100,
+      "speak": {
+        "numbers": "arka yüksek tekme",
+        "names": "arka yüksek tekme",
+        "sideWord": null
+      },
+      "steps": [
+        "Esneklik yeterliyse; arka ayak dönerken tekmeyi kafa hizasına çıkar."
+      ],
+      "mistakes": [
+        "Esnekliksiz zorlamak",
+        "Bel/kalça sakatlığı"
+      ],
+      "animationKey": "high",
+      "padVisual": {
+        "zone": "high-side",
+        "orientation": "kickpad",
+        "hand": "both"
+      },
+      "coachApproval": true,
+      "shortTr": "Arka yüksek"
+    },
+    {
+      "id": "high_kick_lead",
+      "category": "kick",
+      "nameTr": "Ön yüksek tekme",
+      "pad": null,
+      "limb": "lead",
+      "target": "head",
+      "level": 3,
+      "durationMsEstimate": 1100,
+      "speak": {
+        "numbers": "ön yüksek tekme",
+        "names": "ön yüksek tekme",
+        "sideWord": null
+      },
+      "steps": [
+        "Esneklik yeterliyse; ön ayak dönerken tekmeyi kafa hizasına çıkar."
+      ],
+      "mistakes": [
+        "Esnekliksiz zorlamak"
+      ],
+      "animationKey": "high",
+      "padVisual": {
+        "zone": "high-side",
+        "orientation": "kickpad",
+        "hand": "both"
+      },
+      "coachApproval": true,
+      "shortTr": "Ön yüksek"
+    },
+    {
+      "id": "knee_lead",
+      "category": "knee",
+      "nameTr": "Ön diz",
+      "pad": null,
+      "limb": "lead",
+      "target": "body",
+      "level": 1,
+      "durationMsEstimate": 700,
+      "speak": {
+        "numbers": "ön diz",
+        "names": "ön diz",
+        "sideWord": null
+      },
+      "steps": [
+        "Eller başın/boynun arkasını tutar gibi (veya gard).",
+        "Kalçayı öne it, dizi yukarı sür.",
+        "Ayağı geri koy."
+      ],
+      "mistakes": [
+        "Eğilmek",
+        "Dizi savurmak"
+      ],
+      "animationKey": "knee",
+      "padVisual": {
+        "zone": "center-body",
+        "orientation": "clinch",
+        "hand": "both"
+      },
+      "coachApproval": false,
+      "shortTr": "Ön diz"
+    },
+    {
+      "id": "knee_rear",
+      "category": "knee",
+      "nameTr": "Arka diz",
+      "pad": null,
+      "limb": "rear",
+      "target": "body",
+      "level": 2,
+      "durationMsEstimate": 800,
+      "speak": {
+        "numbers": "arka diz",
+        "names": "arka diz",
+        "sideWord": null
+      },
+      "steps": [
+        "Kalçayı öne it, arka dizi yukarı sür."
+      ],
+      "mistakes": [
+        "Eğilmek"
+      ],
+      "animationKey": "knee",
+      "padVisual": {
+        "zone": "center-body",
+        "orientation": "clinch",
+        "hand": "both"
+      },
+      "coachApproval": false,
+      "shortTr": "Arka diz"
+    },
+    {
+      "id": "block",
+      "category": "defense",
+      "nameTr": "Blok (kafayı kapat)",
+      "pad": null,
+      "limb": "none",
+      "target": "head",
+      "level": 1,
+      "durationMsEstimate": 400,
+      "speak": {
+        "numbers": "blok",
+        "names": "blok",
+        "sideWord": null
+      },
+      "steps": [
+        "Dirsekler birleşir, eller kafaya yapışır.",
+        "Çene aşağı, gözler ileride."
+      ],
+      "mistakes": [
+        "Gözleri kapatmak"
+      ],
+      "animationKey": "block",
+      "padVisual": {
+        "zone": "defense",
+        "orientation": "defense",
+        "hand": "both"
+      },
+      "coachApproval": false,
+      "shortTr": "Blok"
+    },
+    {
+      "id": "slip",
+      "category": "defense",
+      "nameTr": "Kafa kaçırma",
+      "pad": null,
+      "limb": "none",
+      "target": "head",
+      "level": 1,
+      "durationMsEstimate": 400,
+      "speak": {
+        "numbers": "kafa kaçır",
+        "names": "kafa kaçır",
+        "sideWord": null
+      },
+      "steps": [
+        "Dizlerden hafif bük, başı yumruğun dışına kaydır.",
+        "Belden değil dizden hareket et."
+      ],
+      "mistakes": [
+        "Belden eğilmek",
+        "Gardı indirmek"
+      ],
+      "animationKey": "slip",
+      "padVisual": {
+        "zone": "defense",
+        "orientation": "defense",
+        "hand": "both"
+      },
+      "coachApproval": false,
+      "shortTr": "Kaç"
+    },
+    {
+      "id": "roll",
+      "category": "defense",
+      "nameTr": "Dalış (altından dönme)",
+      "pad": null,
+      "limb": "none",
+      "target": "head",
+      "level": 2,
+      "durationMsEstimate": 600,
+      "speak": {
+        "numbers": "dalış",
+        "names": "dalış",
+        "sideWord": null
+      },
+      "steps": [
+        "Dizleri bük, gövdeyi U şeklinde alttan çevir."
+      ],
+      "mistakes": [
+        "Gözü kapatmak",
+        "Çok eğilmek"
+      ],
+      "animationKey": "roll",
+      "padVisual": {
+        "zone": "defense",
+        "orientation": "defense",
+        "hand": "both"
+      },
+      "coachApproval": false,
+      "shortTr": "Dalış"
+    },
+    {
+      "id": "step_back",
+      "category": "defense",
+      "nameTr": "Geri adım",
+      "pad": null,
+      "limb": "none",
+      "target": "none",
+      "level": 1,
+      "durationMsEstimate": 500,
+      "speak": {
+        "numbers": "geri adım",
+        "names": "geri adım",
+        "sideWord": null
+      },
+      "steps": [
+        "Arka ayak geri gider, ön ayak takip eder."
+      ],
+      "mistakes": [
+        "Ayakları birleştirmek"
+      ],
+      "animationKey": "adim",
+      "padVisual": {
+        "zone": "defense",
+        "orientation": "defense",
+        "hand": "both"
+      },
+      "coachApproval": false,
+      "shortTr": "Geri"
+    },
+    {
+      "id": "parry",
+      "category": "defense",
+      "nameTr": "Savuşturma (yumruğu itme)",
+      "pad": null,
+      "limb": "none",
+      "target": "head",
+      "level": 2,
+      "durationMsEstimate": 300,
+      "speak": {
+        "numbers": "savuştur",
+        "names": "savuştur",
+        "sideWord": null
+      },
+      "steps": [
+        "Küçük bir el hareketiyle gelen yumruğu yana it."
+      ],
+      "mistakes": [
+        "Büyük savurmak"
+      ],
+      "animationKey": "parry",
+      "padVisual": {
+        "zone": "defense",
+        "orientation": "defense",
+        "hand": "both"
+      },
+      "coachApproval": false,
+      "shortTr": "Savuştur"
+    },
+    {
+      "id": "leg_check",
+      "category": "defense",
+      "nameTr": "Kalkan (alçak tekme savunması)",
+      "pad": null,
+      "limb": "none",
+      "target": "leg",
+      "level": 2,
+      "durationMsEstimate": 500,
+      "speak": {
+        "numbers": "kalkan",
+        "names": "kalkan",
+        "sideWord": null
+      },
+      "steps": [
+        "Dizi kaldır, kaval ile alçak tekmeyi karşıla (hafif/çalışma temposu)."
+      ],
+      "mistakes": [
+        "Geç kalmak"
+      ],
+      "animationKey": "check",
+      "padVisual": {
+        "zone": "defense",
+        "orientation": "defense",
+        "hand": "both"
+      },
+      "coachApproval": false,
+      "shortTr": "Kalkan"
+    },
+    {
+      "id": "step_in",
+      "category": "footwork",
+      "nameTr": "İleri adım",
+      "pad": null,
+      "limb": "none",
+      "target": "none",
+      "level": 1,
+      "durationMsEstimate": 500,
+      "speak": {
+        "numbers": "ileri adım",
+        "names": "ileri adım",
+        "sideWord": null
+      },
+      "steps": [
+        "Ön ayak kısa adım atar, arka ayak aynı mesafede takip eder."
+      ],
+      "mistakes": [
+        "Ayakları çaprazlamak"
+      ],
+      "animationKey": "adim",
+      "padVisual": {
+        "zone": "none",
+        "orientation": "none",
+        "hand": "none"
+      },
+      "coachApproval": false,
+      "shortTr": "İleri"
+    },
+    {
+      "id": "step_left",
+      "category": "footwork",
+      "nameTr": "Sola adım",
+      "pad": null,
+      "limb": "none",
+      "target": "none",
+      "level": 1,
+      "durationMsEstimate": 500,
+      "speak": {
+        "numbers": "sola adım",
+        "names": "sola adım",
+        "sideWord": null
+      },
+      "steps": [
+        "Sol ayak önce hareket eder, sağ takip eder."
+      ],
+      "mistakes": [
+        "Ayakları çaprazlamak"
+      ],
+      "animationKey": "adim",
+      "padVisual": {
+        "zone": "none",
+        "orientation": "none",
+        "hand": "none"
+      },
+      "coachApproval": false,
+      "shortTr": "Sola"
+    },
+    {
+      "id": "step_right",
+      "category": "footwork",
+      "nameTr": "Sağa adım",
+      "pad": null,
+      "limb": "none",
+      "target": "none",
+      "level": 1,
+      "durationMsEstimate": 500,
+      "speak": {
+        "numbers": "sağa adım",
+        "names": "sağa adım",
+        "sideWord": null
+      },
+      "steps": [
+        "Sağ ayak önce hareket eder, sol takip eder."
+      ],
+      "mistakes": [
+        "Ayakları çaprazlamak"
+      ],
+      "animationKey": "adim",
+      "padVisual": {
+        "zone": "none",
+        "orientation": "none",
+        "hand": "none"
+      },
+      "coachApproval": false,
+      "shortTr": "Sağa"
+    },
+    {
+      "id": "pivot",
+      "category": "footwork",
+      "nameTr": "Dönüş (ön ayak üstünde)",
+      "pad": null,
+      "limb": "none",
+      "target": "none",
+      "level": 2,
+      "durationMsEstimate": 600,
+      "speak": {
+        "numbers": "dönüş",
+        "names": "dönüş",
+        "sideWord": null
+      },
+      "steps": [
+        "Ön ayak topunda dön, arka ayak yay çizer."
+      ],
+      "mistakes": [
+        "Dengeyi kaybetmek"
+      ],
+      "animationKey": "pivot",
+      "padVisual": {
+        "zone": "none",
+        "orientation": "none",
+        "hand": "none"
+      },
+      "coachApproval": false,
+      "shortTr": "Dönüş"
+    },
+    {
+      "id": "switch",
+      "category": "footwork",
+      "nameTr": "Duruş değiştir",
+      "pad": null,
+      "limb": "none",
+      "target": "none",
+      "level": 3,
+      "durationMsEstimate": 700,
+      "speak": {
+        "numbers": "duruş değiştir",
+        "names": "duruş değiştir",
+        "sideWord": null
+      },
+      "steps": [
+        "Ayakları yer değiştir, gard korunur."
+      ],
+      "mistakes": [
+        "Zıplamak"
+      ],
+      "animationKey": "adim",
+      "padVisual": {
+        "zone": "none",
+        "orientation": "none",
+        "hand": "none"
+      },
+      "coachApproval": false,
+      "shortTr": "Duruş değiştir"
+    }
+  ]
+}

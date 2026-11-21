@@ -1,0 +1,2168 @@
+/* =========================================================================
+   Raunt tasarım sistemi v3 "Köşe" — plan: docs/TASARIM.md
+   Ring gecesi laciverti zemin; iki anlamlı vurgu: kırmızı köşe (vur, başlat)
+   ve mavi köşe (toparlan, kaydet). Başlık ve sayılar Barlow Condensed.
+   ========================================================================= */
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-weight: 600;
+  font-display: swap;
+  src: url('./fonts/barlow-condensed-latin-600.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-weight: 600;
+  font-display: swap;
+  src: url('./fonts/barlow-condensed-latin-ext-600.woff2') format('woff2');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-weight: 800;
+  font-display: swap;
+  src: url('./fonts/barlow-condensed-latin-800.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-weight: 800;
+  font-display: swap;
+  src: url('./fonts/barlow-condensed-latin-ext-800.woff2') format('woff2');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  /* Palet (docs/TASARIM.md) */
+  --night: #111a29;
+  --mat: #1a2537;
+  --mat-2: #223047;
+  --wrap: #ece8df;
+  --rope: #8e99ac;
+  --red: #e5333f;
+  --blue: #4a8bff;
+
+  /* Eski adlar → yeni palet (bileşenler bu adları kullanıyor) */
+  --bg: var(--night);
+  --bg-elev: var(--mat);
+  --surface: var(--mat);
+  --card: var(--mat);
+  --card-2: var(--mat-2);
+  --card-pressed: #2a3a55;
+  --stroke: rgba(142, 153, 172, 0.22);
+  --stroke-2: rgba(142, 153, 172, 0.38);
+  --text: var(--wrap);
+  --text-2: var(--rope);
+  --text-3: #66728a;
+  --accent: var(--red);
+  --accent-2: var(--red);
+  --grad: var(--red);
+  --grad-soft: rgba(229, 51, 63, 0.16);
+  --lime: #3ccf7a;
+  --success: #3ccf7a;
+  --warning: #f2a23a;
+  --info: var(--blue);
+  --violet: #9b8cff;
+  --prep: #f5c518;
+  --done: #a855f7;
+
+  --display: 'Barlow Condensed', 'Arial Narrow', 'Roboto Condensed', sans-serif;
+  --r-control: 10px;
+  --r-board: 4px;
+  --r-sheet: 22px;
+  --radius: var(--r-control);
+  --radius-sm: var(--r-control);
+  --touch-min: 64px;
+  --touch-primary: 96px;
+  --tabbar-h: 68px;
+  --shadow: none;
+  --glow: none;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  color-scheme: dark;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.45;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  background: var(--night);
+  color: var(--wrap);
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.grad-text {
+  color: var(--red);
+}
+
+/* ---- Kabuk ---- */
+.app-shell {
+  min-height: 100dvh;
+  padding-top: var(--safe-top);
+  padding-bottom: calc(var(--tabbar-h) + var(--safe-bottom) + 24px);
+}
+
+.screen {
+  padding: 16px 20px 32px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.screen-kicker {
+  font-size: 15px;
+  color: var(--rope);
+  margin-top: 12px;
+}
+
+.screen-title {
+  font-family: var(--display);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+  margin: 6px 0 20px;
+}
+
+.section-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--display);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--wrap);
+  margin: 32px 0 10px;
+}
+
+.section-title small {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--rope);
+}
+
+/* Düz sekme çubuğu; etkin sekmenin üstünde kırmızı "ip" */
+.tabbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  height: calc(var(--tabbar-h) + var(--safe-bottom));
+  padding-bottom: var(--safe-bottom);
+  background: var(--night);
+  border-top: 1px solid var(--stroke-2);
+  z-index: 10;
+}
+
+.tabbar button {
+  position: relative;
+  background: none;
+  border: 0;
+  min-height: var(--touch-min);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--rope);
+  cursor: pointer;
+}
+
+.tabbar button[aria-current='page'] {
+  color: var(--wrap);
+}
+
+.tabbar button[aria-current='page']::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 22%;
+  right: 22%;
+  height: 3px;
+  background: var(--red);
+}
+
+.tabbar svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ---- Bileşenler ---- */
+.card {
+  background: var(--mat);
+  border-radius: var(--r-control);
+  padding: 16px;
+}
+
+.card + .card {
+  margin-top: 10px;
+}
+
+.card-muted {
+  color: var(--rope);
+  font-size: 15px;
+}
+
+.big-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: var(--touch-min);
+  border: 0;
+  border-radius: var(--r-control);
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.big-button[data-size='primary'] {
+  min-height: var(--touch-primary);
+  font-family: var(--display);
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.big-button[data-variant='accent'] {
+  background: var(--red);
+  color: #fff;
+}
+
+.big-button[data-variant='neutral'] {
+  background: transparent;
+  border: 1.5px solid var(--stroke-2);
+  color: var(--wrap);
+}
+
+.big-button[data-variant='success'] {
+  background: var(--blue);
+  color: #fff;
+}
+
+.big-button:active {
+  filter: brightness(0.88);
+}
+
+.big-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Antrenman modları: maç kartı gibi tek sütun liste */
+.mode-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--stroke);
+}
+
+.mode-row {
+  display: grid;
+  grid-template-columns: 4px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 76px;
+  padding: 12px 4px 12px 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--stroke);
+  text-align: left;
+  cursor: pointer;
+}
+
+.mode-row::before {
+  content: '';
+  align-self: stretch;
+  border-radius: 2px;
+  background: var(--corner, var(--red));
+}
+
+.mode-row[data-corner='blue'] {
+  --corner: var(--blue);
+}
+
+.mode-row strong {
+  display: block;
+  font-family: var(--display);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.mode-row > span {
+  min-width: 0;
+  color: var(--wrap);
+}
+
+.mode-row span span {
+  display: block;
+  color: var(--rope);
+  font-size: 15px;
+  margin-top: 2px;
+}
+
+.mode-row em {
+  font-style: normal;
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--rope);
+  font-variant-numeric: tabular-nums;
+}
+
+.mode-row:active {
+  background: rgba(142, 153, 172, 0.08);
+}
+
+.list-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--touch-min);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--stroke);
+  gap: 12px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(142, 153, 172, 0.16);
+  color: var(--wrap);
+}
+
+.badge-accent {
+  background: rgba(229, 51, 63, 0.18);
+  color: #ffc9cd;
+}
+
+/* Uyarılar: sarı bant (salon uyarı levhası), kutu değil sol şerit */
+.notice {
+  border-left: 4px solid var(--warning);
+  background: rgba(242, 162, 58, 0.08);
+  padding: 10px 14px;
+  border-radius: 0 var(--r-control) var(--r-control) 0;
+  color: #f3dcbd;
+  font-size: 15px;
+}
+
+/* Bugünün seansı: raunt tabelası */
+.hero {
+  position: relative;
+  border-radius: var(--r-board);
+  padding: 18px 18px 18px;
+  background: var(--mat);
+  border-top: 4px solid var(--red);
+}
+
+.hero[data-corner='blue'] {
+  border-top-color: var(--blue);
+}
+
+.hero-kicker {
+  font-size: 15px;
+  color: var(--rope);
+}
+
+.hero-title {
+  font-family: var(--display);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+  margin: 4px 0 12px;
+  overflow-wrap: anywhere;
+}
+
+/* Seansın blokları: dakikayla orantılı şerit */
+.block-strip {
+  display: flex;
+  gap: 3px;
+  margin: 4px 0 6px;
+}
+
+.block-strip span {
+  height: 10px;
+  border-radius: 2px;
+  background: var(--wrap);
+  opacity: 0.85;
+}
+
+.block-strip span:nth-child(even) {
+  opacity: 0.45;
+}
+
+.block-strip-legend {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+  display: flex;
+  gap: 3px;
+  color: var(--rope);
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin: 8px 0 16px;
+  color: var(--rope);
+  font-size: 15px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--stroke);
+  border-bottom: 1px solid var(--stroke);
+}
+
+.stat {
+  padding: 12px 10px 12px 0;
+}
+
+.stat + .stat {
+  border-left: 1px solid var(--stroke);
+  padding-left: 12px;
+}
+
+.stat b {
+  display: block;
+  font-family: var(--display);
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat span {
+  font-size: 13px;
+  color: var(--rope);
+}
+
+.ring-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ring {
+  flex: none;
+}
+
+.ring circle {
+  fill: none;
+  stroke-linecap: butt;
+}
+
+.week-strip {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.day-dot {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 8px 0;
+  border-radius: var(--r-control);
+  background: none;
+  border: 1.5px solid transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--rope);
+  cursor: pointer;
+}
+
+.day-dot i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--rope);
+  background: transparent;
+}
+
+.day-dot[data-today] {
+  border-color: var(--stroke-2);
+  color: var(--wrap);
+}
+
+/* Yapılan gün: dolu mavi (şekil de değişir: halka → dolu daire) */
+.day-dot[data-done] i {
+  border-color: var(--blue);
+  background: var(--blue);
+}
+
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+}
+
+.sheet-body {
+  width: 100%;
+  max-width: 720px;
+  max-height: 92dvh;
+  overflow: auto;
+  background: var(--bg-elev);
+  border: 1px solid var(--stroke-2);
+  border-radius: 28px 28px 0 0;
+  padding: 20px 16px calc(var(--safe-bottom) + 20px);
+}
+
+.textarea {
+  width: 100%;
+  min-height: 96px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--stroke-2);
+  background: #0d0d10;
+  color: var(--text);
+  padding: 12px 14px;
+  font: inherit;
+  resize: vertical;
+}
+
+.scale {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  gap: 4px;
+}
+
+.scale button {
+  min-height: 48px;
+  border-radius: 10px;
+  border: 1px solid var(--stroke);
+  background: var(--card);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.scale button[aria-pressed='true'] {
+  background: var(--grad);
+  border-color: transparent;
+  color: #fff;
+}
+
+.empty {
+  text-align: center;
+  padding: 28px 16px;
+  color: var(--text-2);
+}
+
+.empty svg {
+  width: 44px;
+  height: 44px;
+  opacity: 0.5;
+  margin-bottom: 8px;
+}
+
+/* ---- Kurulum ---- */
+.back-link {
+  background: none;
+  border: 0;
+  color: var(--accent);
+  font-size: 17px;
+  font-weight: 600;
+  min-height: 44px;
+  padding: 0 4px;
+  cursor: pointer;
+}
+
+.stepper-card {
+  display: grid;
+  gap: 4px;
+  padding: 8px 12px;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 72px;
+}
+
+.stepper + .stepper {
+  border-top: 1px solid var(--stroke);
+}
+
+.stepper-label {
+  font-size: 16px;
+  color: var(--text-2);
+}
+
+.stepper-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stepper-controls button {
+  width: var(--touch-min);
+  height: var(--touch-min);
+  border-radius: 14px;
+  border: 0;
+  background: var(--stroke);
+  font-size: 30px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.stepper-controls button:active {
+  background: var(--stroke-2);
+}
+
+.stepper-controls button:disabled {
+  opacity: 0.3;
+}
+
+.stepper-value {
+  min-width: 96px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.preset-list {
+  display: grid;
+  gap: 8px;
+}
+
+.preset-row {
+  display: flex;
+  gap: 8px;
+}
+
+.preset-chip {
+  flex: 1;
+  min-height: 56px;
+  text-align: left;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background: var(--card);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.preset-chip[aria-pressed='true'] {
+  border-color: var(--accent);
+  background: #2a1414;
+}
+
+.icon-button {
+  width: 56px;
+  min-height: 56px;
+  border-radius: 12px;
+  border: 0;
+  background: var(--card);
+  color: var(--text-2);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  color: var(--text-2);
+  font-size: 15px;
+}
+
+.field input {
+  min-height: 52px;
+  border-radius: 12px;
+  border: 1px solid var(--stroke-2);
+  background: var(--night);
+  color: var(--text);
+  padding: 0 14px;
+  font-size: 18px;
+}
+
+/* ---- Kombinasyonlar ---- */
+.search {
+  width: 100%;
+  min-height: 52px;
+  border-radius: 12px;
+  border: 1px solid var(--stroke-2);
+  background: var(--night);
+  color: var(--text);
+  padding: 0 14px;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.chip {
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--stroke-2);
+  background: var(--card);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.chip[aria-pressed='true'] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.combo-list,
+.step-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.combo-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: var(--touch-min);
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--card);
+  text-align: left;
+  cursor: pointer;
+}
+
+.combo-row:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.combo-row[aria-checked='true'] {
+  outline: 2px solid var(--accent);
+  background: #2a1414;
+}
+
+.combo-row-main {
+  flex: 1;
+  display: grid;
+  gap: 2px;
+}
+
+.combo-code {
+  font-size: 18px;
+}
+
+.combo-row-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-2);
+}
+
+.badge-lock {
+  background: #3a2a14;
+  color: #fbbf24;
+}
+
+.check {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 2px solid var(--text-2);
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+}
+
+.combo-row[aria-checked='true'] .check {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.combo-hero {
+  font-size: clamp(36px, 12vw, 64px);
+  font-weight: 900;
+  color: var(--accent);
+  margin-top: 12px;
+}
+
+.sticky-bottom {
+  position: sticky;
+  bottom: calc(var(--tabbar-h) + var(--safe-bottom) + 8px);
+  padding-top: 8px;
+}
+
+/* ---- Ayar kontrolleri ---- */
+.setting-group {
+  display: grid;
+  gap: 12px;
+}
+
+.setting-label {
+  font-weight: 700;
+}
+
+.choice-list {
+  display: grid;
+  gap: 8px;
+}
+
+.choice-row {
+  display: flex;
+  gap: 8px;
+}
+
+.choice {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background: var(--stroke);
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.choice[aria-checked='true'] {
+  border-color: var(--accent);
+  background: #2a1414;
+}
+
+.choice-tall span:last-child {
+  display: grid;
+  gap: 2px;
+}
+
+.choice small,
+.toggle-row small {
+  color: var(--text-2);
+  font-size: 14px;
+}
+
+.choice-dot {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--text-2);
+}
+
+.choice[aria-checked='true'] .choice-dot {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 5px #2a1414;
+  background: var(--accent);
+}
+
+.segmented {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 6px;
+  background: var(--night);
+  border-radius: 14px;
+  padding: 4px;
+}
+
+.segment {
+  min-height: 56px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 6px 4px;
+}
+
+.segment span {
+  display: grid;
+  gap: 2px;
+}
+
+.segment small {
+  color: var(--text-2);
+  font-size: 12px;
+}
+
+.segment[aria-checked='true'] {
+  background: var(--accent);
+  color: #fff;
+}
+
+.segment[aria-checked='true'] small {
+  color: #fde2e2;
+}
+
+.slider {
+  display: grid;
+  gap: 8px;
+}
+
+.slider > span {
+  display: flex;
+  justify-content: space-between;
+}
+
+.slider input[type='range'] {
+  width: 100%;
+  height: 44px;
+  accent-color: var(--wrap);
+}
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 64px;
+  border: 0;
+  background: none;
+  padding: 4px 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+.toggle-row > span:first-child {
+  display: grid;
+  gap: 2px;
+}
+
+.toggle {
+  flex: none;
+  position: relative;
+  width: 56px;
+  height: 34px;
+  border-radius: 17px;
+  background: var(--stroke-2);
+  transition: background 0.15s;
+}
+
+.toggle::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.15s;
+}
+
+.toggle-row[aria-checked='true'] .toggle {
+  background: var(--success);
+}
+
+.toggle-row[aria-checked='true'] .toggle::after {
+  transform: translateX(22px);
+}
+
+/* ---- Aktif antrenman (tam ekran) ---- */
+.workout {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background: var(--phase);
+  color: var(--phase-text);
+  padding: calc(var(--safe-top) + 16px) 20px calc(var(--safe-bottom) + 16px);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.workout[data-phase='warn']:not([data-paused]) {
+  animation: warn-blink 0.5s steps(1) infinite;
+}
+
+@keyframes warn-blink {
+  50% {
+    background: #c2410c;
+    color: #fff;
+  }
+}
+
+.workout[data-paused] {
+  background: var(--mat);
+  color: #fff;
+}
+
+.workout-top {
+  text-align: center;
+}
+
+.workout-phase {
+  font-size: clamp(22px, 6vw, 40px);
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.workout-round {
+  font-size: clamp(18px, 4.5vw, 28px);
+  font-weight: 800;
+  margin-top: 4px;
+  opacity: 0.85;
+}
+
+.round-dots {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+}
+
+.round-dots li {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0.6;
+}
+
+.round-dots li[data-state='done'] {
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.round-dots li[data-state='now'] {
+  background: currentColor;
+  opacity: 1;
+  transform: scale(1.3);
+}
+
+.workout-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+
+.workout-clock {
+  font-family: ui-rounded, 'SF Pro Rounded', -apple-system, system-ui, sans-serif;
+  font-weight: 900;
+  font-size: min(30vh, 27vw);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.workout-progress {
+  width: min(100%, 640px);
+  flex-shrink: 0;
+  height: 10px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  margin-top: 16px;
+}
+
+.workout[data-paused] .workout-progress {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.workout-progress span {
+  display: block;
+  height: 100%;
+  background: currentColor;
+  transform-origin: left;
+}
+
+.workout-sub {
+  margin-top: 14px;
+  font-size: clamp(18px, 4.5vw, 26px);
+  font-weight: 700;
+  min-height: 1.4em;
+}
+
+/* Kombo koçu: sayaç küçülür, kombo bandı öne çıkar */
+.workout[data-coach] .workout-clock {
+  font-size: min(16vh, 22vw);
+}
+
+.combo-band {
+  margin-top: 18px;
+  min-height: 7.5em;
+  width: 100%;
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px 8px;
+  transition: background 0.12s;
+}
+
+.combo-band[data-speaking] {
+  background: rgba(0, 0, 0, 0.82);
+  color: #fff;
+}
+
+.combo-band[data-preview] {
+  opacity: 0.8;
+}
+
+.combo-band[data-faded] {
+  opacity: 0.4;
+}
+
+.combo-band-label {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+.combo-band-code {
+  font-size: clamp(40px, 13vw, 88px);
+  font-weight: 900;
+  line-height: 1.05;
+  word-break: break-word;
+}
+
+.combo-band-names {
+  font-size: clamp(18px, 5vw, 28px);
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+.workout-controls {
+  display: grid;
+  gap: 12px;
+}
+
+.workout-pause {
+  min-height: var(--touch-primary);
+  width: 100%;
+  border: 0;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.82);
+  color: #fff;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.workout[data-paused] .workout-pause {
+  background: var(--success);
+  color: #000;
+}
+
+.workout-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.workout-btn {
+  position: relative;
+  overflow: hidden;
+  min-height: var(--touch-min);
+  border: 0;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.workout-btn-strong {
+  background: #000;
+}
+
+.hold-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(var(--hold, 0));
+  transform-origin: left;
+}
+
+.hold-text {
+  position: relative;
+}
+
+.workout-note {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.phase-flash {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 60;
+  animation: phase-flash 0.45s ease-out;
+}
+
+@keyframes phase-flash {
+  from {
+    opacity: 0.85;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.workout-alert {
+  display: grid;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  border-radius: 16px;
+  padding: 12px;
+  font-size: 15px;
+}
+
+.workout-alert p {
+  margin: 0;
+  font-weight: 700;
+}
+
+.workout-alert summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+}
+
+.workout-alert ul {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+}
+
+.workout-done {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.workout-done-title {
+  font-size: clamp(28px, 8vw, 48px);
+  font-weight: 900;
+}
+
+/* Yatay: sayaç solda büyük, kontroller sağda */
+@media (orientation: landscape) and (max-height: 600px) {
+  .workout {
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 32%);
+    grid-template-rows: auto 1fr;
+    column-gap: 20px;
+    padding-left: calc(env(safe-area-inset-left, 0px) + 20px);
+    padding-right: calc(env(safe-area-inset-right, 0px) + 20px);
+  }
+  .workout-top {
+    grid-column: 1;
+  }
+  .workout-center,
+  .workout-done {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .workout-clock {
+    font-size: min(42vh, 20vw);
+  }
+  .workout-top .round-dots {
+    margin-top: 6px;
+  }
+  .workout-controls {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-content: center;
+  }
+  .workout-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---- Antrenman sonu özeti ---- */
+.workout-summary-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow: auto;
+  background: var(--night);
+  padding: calc(var(--safe-top) + 20px) 16px calc(var(--safe-bottom) + 24px);
+}
+
+.summary {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.summary-head {
+  text-align: center;
+  margin: 8px 0 18px;
+}
+
+.summary-title {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: -0.6px;
+  margin-top: 6px;
+}
+
+.fuel-card {
+  background: var(--mat);
+  border-left: 4px solid var(--blue);
+}
+
+.workout-title {
+  font-size: 14px;
+  font-weight: 800;
+  opacity: 0.8;
+  margin-bottom: 2px;
+}
+
+.workout-label {
+  margin-top: 14px;
+  font-size: clamp(24px, 7vw, 40px);
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.1;
+}
+
+/* ---- Pencere, blok listesi ---- */
+.sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.sheet-head h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.4px;
+}
+
+.block-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.block-card ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: var(--text-2);
+  font-size: 15px;
+  display: grid;
+  gap: 4px;
+}
+
+.block-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.link-button {
+  display: block;
+  margin-top: 12px;
+  background: none;
+  border: 0;
+  color: #ffb08a;
+  font-weight: 800;
+  font-size: 15px;
+  text-align: left;
+  padding: 6px 0;
+  cursor: pointer;
+}
+
+.field input[type='date'],
+.field input[type='number'],
+.field input[type='time'],
+.field select {
+  min-height: 52px;
+  border-radius: 12px;
+  border: 1px solid var(--stroke-2);
+  background: #0d0d10;
+  color: var(--text);
+  padding: 0 14px;
+  font-size: 17px;
+  font-family: inherit;
+}
+
+/* ---- Grafik ve tablo ---- */
+.bars {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: end;
+  gap: 8px;
+  height: 140px;
+}
+
+.bar {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+}
+
+.bar-fill {
+  width: 100%;
+  border-radius: 2px 2px 0 0;
+  background: var(--blue);
+}
+
+.bar small {
+  font-size: 11px;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+.mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.mini-table td {
+  padding: 10px 6px;
+  border-bottom: 1px solid var(--stroke);
+}
+
+.mini-table td:last-child {
+  text-align: right;
+  font-weight: 800;
+}
+
+/* ---- Kütüphane ---- */
+.h-scroll {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 140px;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tech-card {
+  scroll-snap-align: start;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 12px 10px 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--stroke);
+  background: var(--mat);
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+  min-height: 150px;
+}
+
+.anim-stage {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 16px 0 6px;
+  margin: 6px 0 4px;
+  border-radius: 28px;
+  background: var(--mat);
+  border: 1px solid var(--stroke);
+}
+
+.anim-controls {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 8px;
+}
+
+.steps {
+  margin: 0;
+  padding-left: 22px;
+  display: grid;
+  gap: 8px;
+  font-size: 16px;
+}
+
+.steps li::marker {
+  color: var(--accent-2);
+  font-weight: 900;
+}
+
+a.combo-row {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---- Kombo editörü ---- */
+.editor-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.editor-steps li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.editor-step-name {
+  font-weight: 700;
+}
+
+.editor-step-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.editor-step-actions button {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid var(--stroke);
+  background: var(--card-2);
+  cursor: pointer;
+}
+
+.move-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+  gap: 8px;
+}
+
+.move-tile {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  min-height: 72px;
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid var(--stroke);
+  background: var(--card);
+  text-align: left;
+  cursor: pointer;
+}
+
+.move-tile b {
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.move-tile small {
+  color: var(--text-2);
+  font-size: 12px;
+}
+
+.move-tile i {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-style: normal;
+}
+
+.move-tile:active {
+  background: var(--card-pressed);
+}
+
+.steps li {
+  padding-left: 4px;
+}
+
+.steps li small {
+  float: right;
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Lapa modu ---- */
+.pad-scene {
+  width: min(100%, 26vh);
+  aspect-ratio: 9 / 16;
+  margin: 8px auto 0;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+}
+
+.pad-scene svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.pad-scene[data-preview] {
+  opacity: 0.75;
+}
+
+.big-button-danger {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background: rgba(239, 68, 68, 0.14);
+  color: #ff8a8a;
+  border: 1px solid rgba(239, 68, 68, 0.45);
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid var(--stroke);
+  margin: 4px 0;
+}
+
+.field textarea {
+  border-radius: 12px;
+  border: 1px solid var(--stroke-2);
+  background: var(--night);
+  color: var(--text);
+  padding: 12px 14px;
+  font: inherit;
+  font-size: 16px;
+  resize: vertical;
+}
+
+/* ---- Karşılama ---- */
+.onboarding {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background: var(--night);
+  padding: calc(env(safe-area-inset-top) + 12px) 20px calc(env(safe-area-inset-bottom) + 16px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.onboarding-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+}
+
+.onboarding-dots {
+  display: flex;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.onboarding-dots li {
+  width: 22px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.onboarding-dots li[data-on] {
+  background: var(--grad, var(--accent));
+}
+
+.onboarding-body {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  max-width: 560px;
+  width: 100%;
+  margin: 12px auto 0;
+  animation: ob-in 0.28s ease-out;
+}
+
+@keyframes ob-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .onboarding-body {
+    animation: none;
+  }
+}
+
+.onboarding-logo {
+  width: 96px;
+  height: 96px;
+  border-radius: 22px;
+  margin-top: 6vh;
+
+}
+
+.onboarding-title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: -0.6px;
+}
+
+.onboarding-text {
+  margin: 0;
+  color: var(--text-2);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.onboarding-points {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.onboarding-points li {
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--card);
+  border: 1px solid var(--stroke);
+}
+
+.onboarding-points li::before {
+  content: '✓  ';
+  color: var(--accent-2);
+  font-weight: 900;
+}
+
+.onboarding-actions {
+  position: sticky;
+  bottom: 0;
+  max-width: 560px;
+  width: 100%;
+  margin: 16px auto 0;
+  padding-top: 12px;
+  background: linear-gradient(transparent, var(--bg) 30%);
+}
+
+.check-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-height: 64px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: var(--card);
+  border: 1px solid var(--stroke);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.check-row input {
+  width: 26px;
+  height: 26px;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* Lapa modunda sahne için yer aç: sayaç küçülür, gerekirse ekran kayar */
+.workout[data-pad] {
+  grid-template-rows: auto auto auto;
+  align-content: space-between;
+  overflow-y: auto;
+}
+
+.workout[data-pad] .workout-clock {
+  font-size: min(13vh, 22vw);
+}
+
+.workout[data-pad] .workout-center {
+  min-height: auto;
+}
+
+.workout[data-pad] .combo-band {
+  min-height: 0;
+  padding-block: 8px;
+}
+
+/* Dar ekranda taşmayı önle */
+.setting-group > *,
+.field {
+  min-width: 0;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.stepper-label {
+  min-width: 0;
+}
+
+/* ===== v3 "Köşe": tipografi ve parça stilleri ===== */
+
+/* Kombo adımları: sırayla dizilmiş bant parçaları (sıra bilgisi = soldan sağa) */
+.combo-band-code,
+.combo-hero {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 10px;
+  font-family: var(--display);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.combo-band-code li,
+.combo-hero li {
+  padding: 0.12em 0.3em 0.08em;
+  border-bottom: 0.08em solid currentColor;
+}
+
+.combo-hero {
+  justify-content: flex-start;
+  font-size: 44px;
+  color: var(--red);
+  margin: 12px 0 8px;
+}
+
+.combo-band-code {
+  font-size: clamp(40px, 12vw, 84px);
+}
+
+.combo-band-label {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  opacity: 0.8;
+}
+
+.workout-phase {
+  font-family: var(--display);
+  font-size: clamp(30px, 8vw, 52px);
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.workout-round,
+.workout-title,
+.workout-label {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.workout-label {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(26px, 7vw, 44px);
+}
+
+.workout-clock {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: min(38vh, 36vw);
+  line-height: 0.9;
+  letter-spacing: 0;
+}
+
+.workout-pause {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 32px;
+  letter-spacing: 0;
+}
+
+.onboarding-title,
+.summary-title,
+.workout-done-title {
+  font-family: var(--display);
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.onboarding-title {
+  font-size: 44px;
+}
+
+.onboarding {
+  background: var(--night);
+}
+
+.onboarding-dots li[data-on] {
+  background: var(--red);
+}
+
+.onboarding-points li {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--stroke);
+  border-radius: 0;
+  padding: 12px 0;
+}
+
+.onboarding-points li::before {
+  content: none;
+}
+
+.chip {
+  border-radius: var(--r-control);
+}
+
+.chip[aria-pressed='true'] {
+  background: var(--wrap);
+  color: var(--night);
+  border-color: var(--wrap);
+}
+
+.sheet-body {
+  border-radius: var(--r-sheet) var(--r-sheet) 0 0;
+  background: var(--mat);
+}
+
+.block-strip-legend li {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Salon günü kare işaret (şekil = gün türü), ev günü daire */
+.day-dot[data-type='gym'] i {
+  border-radius: 2px;
+}
+
+.day-dot[data-type='rest'] i {
+  border-style: dashed;
+}
+
+.week-legend {
+  margin: 8px 0 0;
+  color: var(--rope);
+  font-size: 13px;
+}
+
+/* Seçili durum nötr: kırmızı yalnızca "başlat / vur" için */
+.segment[aria-checked='true'] {
+  background: var(--wrap);
+  color: var(--night);
+}
+
+.segment[aria-checked='true'] small {
+  color: #3b475c;
+}
+
+.choice[aria-checked='true'] {
+  border-color: var(--wrap);
+  background: var(--mat-2);
+}
+
+.choice[aria-checked='true'] .choice-dot {
+  border-color: var(--wrap);
+  background: var(--wrap);
+  box-shadow: inset 0 0 0 4px var(--mat-2);
+}
+
+.toggle-row[aria-checked='true'] .toggle {
+  background: var(--blue);
+}
+
+.back-link {
+  color: var(--wrap);
+}
+
+/* Orta alan içeriğinden küçülmesin; sığmazsa ekran kayar (üst üste binme olmaz) */
+.workout {
+  grid-template-rows: auto minmax(min-content, 1fr) auto;
+  overflow-y: auto;
+}
+
+.workout-center {
+  min-height: min-content;
+  padding: 8px 0;
+}
+
+/* Liste satırları: kutu değil, çizgiyle ayrılmış satır */
+.combo-row {
+  margin-bottom: 0;
+  border-radius: 0;
+  background: none;
+  border-bottom: 1px solid var(--stroke);
+  padding: 12px 2px;
+}
+
+.combo-row:active {
+  background: rgba(142, 153, 172, 0.08);
+}
+
+.combo-row[aria-checked='true'] {
+  background: rgba(236, 232, 223, 0.06);
+}
+
+/* Hocanın düzeltmesi: mavi köşe şeridi, kendi cümlesiyle */
+.coach-said {
+  margin: 0 0 14px;
+  padding: 8px 12px;
+  border-left: 3px solid var(--blue);
+  font-size: 16px;
+}
+
+.coach-said strong {
+  display: block;
+  color: var(--rope);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.workout-tip {
+  max-width: 34ch;
+  margin: 10px auto 0;
+  text-align: center;
+  font-size: clamp(18px, 4.6vw, 24px);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.workout-tip span {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.75;
+}
+
+/* Ölçek (1–10) seçimi nötr: renk değil, ters çevrilmiş zemin */
+.scale button[aria-pressed='true'] {
+  background: var(--wrap);
+  color: var(--night);
+}
+
+.preset-chip[aria-pressed='true'] {
+  background: var(--wrap);
+  color: var(--night);
+  border-color: var(--wrap);
+}
+
+.combo-row[aria-checked='true'] {
+  outline-color: var(--wrap);
+}
+
+.combo-row[aria-checked='true'] .check {
+  background: var(--wrap);
+  border-color: var(--wrap);
+  color: var(--night);
+}
+
+.steps li::marker {
+  color: var(--rope);
+}
+
+.check-row input {
+  accent-color: var(--blue);
+}
+
+.done-note {
+  font-weight: 700;
+  color: var(--blue);
+}

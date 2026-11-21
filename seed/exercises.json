@@ -1,0 +1,751 @@
+{
+  "_readme": "Hareket kütüphanesi (ev programı sayfasından). Bölüm: Duruş/yumruk, Diz/tekme, Kondisyon, Isınma-esneme.",
+  "exercises": [
+    {
+      "id": "durus",
+      "nameTr": "Duruş ve gard",
+      "group": "Duruş, adımlama, yumruklar",
+      "animationKey": "guard",
+      "steps": [
+        "Ayaklar omuz genişliğinde, sol ayak bir adım önde (sağ elini kullandığın için normal duruş duruş). Arka ayak yaklaşık 45° dışa bakar.",
+        "Dizler hafif bükük, ağırlık iki ayakta yarı yarıya. Arka topuk hafif kalkık.",
+        "Eller yanakta: sol (ön) el kaş-yanak hizasında, sağ (arka) el çene yanında. Dirsekler kaburgalara yakın.",
+        "Çene hafif aşağıda, bakış ileride. Omuzlar hedefe yarım dönük."
+      ],
+      "coachingCue": "Aynada omuz çizgin hedefe tam dönük olmasın, hafif yandan dur. Dinlenirken burundan al, ağızdan ver.",
+      "commonMistakes": "Eller düşer, çene yukarıda kalır, iki ayak aynı çizgiye gelir (denge kaybolur).",
+      "referenceVideos": [
+        {
+          "title": "Temel duruş ve yumruklar",
+          "youtubeId": "ShBY9TE2oZ4",
+          "turkish": true
+        },
+        {
+          "title": "Başlangıç dersi: yumruk, gard, adımlama",
+          "youtubeId": "MHxoCwcaD8Y",
+          "turkish": true
+        },
+        {
+          "title": "Fighting stance and guard",
+          "youtubeId": "qbox_I0jJYs",
+          "turkish": false
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "adim",
+      "nameTr": "Adımlama (ileri, geri, yana)",
+      "group": "Duruş, adımlama, yumruklar",
+      "animationKey": null,
+      "steps": [
+        "İleri: önce ön ayak kısa adım atar, arka ayak aynı mesafede takip eder.",
+        "Geri: önce arka ayak geri gider, ön ayak takip eder.",
+        "Yana: gidilen yöndeki ayak önce hareket eder, diğeri takip eder.",
+        "Ayaklar hiç çaprazlanmaz, aradaki mesafe hep aynı kalır."
+      ],
+      "coachingCue": "Ayağı sürükleme ve zıplama, parmak ucuna hafifçe bas.",
+      "commonMistakes": "Ayakları birleştirmek veya çaprazlamak, adımı çok büyük atmak.",
+      "referenceVideos": [
+        {
+          "title": "Doğru adımlama rehberi",
+          "youtubeId": "nO1RWXQe2q8",
+          "turkish": true
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "jab",
+      "nameTr": "Sol direkt (1)",
+      "group": "Duruş, adımlama, yumruklar",
+      "animationKey": "jab",
+      "steps": [
+        "Garttan başla.",
+        "Sol yumruğu hedefe doğru çizgide uzat. Kol uzarken yumruk yarım döner (avuç yere bakar).",
+        "Omuz çeneye yaklaşır, sağ el çenede kalır.",
+        "Yumruğu aynı yoldan hızla garda geri çek."
+      ],
+      "coachingCue": "Hızlı uzat, hızlı geri al. Her vuruşta dişlerinin arasından nefes ver (ts).",
+      "commonMistakes": "Omuz düşer, yumruk geri çekilmez, sağ el aşağı iner.",
+      "referenceVideos": [
+        {
+          "title": "Direk yumruk nasıl atılır",
+          "youtubeId": "XvZYGMMIjNM",
+          "turkish": true
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "cross",
+      "nameTr": "Sağ direkt (2)",
+      "group": "Duruş, adımlama, yumruklar",
+      "animationKey": "cross",
+      "steps": [
+        "Garttan başla.",
+        "Arka ayağın topuğunu dışa çevir, arka dizi içe it.",
+        "Kalça ve omuz öne dönerken sağ yumruk düz çizgide uzanır.",
+        "Sol el çenede kalır.",
+        "Aynı yoldan garda geri dön."
+      ],
+      "coachingCue": "Güç kolundan değil, bacak ve kalçadan gelir.",
+      "commonMistakes": "Sadece kolla vurmak, öne yıkılmak, sol eli indirmek.",
+      "referenceVideos": [
+        {
+          "title": "Direk yumruk nasıl atılır",
+          "youtubeId": "XvZYGMMIjNM",
+          "turkish": true
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "hook",
+      "nameTr": "Sol ve sağ kroşe (3 ve 4)",
+      "group": "Duruş, adımlama, yumruklar",
+      "animationKey": "hook",
+      "steps": [
+        "Dirsek omuz hizasında, yaklaşık 90° bükülü. Yumruk yandan, yarım daire çizerek gelir (animasyon yandan görünüş, yumruk aslında yatay yay çizer).",
+        "Sol kroşede ön ayağın topunda dön, sağ kroşede arka ayağın topunda dön. Kalça ve gövde döner.",
+        "Kolun açısı sabit kalır. Yumruğu savurma, dönen gövde getirsin.",
+        "Vuruştan sonra garda dön."
+      ],
+      "coachingCue": "Vuruş kısa ve sıkı olsun, dirsek omuzdan aşağı düşmesin.",
+      "commonMistakes": "Kolu geniş savurmak, dirsek düşmek, ayağın dönmemesi (dizi zorlar).",
+      "referenceVideos": [
+        {
+          "title": "Kroşe nasıl atılır",
+          "youtubeId": "6mugscdzIGI",
+          "turkish": true
+        },
+        {
+          "title": "Daha iyi kroşe için 7 ipucu",
+          "youtubeId": "WBypV-xKPAY",
+          "turkish": true
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "upper",
+      "nameTr": "Sol ve sağ aparkat (5 ve 6)",
+      "group": "Duruş, adımlama, yumruklar",
+      "animationKey": "upper",
+      "steps": [
+        "Dizleri hafif kır, gövdeyi hafif yana çevir.",
+        "Yumruğu avuç içi sana bakacak şekilde yukarı it. Güç bacak ve kalçadan gelir.",
+        "Dirsek yanda kalır, yumruk çene hizasına kadar çıkar.",
+        "Garda geri dön."
+      ],
+      "coachingCue": "Yumruk kısa ve yakın yol alsın, dizlerle yukarı it.",
+      "commonMistakes": "Eli yere sarkıtıp savurmak, öne eğilmek.",
+      "referenceVideos": [
+        {
+          "title": "Aparkat nasıl atılır",
+          "youtubeId": "IwGJ4or5_vg",
+          "turkish": true
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "golge",
+      "nameTr": "Gölge boks ve kombinasyonlar",
+      "group": "Duruş, adımlama, yumruklar",
+      "animationKey": "combo",
+      "steps": [
+        "Numaralar: 1 = sol düz, 2 = sağ düz, 3 = sol kroşe, 4 = sağ kroşe, 5 = sol aparkat, 6 = sağ aparkat.",
+        "Gard'da başla, ayaklarını hafifçe oynat.",
+        "Kombinasyonu önce yavaş çalış, doğru oturunca tempoyu artır.",
+        "Her vuruştan sonra elin yanağa dönsün. Turun sonunda burundan nefes al."
+      ],
+      "coachingCue": "Aynada formunu izle, hızlanınca formu bozma.",
+      "commonMistakes": "Hız için formu bozmak, nefes tutmak.",
+      "referenceVideos": [
+        {
+          "title": "Yeni başlayanlar için gölge boksu",
+          "youtubeId": "WWr3Ep-CX2w",
+          "turkish": true
+        },
+        {
+          "title": "12 dk başlangıç gölge boks",
+          "youtubeId": "C4-oPxTn9V8",
+          "turkish": false
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "knee",
+      "nameTr": "Ön diz",
+      "group": "Diz ve tekmeler",
+      "animationKey": "knee",
+      "steps": [
+        "Garttan başla.",
+        "Kalçanı ileri it, ön dizi (sol) yukarı ve ileri sür.",
+        "Ayak parmakların aşağıya baksın, eller yüksekte kalsın.",
+        "Geri dön, ayağı kontrollü yere koy."
+      ],
+      "coachingCue": "Diz kalçadan sürülür. Arka bacak sağlam dengede.",
+      "commonMistakes": "Sırtı yuvarlamak, ayağı sallamak, ellerin düşmesi.",
+      "referenceVideos": [
+        {
+          "title": "Diz nasıl atılır",
+          "youtubeId": "5ttlhtc9MTY",
+          "turkish": true
+        },
+        {
+          "title": "Muay Thai diz teknikleri",
+          "youtubeId": "NAk6OA3_6ug",
+          "turkish": false
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "teep",
+      "nameTr": "Ön itme tekmesi",
+      "group": "Diz ve tekmeler",
+      "animationKey": "teep",
+      "steps": [
+        "Dizi göğsüne doğru çek (çember pozisyonu).",
+        "Ayağın tabanıyla ileri it, kalçanı ileri sür. Hafifçe geri yaslanabilirsin.",
+        "Ayak parmakları geri çekik olsun.",
+        "Bacağı aynı yoldan topla, ayağı yere koy."
+      ],
+      "coachingCue": "İlk haftalarda duvara veya sandalyeye tutun. Önce sadece dizi kaldırmayı çalış.",
+      "commonMistakes": "Toplamadan ayağı yere bırakmak, parmak ucuyla itmek, aşırı geri yaslanmak.",
+      "referenceVideos": [
+        {
+          "title": "Front kick nasıl atılır",
+          "youtubeId": "BcxRU01GBr8",
+          "turkish": true
+        },
+        {
+          "title": "Teep ve front kick: 3 hata",
+          "youtubeId": "U1ihHnAg8Wo",
+          "turkish": true
+        },
+        {
+          "title": "Push kick (teep) tutorial",
+          "youtubeId": "FKNWcW7cEz0",
+          "turkish": false
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "pivot",
+      "nameTr": "Dairesel tekme için dönüş çalışması (tekmesiz)",
+      "group": "Diz ve tekmeler",
+      "animationKey": null,
+      "steps": [
+        "Garttan başla.",
+        "Ön ayağı küçük bir adımla yaklaşık 45° dışa at.",
+        "Ayağın topunda dön, topuk hedefe baksın, kalçan dönsün.",
+        "Tekme atma, sadece dönüşü yap ve garda geri gel."
+      ],
+      "coachingCue": "Duvara veya sandalyeye tutunarak çalış. Hız ve yükseklik yok.",
+      "commonMistakes": "Ayağı yere sabit bırakmak (diz burkulma riski), eli düşürmek.",
+      "referenceVideos": [
+        {
+          "title": "Round kick (FightCamp)",
+          "youtubeId": "sOPFUfXpxVI",
+          "turkish": false
+        },
+        {
+          "title": "Middle kick nasıl atılır",
+          "youtubeId": "z-_VLhVvLlg",
+          "turkish": true
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "low",
+      "nameTr": "Alçak tekme",
+      "group": "Diz ve tekmeler",
+      "animationKey": "low",
+      "steps": [
+        "Yaklaşık 45° açıyla küçük adım at ve ayağının topunda dön.",
+        "Kalçanı döndür, arka bacağını yandan savur (diz hafif bükülü).",
+        "Bu planda tekme havada diz hizasına gider. Kaval kemiğiyle vurulacağını düşün, ayakla değil.",
+        "Aynı anda sağ kol aşağı-geri sallanır, sol el yüzde kalır.",
+        "Ayağını öne bırak veya geri çek."
+      ],
+      "coachingCue": "Yükseklik değil kontrol. Hoca onaylamadan sert çantaya tekme atma.",
+      "commonMistakes": "Dönüş yok, ayak üstüyle vurmak, el düşmek, aşırı geri yaslanmak.",
+      "referenceVideos": [
+        {
+          "title": "Low kick nasıl atılır",
+          "youtubeId": "QRy2RDDMqoQ",
+          "turkish": true
+        },
+        {
+          "title": "Basic leg kick: low roundhouse",
+          "youtubeId": "nf9duiBfZk8",
+          "turkish": false
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "ip",
+      "nameTr": "İp atlama (temel zıplama)",
+      "group": "Kondisyon hareketleri",
+      "animationKey": "rope",
+      "steps": [
+        "İpin ortasına bas, saplar koltuk altına gelmeli.",
+        "Ayaklar bitişik, dirsekler kaburgada, eller belin hizasında hafif önde.",
+        "İpi bilekle çevir, kolla değil.",
+        "Parmak ucunda 2–3 cm zıpla, dizler yumuşak.",
+        "İp yoksa ipsiz taklit: aynı ritim ve zıplama."
+      ],
+      "coachingCue": "Mat veya düz zeminde, ayakkabıyla çalış. Sessiz in.",
+      "commonMistakes": "Çok yüksek zıplamak, kolları açmak, topuğa inmek.",
+      "referenceVideos": [
+        {
+          "title": "İp atlamaya başla: 7 ipucu",
+          "youtubeId": "-XO5sw0ekHc",
+          "turkish": true
+        },
+        {
+          "title": "Boxing guide to jump rope",
+          "youtubeId": "GXTmurJoo9c",
+          "turkish": false
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "sinav",
+      "nameTr": "Şınav (ve diz üstü şınav)",
+      "group": "Kondisyon hareketleri",
+      "animationKey": "pushup",
+      "steps": [
+        "Eller omuzdan biraz geniş, baştan topuğa düz çizgi.",
+        "Karın ve kalçayı sık.",
+        "Dirsekler gövdeden yaklaşık 45° açıyla, göğüs yere yumruk kadar kalana kadar in.",
+        "Yeri iterek yukarı çık. İnerken nefes al, çıkarken ver.",
+        "Zorlanırsan diz üstü şınav: dizler matta, baştan dizlere düz çizgi."
+      ],
+      "coachingCue": "Boynu nötr tut, bakış yere biraz önde.",
+      "commonMistakes": "Bel çöker, kalça yukarı kalkar, kafa öne uzar.",
+      "referenceVideos": [
+        {
+          "title": "1 tane bile şınav çekemiyorsan",
+          "youtubeId": "xISLZWBPuiQ",
+          "turkish": true
+        },
+        {
+          "title": "Diz üstü şınav",
+          "youtubeId": "CArMoMILMbw",
+          "turkish": true
+        },
+        {
+          "title": "Push-up proper form (NASM)",
+          "youtubeId": "WDIpL0pjun0",
+          "turkish": false
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "plank",
+      "nameTr": "Plank",
+      "group": "Kondisyon hareketleri",
+      "animationKey": "plank",
+      "steps": [
+        "Dirsekler omuzların altında, ön kollar paralel.",
+        "Ayak uçlarında, baştan topuğa düz çizgi.",
+        "Karın ve kalçayı sık, bakış yere.",
+        "Düzenli nefes al. Form bozulursa bırak."
+      ],
+      "coachingCue": "Süre değil form önemli. Bel çökerse seti bitir.",
+      "commonMistakes": "Bel çökmesi, kalçanın yukarı kalkması, nefes tutmak.",
+      "referenceVideos": [
+        {
+          "title": "Doğru plank nasıl yapılır",
+          "youtubeId": "zN4ztr3IFCI",
+          "turkish": true
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "mekik",
+      "nameTr": "Mekik",
+      "group": "Kondisyon hareketleri",
+      "animationKey": "crunch",
+      "steps": [
+        "Sırtüstü yat, dizler bükük, tabanlar yerde.",
+        "Eller şakakta (ensede kenetleme).",
+        "Nefes verirken kürek kemiklerin yerden ayrılana kadar kalk.",
+        "Kontrollü in, bel yere yakın kalsın."
+      ],
+      "coachingCue": "Hareketi karınla yap, boynunu çekme.",
+      "commonMistakes": "Boynu çekmek, hızlı sallanmak, tam doğrulmak.",
+      "referenceVideos": [
+        {
+          "title": "How to do a crunch properly",
+          "youtubeId": "MKmrqcoCZ-M",
+          "turkish": false
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "squat",
+      "nameTr": "Çömelme (vücut ağırlığıyla)",
+      "group": "Kondisyon hareketleri",
+      "animationKey": "squat",
+      "steps": [
+        "Ayaklar omuz genişliğinde, uçlar hafif dışa.",
+        "Kalçanı geri it, sandalyeye oturur gibi in.",
+        "Dizler ayak uçlarıyla aynı yönde, topuklar yerde, sırt düz.",
+        "Topuklardan iterek kalk. İnerken nefes al, kalkarken ver."
+      ],
+      "coachingCue": "Göğüs dik, bakış ileride.",
+      "commonMistakes": "Dizler içe çöker, topuklar kalkar, sırt yuvarlanır.",
+      "referenceVideos": [
+        {
+          "title": "Doğru çömelme nasıl yapılır",
+          "youtubeId": "bTmRWXbkNGQ",
+          "turkish": true
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "climber",
+      "nameTr": "Dağ tırmanıcı",
+      "group": "Kondisyon hareketleri",
+      "animationKey": "climber",
+      "steps": [
+        "Şınav pozisyonunda başla, eller omuz altında.",
+        "Bir dizi göğsüne çek, sonra ayakları hızla değiştir.",
+        "Kalçan sırtınla aynı hizada kalsın.",
+        "İlk turlarda yavaş çalış."
+      ],
+      "coachingCue": "Karnını sık, nefesi düzenli tut.",
+      "commonMistakes": "Kalça yukarı kalkmak, eller ileri kaymak.",
+      "referenceVideos": [
+        {
+          "title": "Mountain climber nasıl yapılır",
+          "youtubeId": "GcRHKOb2zLI",
+          "turkish": true
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "highknee",
+      "nameTr": "Yerinde yüksek diz koşusu",
+      "group": "Kondisyon hareketleri",
+      "animationKey": "highknee",
+      "steps": [
+        "Dik dur, bakış ileride.",
+        "Dizleri sırayla kalça hizasına çek.",
+        "Kollar koşar gibi salla.",
+        "Ayak ucuna hafif in."
+      ],
+      "coachingCue": "Öne yaslanma, sessiz in.",
+      "commonMistakes": "Öne yaslanmak, topuğa ağır inmek.",
+      "referenceVideos": [
+        {
+          "title": "High knees nasıl yapılır",
+          "youtubeId": "D9cWcl4L4Co",
+          "turkish": true
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "olubocek",
+      "nameTr": "Ölü böcek",
+      "group": "Kondisyon hareketleri",
+      "animationKey": "deadbug",
+      "steps": [
+        "Sırtüstü yat, kollar yukarı, kalça ve dizler 90°.",
+        "Karnını sık, belini yere yapıştır.",
+        "Karşı kolu ve karşı bacağı yavaşça uzat.",
+        "Geri gel, diğer tarafla tekrar et."
+      ],
+      "coachingCue": "Bel yerden kalkarsa hareketi küçült.",
+      "commonMistakes": "Bel yerden kalkar, hareket hızlıdır.",
+      "referenceVideos": [
+        {
+          "title": "Dead bug doğru nasıl yapılır",
+          "youtubeId": "ZBMFwWSuVK0",
+          "turkish": true
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "yanlunge",
+      "nameTr": "Yan çömelme",
+      "group": "Kondisyon hareketleri",
+      "animationKey": null,
+      "steps": [
+        "Ayaklar omuzdan çok geniş, uçlar hafif dışa.",
+        "Ağırlığı sağ tarafa ver, sağ diz bükülsün, sol bacak düz kalsın (sol ayak ucu yukarı).",
+        "Aşağı in, sonra itip merkezden sola geç.",
+        "İlk haftalarda dar aralık ve destek kullan."
+      ],
+      "coachingCue": "Topuk yerde kalsın, göğüs dik.",
+      "commonMistakes": "Topuk kalkar, sırt yuvarlanır, çok derine zorlanır.",
+      "referenceVideos": [
+        {
+          "title": "Cossack çömelme hip mobility",
+          "youtubeId": "k_gdmxRf828",
+          "turkish": false
+        },
+        {
+          "title": "12 dk kalça mobilite rutini",
+          "youtubeId": "jj2AAH6jbHk",
+          "turkish": false
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "isinma",
+      "nameTr": "Eklem açma ve dinamik ısınma",
+      "group": "Isınma, bandaj, esneme",
+      "animationKey": null,
+      "steps": [
+        "Boyun çevirme: 10 sn her yön.",
+        "Omuz çevirme: 10 ileri, 10 geri.",
+        "Bilek çevirme: 10 her yön.",
+        "Kalça, diz ve ayak bileği çevirme: 10 her yön.",
+        "Bacak sallama: duvara tutunarak ön-arka 10, yana 10, her bacak."
+      ],
+      "coachingCue": "Hareketler yumuşak ve kontrollü, zorlama yok.",
+      "commonMistakes": "Isınmadan hemen ipe veya tekmeye geçmek.",
+      "referenceVideos": [
+        {
+          "title": "Boks ve kickboks ısınma hareketleri",
+          "youtubeId": "gd5orWq-kjY",
+          "turkish": true
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "bacaksallama",
+      "nameTr": "Bacak sallama",
+      "group": "Isınma, bandaj, esneme",
+      "animationKey": "legswing",
+      "steps": [
+        "Duvara veya sandalyeye tutun.",
+        "Bacağı rahat bir yayla ileri-geri salla.",
+        "10 tekrar sonra yana doğru 10 tekrar, sonra diğer bacak.",
+        "Yüksekliği zorlama, ısındıkça kendiliğinden artsın."
+      ],
+      "coachingCue": "Gövde dik, kalça sabit.",
+      "commonMistakes": "Zorla yükseğe sallamak.",
+      "referenceVideos": [
+        {
+          "title": "12 dk kalça mobilite rutini",
+          "youtubeId": "jj2AAH6jbHk",
+          "turkish": false
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "bandaj",
+      "nameTr": "Bandaj sarma",
+      "group": "Isınma, bandaj, esneme",
+      "animationKey": null,
+      "steps": [
+        "Parmaklar hafif açık. Başparmak halkasını başparmağa geçir, bandaj elin sırtından çıksın.",
+        "Bileği 3 tur sar.",
+        "Elin sırtından geçip eklemlerin etrafında 3 tur sar.",
+        "Bileğe dönerek sırayla serçe-yüzük, yüzük-orta, orta-işaret parmak aralarından geç.",
+        "Başparmağın dibinden bir tur dolan, bileğe dön.",
+        "Kalan bandajı çapraz turlarla dağıt, cırt cırtı bilekte kapat.",
+        "Kontrol: yumruk yap; destek hisset ama parmak uçların uyuşmasın."
+      ],
+      "coachingCue": "Her turu düz tut, katlama ve büküm olmasın.",
+      "commonMistakes": "Parmakları kapalı sarmak, çok sıkmak, parmak aralarını atlamak.",
+      "referenceVideos": [
+        {
+          "title": "Kick boks bandajı nasıl sarılır",
+          "youtubeId": "0a3YcJMqC9s",
+          "turkish": true
+        },
+        {
+          "title": "Bandaj nasıl sarılır",
+          "youtubeId": "dOD68pxCm_4",
+          "turkish": true
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "kalcafleks",
+      "nameTr": "Kalça fleksörü esnemesi",
+      "group": "Isınma, bandaj, esneme",
+      "animationKey": "hipflex",
+      "steps": [
+        "Bir dizin üstünde, diğer ayak önde (alt yarı kademeli).",
+        "Gövde dik, kalçanı ileri it.",
+        "Arka kalça ön kısmında esneme hissedene kadar dur.",
+        "45 sn bekle, tarafı değiştir."
+      ],
+      "coachingCue": "Kalça kasını sık, bel çökmesin.",
+      "commonMistakes": "Beli çökertmek, çok ileri zorlamak.",
+      "referenceVideos": [
+        {
+          "title": "Kalça fleksör kaslarının uzatılması",
+          "youtubeId": "nIvd9qlbiHc",
+          "turkish": true
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "doksan",
+      "nameTr": "90/90 kalça geçişi",
+      "group": "Isınma, bandaj, esneme",
+      "animationKey": null,
+      "steps": [
+        "Yerde otur, bir bacak önde 90°, diğer yanda 90° bükülü.",
+        "Gövdeni dik tut.",
+        "Dizlerini yavaşça diğer tarafa çevir, bacak pozisyonlarını değiştir.",
+        "Her yönde 8 tekrar."
+      ],
+      "coachingCue": "Ağrı varsa aralığı daralt, zorlama.",
+      "commonMistakes": "Gövdeyi yana yıkmak, hızlı geçmek.",
+      "referenceVideos": [
+        {
+          "title": "90/90 hip opener",
+          "youtubeId": "mN5IrQw3arA",
+          "turkish": true
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "kelebek",
+      "nameTr": "Kelebek esnemesi",
+      "group": "Isınma, bandaj, esneme",
+      "animationKey": null,
+      "steps": [
+        "Otur, ayak tabanlarını birbirine yapıştır.",
+        "Dizleri yana bırak, gövde dik.",
+        "Ayaklarını tutup hafifçe öne eğil.",
+        "60 sn bekle."
+      ],
+      "coachingCue": "Dizleri bastırma, kendi ağırlığıyla insin.",
+      "commonMistakes": "Beli yuvarlayıp zorla eğilmek.",
+      "referenceVideos": [
+        {
+          "title": "Kelebek esnemesi",
+          "youtubeId": "kSHtwLxEEHw",
+          "turkish": false
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "guvercin",
+      "nameTr": "Güvercin esnemesi",
+      "group": "Isınma, bandaj, esneme",
+      "animationKey": null,
+      "steps": [
+        "Dört ayak pozisyonundan bir diz öne gelsin, ayak hafif karşı tarafa yatsın.",
+        "Arka bacağı düz uzat, kalçalarını yere indir.",
+        "Gövdeni dik tut, gerekirse kalçanın altına yastık koy.",
+        "45 sn bekle, tarafı değiştir."
+      ],
+      "coachingCue": "Dizde sızı hissedersen pozisyonu bırak.",
+      "commonMistakes": "Dizi zorlamak, kalçayı bir yana yıkmak.",
+      "referenceVideos": [
+        {
+          "title": "Güvercin pozu nasıl yapılır",
+          "youtubeId": "0kzqs4xvshs",
+          "turkish": true
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "bacakarkasi",
+      "nameTr": "Bacak arkası esnemesi",
+      "group": "Isınma, bandaj, esneme",
+      "animationKey": "ham",
+      "steps": [
+        "Yerde otur, bacaklar öne düz uzat.",
+        "Gövdeni belden değil, kalçadan öne eğ.",
+        "Elini dizlere, bacağa veya ayağa doğru uzat.",
+        "30–45 sn bekle."
+      ],
+      "coachingCue": "Sırt düz, göğüs dizlere doğru uzasın.",
+      "commonMistakes": "Sırtı yuvarlamak, dizi kilitleyip zorlamak.",
+      "referenceVideos": [
+        {
+          "title": "Arka bacak esnetme",
+          "youtubeId": "5um54mcCWY0",
+          "turkish": true
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "kedideve",
+      "nameTr": "Kedi-deve",
+      "group": "Isınma, bandaj, esneme",
+      "animationKey": null,
+      "steps": [
+        "Dört ayak pozisyonu: eller omuz altında, dizler kalça altında.",
+        "Nefes verirken sırtını yukarı yuvarla.",
+        "Nefes alırken sırtını aşağı çukurlaştır.",
+        "8 yavaş tekrar."
+      ],
+      "coachingCue": "Hareket yumuşak olsun, omurgayı sıra sıra hareket ettir.",
+      "commonMistakes": "Hızlı yapmak, aşırı zorlamak.",
+      "referenceVideos": [
+        {
+          "title": "Kedi-deve hareketi",
+          "youtubeId": "A2LIfqxPo9g",
+          "turkish": true
+        }
+      ],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "gogus",
+      "nameTr": "Göğüs ve omuz açma",
+      "group": "Isınma, bandaj, esneme",
+      "animationKey": null,
+      "steps": [
+        "Ayakta, ellerini sırtının arkasında kenetle.",
+        "Kolları düz tutup hafifçe yukarı kaldır, göğsünü aç.",
+        "30 sn bekle, normal nefes al."
+      ],
+      "coachingCue": "Boynu serbest bırak.",
+      "commonMistakes": "Omuzları kulağa çekmek.",
+      "referenceVideos": [],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    },
+    {
+      "id": "yuruyus",
+      "nameTr": "Hafif yürüyüş",
+      "group": "Isınma, bandaj, esneme",
+      "animationKey": null,
+      "steps": [
+        "Rahat tempoda yürü, konuşabileceğin hızda.",
+        "Mümkünse dışarıda, düz zeminde.",
+        "Bitince kısa esneme yap."
+      ],
+      "coachingCue": "Zorlanma amacı yok, kan akışı ve toparlanma.",
+      "commonMistakes": "Hızlı tempoya çıkıp ikinci bir antrenman yapmak.",
+      "referenceVideos": [],
+      "videoNote": "Harici bağlantı olarak sun; video dosyalarını kopyalama/gömme (telif). Bağlantıları çalışıp çalışmadığını kontrol et."
+    }
+  ]
+}

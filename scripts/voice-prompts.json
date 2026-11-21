@@ -1,0 +1,327 @@
+{
+ "generator": "Higgsfield elevenlabs_v4 (Eleven v4)",
+ "voice": {
+  "name": "Raunt Antrenör (Türkçe)",
+  "voice_type": "element",
+  "voice_id": "",
+  "source": "Kullanıcının kendi Türkçe ses kaydından klon (19.11.2026)"
+ },
+ "note": "Her ifade ayrı istek (dialogue: tek satır). Hız sınırı: 6’lı gruplar. Dosya adı = id. Sonra: node scripts/import-voice.mjs <mp3-klasörü>",
+ "prompts": [
+  {
+   "phrase": "altı",
+   "id": "alti",
+   "text": "Altı!"
+  },
+  {
+   "phrase": "antrenman bitti, harika iş",
+   "id": "antrenman-bitti-harika-is",
+   "text": "Antrenman bitti, harika iş."
+  },
+  {
+   "phrase": "arka alçak tekme",
+   "id": "arka-alcak-tekme",
+   "text": "Arka alçak tekme!"
+  },
+  {
+   "phrase": "arka aparkat",
+   "id": "arka-aparkat",
+   "text": "Arka aparkat!"
+  },
+  {
+   "phrase": "arka direkt",
+   "id": "arka-direkt",
+   "text": "Arka direkt!"
+  },
+  {
+   "phrase": "arka direkt gövde",
+   "id": "arka-direkt-govde",
+   "text": "Arka direkt gövde!"
+  },
+  {
+   "phrase": "arka diz",
+   "id": "arka-diz",
+   "text": "Arka diz!"
+  },
+  {
+   "phrase": "arka itme tekmesi",
+   "id": "arka-itme-tekmesi",
+   "text": "Arka itme tekmesi!"
+  },
+  {
+   "phrase": "arka kroşe",
+   "id": "arka-krose",
+   "text": "Arka kroşe!"
+  },
+  {
+   "phrase": "arka kroşe gövde",
+   "id": "arka-krose-govde",
+   "text": "Arka kroşe gövde!"
+  },
+  {
+   "phrase": "arka orta tekme",
+   "id": "arka-orta-tekme",
+   "text": "Arka orta tekme!"
+  },
+  {
+   "phrase": "arka yüksek tekme",
+   "id": "arka-yuksek-tekme",
+   "text": "Arka yüksek tekme!"
+  },
+  {
+   "phrase": "beş",
+   "id": "bes",
+   "text": "Beş!"
+  },
+  {
+   "phrase": "bir",
+   "id": "bir",
+   "text": "Bir!"
+  },
+  {
+   "phrase": "bir gövde",
+   "id": "bir-govde",
+   "text": "Bir gövde!"
+  },
+  {
+   "phrase": "blok",
+   "id": "blok",
+   "text": "Blok!"
+  },
+  {
+   "phrase": "çene içeri",
+   "id": "cene-iceri",
+   "text": "Çene içeri!"
+  },
+  {
+   "phrase": "dalış",
+   "id": "dalis",
+   "text": "Dalış!"
+  },
+  {
+   "phrase": "devam",
+   "id": "devam",
+   "text": "Devam."
+  },
+  {
+   "phrase": "dinlen",
+   "id": "dinlen",
+   "text": "Dinlen."
+  },
+  {
+   "phrase": "dönüş",
+   "id": "donus",
+   "text": "Dönüş!"
+  },
+  {
+   "phrase": "dört",
+   "id": "dort",
+   "text": "Dört!"
+  },
+  {
+   "phrase": "dört gövde",
+   "id": "dort-govde",
+   "text": "Dört gövde!"
+  },
+  {
+   "phrase": "duraklatıldı",
+   "id": "duraklatildi",
+   "text": "Duraklatıldı."
+  },
+  {
+   "phrase": "duruş değiştir",
+   "id": "durus-degistir",
+   "text": "Duruş değiştir!"
+  },
+  {
+   "phrase": "gard yukarı",
+   "id": "gard-yukari",
+   "text": "Gard yukarı!"
+  },
+  {
+   "phrase": "geri adım",
+   "id": "geri-adim",
+   "text": "Geri adım!"
+  },
+  {
+   "phrase": "hazır ol",
+   "id": "hazir-ol",
+   "text": "Hazır ol!"
+  },
+  {
+   "phrase": "iki",
+   "id": "iki",
+   "text": "İki!"
+  },
+  {
+   "phrase": "iki gövde",
+   "id": "iki-govde",
+   "text": "İki gövde!"
+  },
+  {
+   "phrase": "ileri adım",
+   "id": "ileri-adim",
+   "text": "İleri adım!"
+  },
+  {
+   "phrase": "kafa kaçır",
+   "id": "kafa-kacir",
+   "text": "Kafa kaçır!"
+  },
+  {
+   "phrase": "kalkan",
+   "id": "kalkan",
+   "text": "Kalkan!"
+  },
+  {
+   "phrase": "nefes al",
+   "id": "nefes-al",
+   "text": "Nefes al."
+  },
+  {
+   "phrase": "omuzlar gevşek",
+   "id": "omuzlar-gevsek",
+   "text": "Omuzlar gevşek."
+  },
+  {
+   "phrase": "ön alçak tekme",
+   "id": "on-alcak-tekme",
+   "text": "Ön alçak tekme!"
+  },
+  {
+   "phrase": "ön aparkat",
+   "id": "on-aparkat",
+   "text": "Ön aparkat!"
+  },
+  {
+   "phrase": "ön direkt",
+   "id": "on-direkt",
+   "text": "Ön direkt!"
+  },
+  {
+   "phrase": "ön direkt gövde",
+   "id": "on-direkt-govde",
+   "text": "Ön direkt gövde!"
+  },
+  {
+   "phrase": "ön diz",
+   "id": "on-diz",
+   "text": "Ön diz!"
+  },
+  {
+   "phrase": "ön itme tekmesi",
+   "id": "on-itme-tekmesi",
+   "text": "Ön itme tekmesi!"
+  },
+  {
+   "phrase": "ön kroşe",
+   "id": "on-krose",
+   "text": "Ön kroşe!"
+  },
+  {
+   "phrase": "ön kroşe gövde",
+   "id": "on-krose-govde",
+   "text": "Ön kroşe gövde!"
+  },
+  {
+   "phrase": "ön orta tekme",
+   "id": "on-orta-tekme",
+   "text": "Ön orta tekme!"
+  },
+  {
+   "phrase": "ön yüksek tekme",
+   "id": "on-yuksek-tekme",
+   "text": "Ön yüksek tekme!"
+  },
+  {
+   "phrase": "raunt başlıyor",
+   "id": "raunt-basliyor",
+   "text": "Raunt başlıyor!"
+  },
+  {
+   "phrase": "sağ aparkat",
+   "id": "sag-aparkat",
+   "text": "Sağ aparkat!"
+  },
+  {
+   "phrase": "sağ direkt",
+   "id": "sag-direkt",
+   "text": "Sağ direkt!"
+  },
+  {
+   "phrase": "sağ direkt gövde",
+   "id": "sag-direkt-govde",
+   "text": "Sağ direkt gövde!"
+  },
+  {
+   "phrase": "sağ kroşe",
+   "id": "sag-krose",
+   "text": "Sağ kroşe!"
+  },
+  {
+   "phrase": "sağ kroşe gövde",
+   "id": "sag-krose-govde",
+   "text": "Sağ kroşe gövde!"
+  },
+  {
+   "phrase": "sağa adım",
+   "id": "saga-adim",
+   "text": "Sağa adım!"
+  },
+  {
+   "phrase": "savuştur",
+   "id": "savustur",
+   "text": "Savuştur!"
+  },
+  {
+   "phrase": "sol aparkat",
+   "id": "sol-aparkat",
+   "text": "Sol aparkat!"
+  },
+  {
+   "phrase": "sol direkt",
+   "id": "sol-direkt",
+   "text": "Sol direkt!"
+  },
+  {
+   "phrase": "sol direkt gövde",
+   "id": "sol-direkt-govde",
+   "text": "Sol direkt gövde!"
+  },
+  {
+   "phrase": "sol kroşe",
+   "id": "sol-krose",
+   "text": "Sol kroşe!"
+  },
+  {
+   "phrase": "sol kroşe gövde",
+   "id": "sol-krose-govde",
+   "text": "Sol kroşe gövde!"
+  },
+  {
+   "phrase": "sola adım",
+   "id": "sola-adim",
+   "text": "Sola adım!"
+  },
+  {
+   "phrase": "son on saniye",
+   "id": "son-on-saniye",
+   "text": "Son on saniye!"
+  },
+  {
+   "phrase": "son raunt",
+   "id": "son-raunt",
+   "text": "Son raunt!"
+  },
+  {
+   "phrase": "üç",
+   "id": "uc",
+   "text": "Üç!"
+  },
+  {
+   "phrase": "üç gövde",
+   "id": "uc-govde",
+   "text": "Üç gövde!"
+  }
+ ]
+}

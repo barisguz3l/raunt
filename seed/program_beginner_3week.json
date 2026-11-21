@@ -1,0 +1,1503 @@
+{
+  "id": "prog_beginner_3w",
+  "nameTr": "Başlangıç 3 Hafta: Salon (Pzt/Çar/Cum) + Ev",
+  "weeks": 3,
+  "defaultStartDate": "2026-11-16",
+  "startsOnWeekday": 1,
+  "weekHeadings": {
+    "1": "Hafta 1: Temel, hedef RPE 5-6",
+    "2": "Hafta 2: Geliştirme, hedef RPE 6-7",
+    "3": "Hafta 3: Yoğunlaştırma ve test, hedef RPE 7-8"
+  },
+  "weeklyPattern": {
+    "1": "gym",
+    "2": "home-teknik",
+    "3": "gym",
+    "4": "home-kondisyon",
+    "5": "gym",
+    "6": "home-tekrar",
+    "7": "aktif-toparlanma"
+  },
+  "testDays": [
+    {
+      "week": 1,
+      "dayOfWeek": 2,
+      "testSet": "baslangic"
+    },
+    {
+      "week": 3,
+      "dayOfWeek": 6,
+      "testSet": "final"
+    }
+  ],
+  "rules": [
+    "Form önce: yavaş ve temiz tekrar, hızlı ve bozuk tekrardan değerlidir.",
+    "Gard yukarıda.",
+    "Her vuruşta nefes ver.",
+    "Keskin veya eklem ağrısında dur.",
+    "Zorluk (RPE): hafta1 5-6, hafta2 6-7, hafta3 7-8.",
+    "Orta/yüksek tekme yalnızca hoca onayıyla."
+  ],
+  "days": [
+    {
+      "week": 1,
+      "dayOfWeek": 1,
+      "type": "gym",
+      "sessionId": "w1-d1-ders",
+      "titleTr": "Salon dersi (kulüp)",
+      "plannedMinutes": null,
+      "rpeTarget": null,
+      "blocks": [],
+      "afterSessionPrompt": {
+        "ask": [
+          "Bugün hangi teknikleri öğrendin?",
+          "Hoca hangi hatayı düzeltti?",
+          "Kas ağrısı (0-10)?",
+          "Yarınki ev antrenmanında neyi tekrar edelim?"
+        ],
+        "feedsNextHomeDay": true
+      }
+    },
+    {
+      "week": 1,
+      "dayOfWeek": 2,
+      "type": "home",
+      "sessionId": "h1-sal",
+      "titleTr": "Teknik + başlangıç testi",
+      "plannedMinutes": 55,
+      "rpeTarget": "5–6 / 10",
+      "note": "Pazartesi dersinden kas ağrın çok yüksekse (7/10 üstü) testleri Perşembeye kaydır ve yerine yumruk tekniği ile yürüyüş yap.",
+      "blocks": [
+        {
+          "startMin": 0,
+          "endMin": 4,
+          "titleTr": "Eklem açma",
+          "items": [
+            "Boyun çevirme: 10 sn her yön",
+            "Omuz çevirme: 10 ileri + 10 geri",
+            "Bilek çevirme: 10 her yön",
+            "Kalça çevirme: 10 her yön",
+            "Diz çevirme: 10 her yön",
+            "Ayak bileği çevirme: 10 her yön",
+            "Bacak sallama (duvara tutunarak): ön-arka 10 + yana 10, her bacak"
+          ],
+          "exerciseRefs": [
+            "isinma"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 4,
+          "endMin": 12,
+          "titleTr": "Test 1: ip",
+          "items": [
+            "İpi durmadan at, süreyi telefonla ölç, en fazla 8 dk",
+            "İp henüz gelmediyse yerinde ipsiz taklit zıplama yap",
+            "Ayak ucunda 2–3 cm zıpla, dizler yumuşak",
+            "Süreyi not et (dk ve sn)"
+          ],
+          "exerciseRefs": [
+            "ip"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 12,
+          "endMin": 20,
+          "titleTr": "Test 2: şınav, plank, mekik",
+          "items": [
+            "1) Şınav: ara vermeden maksimum, göğüs yumruk kadar yere yaklaşsın. Sayıyı not et",
+            "2 dk dinlen, su iç",
+            "2) Plank: dirsekler omuz altında, form bozulana kadar, en fazla 2 dk. Saniyeyi not et",
+            "2 dk dinlen",
+            "3) Mekik: 1 dk içinde kaç tane. Sayıyı not et"
+          ],
+          "exerciseRefs": [
+            "sinav",
+            "plank",
+            "mekik"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 20,
+          "endMin": 25,
+          "titleTr": "Bandaj pratiği",
+          "items": [
+            "Sağ eli sar, çöz. Sol eli sar, çöz",
+            "Sonra iki eli tekrar sar (toplam 3 sarma)",
+            "Her sarmada yumruk yapıp uyuşma kontrolü yap"
+          ],
+          "exerciseRefs": [
+            "bandaj"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 25,
+          "endMin": 38,
+          "titleTr": "Yumruk tekniği (aynada)",
+          "items": [
+            "Hız: %50. Set arası 30 sn dinlen",
+            "Sol düz (1): 2 set × 15",
+            "Sağ düz (2): 2 set × 15",
+            "1-2 art arda (sol düz, sağ düz): 2 set × 15",
+            "Sol kroşe (3): 2 set × 10",
+            "Sağ kroşe (4): 2 set × 10",
+            "Sol aparkat (5): 2 set × 10, sağ aparkat (6): 2 set × 10"
+          ],
+          "exerciseRefs": [
+            "durus",
+            "jab",
+            "cross",
+            "hook",
+            "upper"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 38,
+          "endMin": 43,
+          "titleTr": "Diz ve itme tekmesi",
+          "items": [
+            "Ön diz (sol): 2 set × 10 her bacak, set arası 30 sn",
+            "İtme tekmesi: 2 set × 8 her bacak (duvara tutunarak), set arası 30 sn"
+          ],
+          "exerciseRefs": [
+            "knee",
+            "teep"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 43,
+          "endMin": 50,
+          "titleTr": "Gölge boks, 3 tur",
+          "items": [
+            "3 tur × 2 dk, tur arası 30 sn dinlen. Hız %50–60",
+            "Tur 1: sadece 1-2 (sol düz, sağ düz)",
+            "Tur 2: 1-2-3 (sol düz, sağ düz, sol kroşe)",
+            "Tur 3: dönüşümlü 1-2-3-2 (düz, düz, sol kroşe, sağ düz) ve 1-2-5-3 (düz, düz, sol aparkat, sol kroşe)"
+          ],
+          "exerciseRefs": [
+            "golge"
+          ],
+          "timerHint": {
+            "rounds": 3,
+            "roundSec": 120,
+            "restSec": 30
+          }
+        },
+        {
+          "startMin": 50,
+          "endMin": 55,
+          "titleTr": "Soğuma ve esneme",
+          "items": [
+            "1 dk çok yavaş yürüyüş (nefes normale dönsün)",
+            "Kalça fleksörü esnemesi: 45 sn her yan",
+            "Kelebek esnemesi: 45 sn",
+            "Bacak arkası esnemesi: 30 sn her bacak",
+            "Göğüs ve omuz açma: 30 sn",
+            "Nefes: burundan 4 sn al, ağızdan 6 sn ver, 5 tekrar"
+          ],
+          "exerciseRefs": [
+            "kalcafleks",
+            "kelebek",
+            "bacakarkasi",
+            "gogus"
+          ],
+          "timerHint": null
+        }
+      ]
+    },
+    {
+      "week": 1,
+      "dayOfWeek": 3,
+      "type": "gym",
+      "sessionId": "w1-d3-ders",
+      "titleTr": "Salon dersi (kulüp)",
+      "plannedMinutes": null,
+      "rpeTarget": null,
+      "blocks": [],
+      "afterSessionPrompt": {
+        "ask": [
+          "Bugün hangi teknikleri öğrendin?",
+          "Hoca hangi hatayı düzeltti?",
+          "Kas ağrısı (0-10)?",
+          "Yarınki ev antrenmanında neyi tekrar edelim?"
+        ],
+        "feedsNextHomeDay": true
+      }
+    },
+    {
+      "week": 1,
+      "dayOfWeek": 4,
+      "type": "home",
+      "sessionId": "h1-per",
+      "titleTr": "Kondisyon",
+      "plannedMinutes": 50,
+      "rpeTarget": "5–6 / 10",
+      "note": null,
+      "blocks": [
+        {
+          "startMin": 0,
+          "endMin": 8,
+          "titleTr": "Isınma",
+          "items": [
+            "İp: 3 tur × 2 dk, tur arası 30 sn dinlen (RPE 4–5)",
+            "Sonra kalça çevirme 10 her yön + omuz çevirme 10 ileri, 10 geri"
+          ],
+          "exerciseRefs": [
+            "ip",
+            "isinma"
+          ],
+          "timerHint": {
+            "rounds": 3,
+            "roundSec": 120,
+            "restSec": 30
+          }
+        },
+        {
+          "startMin": 8,
+          "endMin": 13,
+          "titleTr": "Bandaj + hafif gölge",
+          "items": [
+            "İki eli sar, süreni tut (hedef 4 dk altı)",
+            "1 dk hafif gölge boks: sadece 1-2, %40 hız"
+          ],
+          "exerciseRefs": [
+            "bandaj",
+            "golge"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 13,
+          "endMin": 23,
+          "titleTr": "Çarşamba dersi tekrarı",
+          "items": [
+            "Ders günlüğündeki her teknik: 2 set × 15 yavaş, set arası 30 sn",
+            "Hocanın düzelttiği hata için aynada ekstra 1 set × 10",
+            "Günlük boşsa: sol düz 2×15, sağ düz 2×15, sol kroşe 2×10, sağ kroşe 2×10, aparkatlar 2×10 her el"
+          ],
+          "exerciseRefs": [
+            "jab",
+            "cross",
+            "hook",
+            "upper"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 23,
+          "endMin": 41,
+          "titleTr": "Kondisyon devresi, 3 tur",
+          "items": [
+            "Her tur 5 hareket: 30 sn iş + 30 sn dinlen (tur = 5 dk)",
+            "Sıra: 1) çömelme 2) şınav (zorsa diz üstü) 3) yerinde yüksek diz 4) mekik 5) hızlı 1-2 gölge",
+            "Turlar arası 90 sn dinlen ve su iç",
+            "Hedef: çömelme 12–15, şınav 5–8, mekik 12–15"
+          ],
+          "exerciseRefs": [
+            "squat",
+            "sinav",
+            "highknee",
+            "mekik",
+            "golge"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 41,
+          "endMin": 46,
+          "titleTr": "Gölge boks, 2 tur",
+          "items": [
+            "2 tur × 2 dk, tur arası 30 sn",
+            "Tur 1: 1-2-3 (sol düz, sağ düz, sol kroşe)",
+            "Tur 2: 1-2-5-3 (düz, düz, sol aparkat, sol kroşe)",
+            "Hız %60, her vuruşta nefes ver"
+          ],
+          "exerciseRefs": [
+            "golge"
+          ],
+          "timerHint": {
+            "rounds": 2,
+            "roundSec": 120,
+            "restSec": 30
+          }
+        },
+        {
+          "startMin": 46,
+          "endMin": 50,
+          "titleTr": "Soğuma",
+          "items": [
+            "1 dk çok yavaş yürüyüş",
+            "Kalça fleksörü: 45 sn her yan",
+            "Kelebek: 45 sn",
+            "Bacak arkası: 30 sn her bacak",
+            "Göğüs ve omuz açma: 30 sn"
+          ],
+          "exerciseRefs": [
+            "kalcafleks",
+            "kelebek",
+            "bacakarkasi",
+            "gogus"
+          ],
+          "timerHint": null
+        }
+      ]
+    },
+    {
+      "week": 1,
+      "dayOfWeek": 5,
+      "type": "gym",
+      "sessionId": "w1-d5-ders",
+      "titleTr": "Salon dersi (kulüp)",
+      "plannedMinutes": null,
+      "rpeTarget": null,
+      "blocks": [],
+      "afterSessionPrompt": {
+        "ask": [
+          "Bugün hangi teknikleri öğrendin?",
+          "Hoca hangi hatayı düzeltti?",
+          "Kas ağrısı (0-10)?",
+          "Yarınki ev antrenmanında neyi tekrar edelim?"
+        ],
+        "feedsNextHomeDay": true
+      }
+    },
+    {
+      "week": 1,
+      "dayOfWeek": 6,
+      "type": "home",
+      "sessionId": "h1-cmt",
+      "titleTr": "Tekrar ve gözden geçirme",
+      "plannedMinutes": 60,
+      "rpeTarget": "5–6 / 10",
+      "note": null,
+      "blocks": [
+        {
+          "startMin": 0,
+          "endMin": 8,
+          "titleTr": "Isınma",
+          "items": [
+            "İp: 3 tur × 2 dk, tur arası 30 sn dinlen",
+            "Sonra kalça çevirme, omuz çevirme, bacak sallama (her biri 10 tekrar)"
+          ],
+          "exerciseRefs": [
+            "ip",
+            "isinma"
+          ],
+          "timerHint": {
+            "rounds": 3,
+            "roundSec": 120,
+            "restSec": 30
+          }
+        },
+        {
+          "startMin": 8,
+          "endMin": 13,
+          "titleTr": "Bandaj",
+          "items": [
+            "İki eli sar, süreni tut (hedef 3 dk altı)",
+            "İki elde de aynı sıkılık, yumruk yap, uyuşma olmasın"
+          ],
+          "exerciseRefs": [
+            "bandaj"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 13,
+          "endMin": 28,
+          "titleTr": "Haftanın ders tekrarı",
+          "items": [
+            "Pazartesi, çarşamba ve cuma derslerinde öğrendiğin teknikleri sırayla yap: her biri 2 set × 12–15, set arası 30 sn",
+            "Hocanın düzelttiği hatalar için ekstra 1 set",
+            "Günlük boşsa: 1: 2×15, 2: 2×15, 1-2: 2×15, 3: 2×10, 4: 2×10, 5: 2×10, 6: 2×10"
+          ],
+          "exerciseRefs": [
+            "jab",
+            "cross",
+            "hook",
+            "upper"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 28,
+          "endMin": 38,
+          "titleTr": "Tekme temelleri",
+          "items": [
+            "İtme tekmesi: 3 set × 8 her bacak (duvara tutunarak), set arası 20 sn",
+            "Ön diz: 3 set × 10 her bacak, set arası 20 sn",
+            "dairesel tekme dönüş (tekmesiz): 2 set × 10 her yan, set arası 20 sn"
+          ],
+          "exerciseRefs": [
+            "teep",
+            "knee",
+            "pivot"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 38,
+          "endMin": 48,
+          "titleTr": "Gölge boks, 4 tur",
+          "items": [
+            "4 tur × 2 dk, tur arası 30 sn",
+            "Tur 1: 1-2-3 (sol düz, sağ düz, sol kroşe)",
+            "Tur 2: 1-2-5-3 (düz, düz, sol aparkat, sol kroşe)",
+            "Tur 3: 1-2 + sol diz (sol düz, sağ düz, sol ön diz)",
+            "Tur 4: serbest, derste öğrendiğin kombolarla"
+          ],
+          "exerciseRefs": [
+            "golge"
+          ],
+          "timerHint": {
+            "rounds": 4,
+            "roundSec": 120,
+            "restSec": 30
+          }
+        },
+        {
+          "startMin": 48,
+          "endMin": 53,
+          "titleTr": "Mini kondisyon",
+          "items": [
+            "Şınav: 2 set × (başlangıç testi maksimumunun yarısı), set arası 45 sn",
+            "Mekik: 2 set × 15, set arası 30 sn",
+            "Plank: 2 set × 25 sn, set arası 30 sn"
+          ],
+          "exerciseRefs": [
+            "sinav",
+            "mekik",
+            "plank"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 53,
+          "endMin": 60,
+          "titleTr": "Uzun esneme",
+          "items": [
+            "90/90 kalça geçişi: 2 set × 8",
+            "Kalça fleksörü: 45 sn her yan",
+            "Kelebek: 60 sn",
+            "Bacak arkası: 45 sn her bacak",
+            "Göğüs ve omuz açma: 30 sn"
+          ],
+          "exerciseRefs": [
+            "doksan",
+            "kalcafleks",
+            "kelebek",
+            "bacakarkasi",
+            "gogus"
+          ],
+          "timerHint": null
+        }
+      ]
+    },
+    {
+      "week": 1,
+      "dayOfWeek": 7,
+      "type": "home",
+      "sessionId": "h1-paz",
+      "titleTr": "Aktif toparlanma",
+      "plannedMinutes": 40,
+      "rpeTarget": "2–3 / 10",
+      "note": "Pazartesi dersi öncesi gün: uyku, ağrı ve enerjini bana yaz.",
+      "blocks": [
+        {
+          "startMin": 0,
+          "endMin": 30,
+          "titleTr": "Hafif yürüyüş",
+          "items": [
+            "30 dk rahat tempo, konuşabileceğin hızda"
+          ],
+          "exerciseRefs": [
+            "yuruyus"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 30,
+          "endMin": 40,
+          "titleTr": "Esneme ve mobilite",
+          "items": [
+            "Kedi-deve: 8 yavaş tekrar (1 dk)",
+            "90/90 kalça geçişi: 2 set × 8 (2 dk)",
+            "Kalça fleksörü: 45 sn her yan (1,5 dk)",
+            "Kelebek: 60 sn",
+            "Bacak arkası: 45 sn her bacak (1,5 dk)",
+            "Göğüs ve omuz açma: 30 sn, kalan süre derin nefes"
+          ],
+          "exerciseRefs": [
+            "kedideve",
+            "doksan",
+            "kalcafleks",
+            "kelebek",
+            "bacakarkasi",
+            "gogus"
+          ],
+          "timerHint": null
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "dayOfWeek": 1,
+      "type": "gym",
+      "sessionId": "w2-d1-ders",
+      "titleTr": "Salon dersi (kulüp)",
+      "plannedMinutes": null,
+      "rpeTarget": null,
+      "blocks": [],
+      "afterSessionPrompt": {
+        "ask": [
+          "Bugün hangi teknikleri öğrendin?",
+          "Hoca hangi hatayı düzeltti?",
+          "Kas ağrısı (0-10)?",
+          "Yarınki ev antrenmanında neyi tekrar edelim?"
+        ],
+        "feedsNextHomeDay": true
+      }
+    },
+    {
+      "week": 2,
+      "dayOfWeek": 2,
+      "type": "home",
+      "sessionId": "h2-sal",
+      "titleTr": "Teknik: kombolar ve tekme",
+      "plannedMinutes": 55,
+      "rpeTarget": "6–7 / 10",
+      "note": "Pazartesi dersinden sonra gelen gün: kas ağrısı varsa tekrar sayılarını %30 azalt, ipi yerinde yürüyüşle değiştir.",
+      "blocks": [
+        {
+          "startMin": 0,
+          "endMin": 12,
+          "titleTr": "Isınma",
+          "items": [
+            "İp: 3 tur × 3 dk, tur arası 30 sn dinlen (RPE 5)",
+            "Sonra 2 dk: kalça çevirme 10 her yön + bacak sallama ön-arka 10 her bacak"
+          ],
+          "exerciseRefs": [
+            "ip",
+            "isinma"
+          ],
+          "timerHint": {
+            "rounds": 3,
+            "roundSec": 180,
+            "restSec": 30
+          }
+        },
+        {
+          "startMin": 12,
+          "endMin": 15,
+          "titleTr": "Bandaj",
+          "items": [
+            "İki eli sar (hedef 3 dk altı)",
+            "Yumruk yap: destek hisset, uyuşma olmasın"
+          ],
+          "exerciseRefs": [
+            "bandaj"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 15,
+          "endMin": 30,
+          "titleTr": "Yumruk kombinasyonları",
+          "items": [
+            "Her kombo 3 set × 10, yavaş ve temiz, set arası 30 sn",
+            "A) 1-2 (sol düz, sağ düz)",
+            "B) 1-2-3 (düz, düz, sol kroşe)",
+            "C) 1-2-3-2 (düz, düz, sol kroşe, sağ düz)",
+            "D) 2-3-2 (sağ düz, sol kroşe, sağ düz)",
+            "E) 1-2-5-3 (düz, düz, sol aparkat, sol kroşe)",
+            "Bittikten sonra 1 dk adımlama: 4 adım ileri, 4 geri, tekrarla"
+          ],
+          "exerciseRefs": [
+            "jab",
+            "cross",
+            "hook",
+            "upper",
+            "adim"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 30,
+          "endMin": 41,
+          "titleTr": "Tekme",
+          "items": [
+            "İtme tekmesi: 3 set × 10 her bacak, set arası 20 sn",
+            "Alçak tekme (havada diz hizası): 3 set × 8 her bacak. 1. set destekli, 2. ve 3. set desteksiz, set arası 30 sn",
+            "Her tekmeden sonra ayağı yere koy, eller yanakta"
+          ],
+          "exerciseRefs": [
+            "teep",
+            "low",
+            "pivot"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 41,
+          "endMin": 51,
+          "titleTr": "Gölge boks, 4 tur",
+          "items": [
+            "4 tur × 2 dk, tur arası 30 sn",
+            "Tur 1: 1-2-3 ve 1-2-5-3 dönüşümlü",
+            "Tur 2: 1-2 + sol diz ve 1-2-3 + sol diz dönüşümlü",
+            "Tur 3: sol itme tekmesi, sol düz, sağ düz (itme tekmesi-1-2)",
+            "Tur 4: serbest"
+          ],
+          "exerciseRefs": [
+            "golge",
+            "knee",
+            "teep"
+          ],
+          "timerHint": {
+            "rounds": 4,
+            "roundSec": 120,
+            "restSec": 30
+          }
+        },
+        {
+          "startMin": 51,
+          "endMin": 55,
+          "titleTr": "Soğuma",
+          "items": [
+            "1 dk çok yavaş yürüyüş",
+            "Kalça fleksörü: 45 sn her yan",
+            "Kelebek: 45 sn",
+            "Bacak arkası: 30 sn her bacak",
+            "Göğüs ve omuz açma: 30 sn"
+          ],
+          "exerciseRefs": [
+            "kalcafleks",
+            "kelebek",
+            "bacakarkasi",
+            "gogus"
+          ],
+          "timerHint": null
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "dayOfWeek": 3,
+      "type": "gym",
+      "sessionId": "w2-d3-ders",
+      "titleTr": "Salon dersi (kulüp)",
+      "plannedMinutes": null,
+      "rpeTarget": null,
+      "blocks": [],
+      "afterSessionPrompt": {
+        "ask": [
+          "Bugün hangi teknikleri öğrendin?",
+          "Hoca hangi hatayı düzeltti?",
+          "Kas ağrısı (0-10)?",
+          "Yarınki ev antrenmanında neyi tekrar edelim?"
+        ],
+        "feedsNextHomeDay": true
+      }
+    },
+    {
+      "week": 2,
+      "dayOfWeek": 4,
+      "type": "home",
+      "sessionId": "h2-per",
+      "titleTr": "Kondisyon: dövüşçü devresi",
+      "plannedMinutes": 50,
+      "rpeTarget": "6–7 / 10",
+      "note": null,
+      "blocks": [
+        {
+          "startMin": 0,
+          "endMin": 8,
+          "titleTr": "Isınma",
+          "items": [
+            "İp: 3 tur × 2 dk, tur arası 30 sn dinlen",
+            "Sonra kalça ve omuz çevirme, 10 tekrar"
+          ],
+          "exerciseRefs": [
+            "ip",
+            "isinma"
+          ],
+          "timerHint": {
+            "rounds": 3,
+            "roundSec": 120,
+            "restSec": 30
+          }
+        },
+        {
+          "startMin": 8,
+          "endMin": 12,
+          "titleTr": "Bandaj + hafif gölge",
+          "items": [
+            "İki eli sar",
+            "1 dk hafif gölge boks: 1-2"
+          ],
+          "exerciseRefs": [
+            "bandaj",
+            "golge"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 12,
+          "endMin": 17,
+          "titleTr": "Hızlı teknik",
+          "items": [
+            "Hızlı 1-2: 3 tur × 20 sn iş, 20 sn dinlen",
+            "Çarşamba dersinden 1 teknik: 1 set × 15 yavaş"
+          ],
+          "exerciseRefs": [
+            "jab",
+            "cross"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 17,
+          "endMin": 38,
+          "titleTr": "Kondisyon devresi, 3 tur",
+          "items": [
+            "Her tur 6 hareket: 40 sn iş + 20 sn dinlen (tur = 6 dk)",
+            "Sıra: 1) çömelme 2) şınav 3) dağ tırmanıcı (yavaş) 4) hızlı 1-2 gölge 5) ip atlama 6) yan çömelme",
+            "Turlar arası 90 sn dinlen, su iç",
+            "Hedef zorluk RPE 7"
+          ],
+          "exerciseRefs": [
+            "squat",
+            "sinav",
+            "climber",
+            "golge",
+            "ip",
+            "yanlunge"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 38,
+          "endMin": 46,
+          "titleTr": "Gölge boks, 3 tur",
+          "items": [
+            "3 tur × 2 dk, tur arası 30 sn, hız %70",
+            "Kombo: 1-2-3-2 ve sol itme tekmesi + 1-2 dönüşümlü"
+          ],
+          "exerciseRefs": [
+            "golge",
+            "teep"
+          ],
+          "timerHint": {
+            "rounds": 3,
+            "roundSec": 120,
+            "restSec": 30
+          }
+        },
+        {
+          "startMin": 46,
+          "endMin": 50,
+          "titleTr": "Soğuma",
+          "items": [
+            "1 dk çok yavaş yürüyüş",
+            "Kalça fleksörü: 45 sn her yan",
+            "Kelebek: 45 sn",
+            "Bacak arkası: 30 sn her bacak",
+            "Göğüs ve omuz açma: 30 sn"
+          ],
+          "exerciseRefs": [
+            "kalcafleks",
+            "kelebek",
+            "bacakarkasi",
+            "gogus"
+          ],
+          "timerHint": null
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "dayOfWeek": 5,
+      "type": "gym",
+      "sessionId": "w2-d5-ders",
+      "titleTr": "Salon dersi (kulüp)",
+      "plannedMinutes": null,
+      "rpeTarget": null,
+      "blocks": [],
+      "afterSessionPrompt": {
+        "ask": [
+          "Bugün hangi teknikleri öğrendin?",
+          "Hoca hangi hatayı düzeltti?",
+          "Kas ağrısı (0-10)?",
+          "Yarınki ev antrenmanında neyi tekrar edelim?"
+        ],
+        "feedsNextHomeDay": true
+      }
+    },
+    {
+      "week": 2,
+      "dayOfWeek": 6,
+      "type": "home",
+      "sessionId": "h2-cmt",
+      "titleTr": "Tekrar ve gelişim",
+      "plannedMinutes": 60,
+      "rpeTarget": "6–7 / 10",
+      "note": null,
+      "blocks": [
+        {
+          "startMin": 0,
+          "endMin": 10,
+          "titleTr": "Isınma",
+          "items": [
+            "İp: 3 tur × 2 dk, tur arası 30 sn dinlen (7 dk)",
+            "Sonra 3 dk: kalça çevirme, bacak sallama, omuz çevirme"
+          ],
+          "exerciseRefs": [
+            "ip",
+            "isinma"
+          ],
+          "timerHint": {
+            "rounds": 3,
+            "roundSec": 120,
+            "restSec": 30
+          }
+        },
+        {
+          "startMin": 10,
+          "endMin": 13,
+          "titleTr": "Bandaj",
+          "items": [
+            "İki eli sar, hedef 3 dk altı"
+          ],
+          "exerciseRefs": [
+            "bandaj"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 13,
+          "endMin": 27,
+          "titleTr": "Haftanın ders tekrarı",
+          "items": [
+            "Derste öğrendiğin her teknik: 3 set × 10–12, set arası 30 sn",
+            "Hocanın verdiği düzeltmeleri aynada uygula",
+            "Günlük boşsa: 1-2, 1-2-3, 1-2-5-3 komboları 3 set × 10"
+          ],
+          "exerciseRefs": [
+            "jab",
+            "cross",
+            "hook",
+            "upper"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 27,
+          "endMin": 38,
+          "titleTr": "Tekme kombinasyonları",
+          "items": [
+            "İtme tekmesi: 2 set × 10 her bacak, set arası 20 sn",
+            "Alçak tekme: 3 set × 8 her bacak, set arası 30 sn",
+            "Kombo A: sol itme tekmesi + sağ alçak tekme, 2 set × 8",
+            "Kombo B: 1-2 + sağ alçak tekme (sol düz, sağ düz, sağ alçak tekme), 2 set × 8"
+          ],
+          "exerciseRefs": [
+            "teep",
+            "low"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 38,
+          "endMin": 50,
+          "titleTr": "Gölge boks, 5 tur",
+          "items": [
+            "5 tur × 2 dk, tur arası 30 sn",
+            "Tur 1: 1-2-3",
+            "Tur 2: 1-2-5-3",
+            "Tur 3: sol itme tekmesi, 1-2, sağ alçak tekme",
+            "Tur 4: 1-2-3 + sol diz",
+            "Tur 5: serbest"
+          ],
+          "exerciseRefs": [
+            "golge"
+          ],
+          "timerHint": {
+            "rounds": 5,
+            "roundSec": 120,
+            "restSec": 30
+          }
+        },
+        {
+          "startMin": 50,
+          "endMin": 54,
+          "titleTr": "Mini kondisyon",
+          "items": [
+            "4 tur: 30 sn hızlı 1-2 + 30 sn dinlen"
+          ],
+          "exerciseRefs": [
+            "golge"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 54,
+          "endMin": 60,
+          "titleTr": "Uzun esneme",
+          "items": [
+            "90/90 kalça geçişi: 2 × 8",
+            "Kalça fleksörü: 45 sn her yan",
+            "Güvercin: 45 sn her yan",
+            "Kelebek: 60 sn",
+            "Bacak arkası: 45 sn her bacak"
+          ],
+          "exerciseRefs": [
+            "doksan",
+            "kalcafleks",
+            "guvercin",
+            "kelebek",
+            "bacakarkasi"
+          ],
+          "timerHint": null
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "dayOfWeek": 7,
+      "type": "home",
+      "sessionId": "h2-paz",
+      "titleTr": "Aktif toparlanma",
+      "plannedMinutes": 47,
+      "rpeTarget": "2–3 / 10",
+      "note": null,
+      "blocks": [
+        {
+          "startMin": 0,
+          "endMin": 35,
+          "titleTr": "Hafif yürüyüş",
+          "items": [
+            "35 dk rahat tempo. Bacakların çok ağrıyorsa kısa tut"
+          ],
+          "exerciseRefs": [
+            "yuruyus"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 35,
+          "endMin": 47,
+          "titleTr": "Esneme ve mobilite",
+          "items": [
+            "Kedi-deve: 8 tekrar",
+            "90/90 kalça geçişi: 2 set × 8",
+            "Yan çömelme: 2 set × 6 her yan, dar aralık, destekli",
+            "Kalça fleksörü: 45 sn her yan",
+            "Güvercin: 45 sn her yan",
+            "Kelebek: 60 sn",
+            "Bacak arkası: 45 sn her bacak"
+          ],
+          "exerciseRefs": [
+            "kedideve",
+            "doksan",
+            "yanlunge",
+            "kalcafleks",
+            "guvercin",
+            "kelebek",
+            "bacakarkasi"
+          ],
+          "timerHint": null
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "dayOfWeek": 1,
+      "type": "gym",
+      "sessionId": "w3-d1-ders",
+      "titleTr": "Salon dersi (kulüp)",
+      "plannedMinutes": null,
+      "rpeTarget": null,
+      "blocks": [],
+      "afterSessionPrompt": {
+        "ask": [
+          "Bugün hangi teknikleri öğrendin?",
+          "Hoca hangi hatayı düzeltti?",
+          "Kas ağrısı (0-10)?",
+          "Yarınki ev antrenmanında neyi tekrar edelim?"
+        ],
+        "feedsNextHomeDay": true
+      }
+    },
+    {
+      "week": 3,
+      "dayOfWeek": 2,
+      "type": "home",
+      "sessionId": "h3-sal",
+      "titleTr": "Teknik: yoğunlaştırma",
+      "plannedMinutes": 55,
+      "rpeTarget": "7–8 / 10",
+      "note": null,
+      "blocks": [
+        {
+          "startMin": 0,
+          "endMin": 12,
+          "titleTr": "Isınma",
+          "items": [
+            "İp: 3 tur × 3 dk, tur arası 30 sn dinlen",
+            "Sonra 2 dk: kalça çevirme 10 her yön + bacak sallama 10 her bacak"
+          ],
+          "exerciseRefs": [
+            "ip",
+            "isinma"
+          ],
+          "timerHint": {
+            "rounds": 3,
+            "roundSec": 180,
+            "restSec": 30
+          }
+        },
+        {
+          "startMin": 12,
+          "endMin": 15,
+          "titleTr": "Bandaj",
+          "items": [
+            "İki eli sar, hedef 2,5 dk altı",
+            "Parmaklar açık, elin sırtından başla"
+          ],
+          "exerciseRefs": [
+            "bandaj"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 15,
+          "endMin": 29,
+          "titleTr": "Yumruk kombinasyonları",
+          "items": [
+            "Her kombo 3 set × 12, hız %70, set arası 30 sn",
+            "A) 1-2-3-2 (sol düz, sağ düz, sol kroşe, sağ düz)",
+            "B) 1-2-5-3 (sol düz, sağ düz, sol aparkat, sol kroşe)",
+            "C) 3-2-3 (sol kroşe, sağ düz, sol kroşe)",
+            "D) 1-2-3-6-3 (düz, düz, sol kroşe, sağ aparkat, sol kroşe)",
+            "Her komboda son vuruştan sonra 1 adım geri çekil"
+          ],
+          "exerciseRefs": [
+            "jab",
+            "cross",
+            "hook",
+            "upper",
+            "adim"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 29,
+          "endMin": 41,
+          "titleTr": "Tekme",
+          "items": [
+            "İtme tekmesi: 3 set × 10 her bacak, set arası 20 sn",
+            "Alçak tekme: 3 set × 10 her bacak, set arası 30 sn",
+            "Orta tekme (kalça hizası): SADECE hocan onay verdiyse 3 set × 6 her bacak, yarım hız. Onay yoksa alçak tekmeden 1 set ekle",
+            "Kombo: 1-2 + sağ alçak tekme, 2 set × 8",
+            "Kombo: sol itme tekmesi + 1-2-3, 2 set × 8"
+          ],
+          "exerciseRefs": [
+            "teep",
+            "low",
+            "pivot"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 41,
+          "endMin": 52,
+          "titleTr": "Gölge boks, 3 tur",
+          "items": [
+            "3 tur × 3 dk (gerçek tur süresi), tur arası 45 sn",
+            "Tur 1: 1-2-3-2 ve 1-2-5-3 dönüşümlü",
+            "Tur 2: sol itme tekmesi, 1-2-3, sol diz",
+            "Tur 3: serbest, derste öğrendiğin kombolar"
+          ],
+          "exerciseRefs": [
+            "golge"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 52,
+          "endMin": 55,
+          "titleTr": "Soğuma",
+          "items": [
+            "1 dk çok yavaş yürüyüş",
+            "Kalça fleksörü: 45 sn her yan",
+            "Kelebek: 45 sn",
+            "Bacak arkası: 30 sn her bacak",
+            "Göğüs ve omuz açma: 30 sn"
+          ],
+          "exerciseRefs": [
+            "kalcafleks",
+            "kelebek",
+            "bacakarkasi",
+            "gogus"
+          ],
+          "timerHint": null
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "dayOfWeek": 3,
+      "type": "gym",
+      "sessionId": "w3-d3-ders",
+      "titleTr": "Salon dersi (kulüp)",
+      "plannedMinutes": null,
+      "rpeTarget": null,
+      "blocks": [],
+      "afterSessionPrompt": {
+        "ask": [
+          "Bugün hangi teknikleri öğrendin?",
+          "Hoca hangi hatayı düzeltti?",
+          "Kas ağrısı (0-10)?",
+          "Yarınki ev antrenmanında neyi tekrar edelim?"
+        ],
+        "feedsNextHomeDay": true
+      }
+    },
+    {
+      "week": 3,
+      "dayOfWeek": 4,
+      "type": "home",
+      "sessionId": "h3-per",
+      "titleTr": "Kondisyon: yoğun devre",
+      "plannedMinutes": 50,
+      "rpeTarget": "7 / 10",
+      "note": null,
+      "blocks": [
+        {
+          "startMin": 0,
+          "endMin": 8,
+          "titleTr": "Isınma",
+          "items": [
+            "İp: 3 tur × 2 dk, tur arası 30 sn dinlen",
+            "Sonra kalça ve omuz çevirme 10 tekrar"
+          ],
+          "exerciseRefs": [
+            "ip",
+            "isinma"
+          ],
+          "timerHint": {
+            "rounds": 3,
+            "roundSec": 120,
+            "restSec": 30
+          }
+        },
+        {
+          "startMin": 8,
+          "endMin": 12,
+          "titleTr": "Bandaj + hafif gölge",
+          "items": [
+            "İki eli sar",
+            "1 dk hafif gölge: 1-2"
+          ],
+          "exerciseRefs": [
+            "bandaj",
+            "golge"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 12,
+          "endMin": 17,
+          "titleTr": "Hızlı teknik",
+          "items": [
+            "Hızlı 1-2: 3 tur × 20 sn iş, 20 sn dinlen",
+            "Ders günlüğünden 1 teknik: 1 set × 15 yavaş"
+          ],
+          "exerciseRefs": [
+            "jab",
+            "cross"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 17,
+          "endMin": 40,
+          "titleTr": "Kondisyon devresi, 4 tur",
+          "items": [
+            "Her tur 5 hareket: 40 sn iş + 20 sn dinlen (tur = 5 dk)",
+            "Sıra: 1) çömelme 2) şınav 3) hızlı 1-2-3-2 gölge 4) dağ tırmanıcı 5) ip atlama",
+            "Turlar arası 60 sn dinlen, su iç",
+            "Hedef RPE 7. Yarın ders var, tamamen tüketme"
+          ],
+          "exerciseRefs": [
+            "squat",
+            "sinav",
+            "golge",
+            "climber",
+            "ip"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 40,
+          "endMin": 47,
+          "titleTr": "Gölge boks, 2 tur",
+          "items": [
+            "2 tur × 3 dk, tur arası 30 sn",
+            "Orta tempo, form odaklı: 1-2-3-2 ve 1-2-5-3 dönüşümlü"
+          ],
+          "exerciseRefs": [
+            "golge"
+          ],
+          "timerHint": {
+            "rounds": 2,
+            "roundSec": 180,
+            "restSec": 30
+          }
+        },
+        {
+          "startMin": 47,
+          "endMin": 50,
+          "titleTr": "Soğuma",
+          "items": [
+            "1 dk çok yavaş yürüyüş",
+            "Kalça fleksörü: 45 sn her yan",
+            "Kelebek: 45 sn",
+            "Bacak arkası: 30 sn her bacak",
+            "Göğüs ve omuz açma: 30 sn"
+          ],
+          "exerciseRefs": [
+            "kalcafleks",
+            "kelebek",
+            "bacakarkasi",
+            "gogus"
+          ],
+          "timerHint": null
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "dayOfWeek": 5,
+      "type": "gym",
+      "sessionId": "w3-d5-ders",
+      "titleTr": "Salon dersi (kulüp)",
+      "plannedMinutes": null,
+      "rpeTarget": null,
+      "blocks": [],
+      "afterSessionPrompt": {
+        "ask": [
+          "Bugün hangi teknikleri öğrendin?",
+          "Hoca hangi hatayı düzeltti?",
+          "Kas ağrısı (0-10)?",
+          "Yarınki ev antrenmanında neyi tekrar edelim?"
+        ],
+        "feedsNextHomeDay": true
+      }
+    },
+    {
+      "week": 3,
+      "dayOfWeek": 6,
+      "type": "home",
+      "sessionId": "h3-cmt",
+      "titleTr": "Final testi + tekrar",
+      "plannedMinutes": 60,
+      "rpeTarget": "7–8 / 10",
+      "note": "Test sonuçlarını sayfadaki karşılaştırma tablosuna girebilirsin. Değerler kaydedilmez, bana yazarsan sayfayı güncellerim.",
+      "blocks": [
+        {
+          "startMin": 0,
+          "endMin": 4,
+          "titleTr": "Eklem açma",
+          "items": [
+            "Boyun çevirme: 10 sn her yön",
+            "Omuz çevirme: 10 ileri + 10 geri",
+            "Bilek çevirme: 10 her yön",
+            "Kalça çevirme: 10 her yön",
+            "Diz çevirme: 10 her yön",
+            "Ayak bileği çevirme: 10 her yön",
+            "Bacak sallama (duvara tutunarak): ön-arka 10 + yana 10, her bacak",
+            "Sabah aç karnına kilonu ve bel çevreni ölçmüş ol"
+          ],
+          "exerciseRefs": [
+            "isinma"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 4,
+          "endMin": 12,
+          "titleTr": "Test 1: ip",
+          "items": [
+            "İpi durmadan at, en fazla 8 dk (ilk testle aynı kural)",
+            "Süreyi not et (dk ve sn)"
+          ],
+          "exerciseRefs": [
+            "ip"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 12,
+          "endMin": 20,
+          "titleTr": "Test 2: şınav, plank, mekik, esneklik",
+          "items": [
+            "1) Şınav: ara vermeden maksimum. Sayıyı not et",
+            "2 dk dinlen",
+            "2) Plank: en fazla 2 dk. Saniyeyi not et",
+            "2 dk dinlen",
+            "3) Mekik: 1 dk içinde kaç tane. Sayıyı not et",
+            "4) Öne eğilme: bacaklar düz, parmak ucunun yere uzaklığı (cm)"
+          ],
+          "exerciseRefs": [
+            "sinav",
+            "plank",
+            "mekik"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 20,
+          "endMin": 25,
+          "titleTr": "Bandaj pratiği",
+          "items": [
+            "İki eli süre tutarak sar. İlk günkü süreyle kıyasla"
+          ],
+          "exerciseRefs": [
+            "bandaj"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 25,
+          "endMin": 37,
+          "titleTr": "Gölge boks, video kaydı",
+          "items": [
+            "3 tur × 3 dk, tur arası 45 sn. Telefonu yandan koy, kaydet",
+            "Tur 1: 1-2-3-2 ve 1-2-5-3 dönüşümlü",
+            "Tur 2: sol itme tekmesi, 1-2, sağ alçak tekme ve 1-2-3 + sol diz dönüşümlü",
+            "Tur 3: serbest",
+            "Sonra videoyu duruş ve gard açısından izle"
+          ],
+          "exerciseRefs": [
+            "golge",
+            "durus"
+          ],
+          "timerHint": {
+            "rounds": 3,
+            "roundSec": 180,
+            "restSec": 45
+          }
+        },
+        {
+          "startMin": 37,
+          "endMin": 47,
+          "titleTr": "Tekme tekrarı",
+          "items": [
+            "İtme tekmesi: 2 set × 10 her bacak, set arası 20 sn",
+            "Alçak tekme: 3 set × 8 her bacak, set arası 30 sn",
+            "1-2 + sağ alçak tekme: 2 set × 8",
+            "Orta tekme: SADECE hocan onay verdiyse 2 set × 6 her bacak"
+          ],
+          "exerciseRefs": [
+            "teep",
+            "low"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 47,
+          "endMin": 54,
+          "titleTr": "Final gölge boks",
+          "items": [
+            "2 tur × 3 dk, tur arası 30 sn",
+            "Üç kombo dönüşümlü: 1-2-3-2, 1-2-5-3, sol itme tekmesi + 1-2 + sağ alçak tekme",
+            "Üç haftanın en temiz formuyla"
+          ],
+          "exerciseRefs": [
+            "golge"
+          ],
+          "timerHint": {
+            "rounds": 2,
+            "roundSec": 180,
+            "restSec": 30
+          }
+        },
+        {
+          "startMin": 54,
+          "endMin": 60,
+          "titleTr": "Esneme ve değerlendirme",
+          "items": [
+            "90/90 kalça geçişi: 2 × 8",
+            "Kalça fleksörü: 60 sn her yan",
+            "Kelebek: 60 sn",
+            "Bacak arkası: 45 sn her bacak",
+            "Test sonuçlarını bana yaz, sonraki dönem planını yapalım"
+          ],
+          "exerciseRefs": [
+            "doksan",
+            "kalcafleks",
+            "kelebek",
+            "bacakarkasi"
+          ],
+          "timerHint": null
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "dayOfWeek": 7,
+      "type": "home",
+      "sessionId": "h3-paz",
+      "titleTr": "Aktif toparlanma",
+      "plannedMinutes": 55,
+      "rpeTarget": "2–3 / 10",
+      "note": null,
+      "blocks": [
+        {
+          "startMin": 0,
+          "endMin": 40,
+          "titleTr": "Hafif yürüyüş",
+          "items": [
+            "40 dk rahat tempo. Üç haftayı düşün: ne iyi gitti, ne zorladı"
+          ],
+          "exerciseRefs": [
+            "yuruyus"
+          ],
+          "timerHint": null
+        },
+        {
+          "startMin": 40,
+          "endMin": 55,
+          "titleTr": "Esneme ve mobilite",
+          "items": [
+            "Kedi-deve: 8 tekrar",
+            "90/90 kalça geçişi: 2 set × 8",
+            "Yan çömelme: 2 set × 6 her yan",
+            "Kalça fleksörü: 60 sn her yan",
+            "Güvercin: 60 sn her yan",
+            "Kelebek: 60 sn",
+            "Bacak arkası: 45 sn her bacak",
+            "Göğüs ve omuz açma: 30 sn"
+          ],
+          "exerciseRefs": [
+            "kedideve",
+            "doksan",
+            "yanlunge",
+            "kalcafleks",
+            "guvercin",
+            "kelebek",
+            "bacakarkasi",
+            "gogus"
+          ],
+          "timerHint": null
+        }
+      ]
+    }
+  ]
+}

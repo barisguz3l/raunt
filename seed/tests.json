@@ -1,0 +1,58 @@
+{
+  "tests": [
+    {
+      "id": "pushup",
+      "nameTr": "Şınav (maks, ara vermeden)",
+      "unit": "adet",
+      "higherIsBetter": true,
+      "variants": [
+        "normal",
+        "diz üstü"
+      ],
+      "protocol": "Ara vermeden maksimum; göğüs yumruk kadar yere yaklaşsın, vücut düz."
+    },
+    {
+      "id": "situp",
+      "nameTr": "Mekik (1 dakika)",
+      "unit": "adet",
+      "higherIsBetter": true,
+      "protocol": "1 dakikada kaç tane."
+    },
+    {
+      "id": "plank",
+      "nameTr": "Plank (form bozulana kadar, en fazla 2 dk)",
+      "unit": "sn",
+      "higherIsBetter": true,
+      "protocol": "Dirsekler omuz altında. Bel ağrısı olursa DUR ve notla.",
+      "safety": "Bel ağrısında bitir; diz plank/kısa set alternatifi."
+    },
+    {
+      "id": "rope",
+      "nameTr": "İp atlama (durmadan, en fazla 8 dk)",
+      "unit": "sn",
+      "higherIsBetter": true,
+      "protocol": "Durmadan at, süreyi yaz."
+    },
+    {
+      "id": "weight",
+      "nameTr": "Kilo",
+      "unit": "kg",
+      "higherIsBetter": null,
+      "protocol": "Sabah kalkınca, tuvaletten sonra, aç karnına, aynı tartıyla."
+    },
+    {
+      "id": "waist",
+      "nameTr": "Bel çevresi",
+      "unit": "cm",
+      "higherIsBetter": false,
+      "protocol": "Göbek hizasından, nefes verdikten sonra, aynı noktadan."
+    },
+    {
+      "id": "reach",
+      "nameTr": "Öne eğilme (bacaklar düz, parmak ucu-yer mesafesi)",
+      "unit": "cm",
+      "higherIsBetter": false,
+      "protocol": "Bacaklar düz, öne eğil, parmak ucunun yere uzaklığı."
+    }
+  ]
+}

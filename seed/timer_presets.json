@@ -1,0 +1,76 @@
+{
+  "presets": [
+    {
+      "id": "t_beginner",
+      "nameTr": "Başlangıç 3 x 2 dk",
+      "prepSec": 10,
+      "rounds": 3,
+      "roundSec": 120,
+      "warnSec": 10,
+      "restSec": 45
+    },
+    {
+      "id": "t_gym_plan",
+      "nameTr": "Ev planı 3 x 2 dk (30 sn dinlenme)",
+      "prepSec": 10,
+      "rounds": 3,
+      "roundSec": 120,
+      "warnSec": 10,
+      "restSec": 30
+    },
+    {
+      "id": "t_amateur",
+      "nameTr": "Amatör 3 x 3 dk",
+      "prepSec": 10,
+      "rounds": 3,
+      "roundSec": 180,
+      "warnSec": 10,
+      "restSec": 60
+    },
+    {
+      "id": "t_standard5",
+      "nameTr": "Standart 5 x 3 dk",
+      "prepSec": 10,
+      "rounds": 5,
+      "roundSec": 180,
+      "warnSec": 10,
+      "restSec": 60
+    },
+    {
+      "id": "t_kick12",
+      "nameTr": "Uzun 12 x 3 dk",
+      "prepSec": 10,
+      "rounds": 12,
+      "roundSec": 180,
+      "warnSec": 10,
+      "restSec": 60
+    },
+    {
+      "id": "t_rope",
+      "nameTr": "İp 3 x 3 dk",
+      "prepSec": 5,
+      "rounds": 3,
+      "roundSec": 180,
+      "warnSec": 10,
+      "restSec": 30
+    },
+    {
+      "id": "t_hiit3030",
+      "nameTr": "HIIT 30/30 x 10",
+      "prepSec": 10,
+      "rounds": 10,
+      "roundSec": 30,
+      "warnSec": 5,
+      "restSec": 30
+    },
+    {
+      "id": "t_tabata",
+      "nameTr": "Tabata 20/10 x 8",
+      "prepSec": 10,
+      "rounds": 8,
+      "roundSec": 20,
+      "warnSec": 3,
+      "restSec": 10
+    }
+  ]
+}

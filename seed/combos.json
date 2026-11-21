@@ -1,0 +1,963 @@
+{
+  "_readme": "Sistem kombinasyonları (kendi içeriğimiz, genel bilinen dizilimler). code: iç kod (ekranda gösterilmez; ekran hareketlerin Türkçe kısa etiketlerini kullanır). Sayılar 1-6; TL/TR=itme tekmesi ön/arka, LKL/LKR=alçak tekme, MKL/MKR=orta tekme, HKL/HKR=yüksek tekme, KL/KR=diz, BLK/SLIP/ROL/GERI/PARRY/CHK=savunma. Normal duruşta ön=sol.",
+  "count": 42,
+  "combos": [
+    {
+      "id": "combo_001",
+      "nameTr": "Sol Sağ Direkt",
+      "level": 1,
+      "code": "1-2",
+      "steps": [
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        }
+      ],
+      "description": "Temel ikili: sol direkt ve sağ direkt.",
+      "focus": "teknik",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_002",
+      "nameTr": "Çift Sol, Sağ Direkt",
+      "level": 1,
+      "code": "1-1-2",
+      "steps": [
+        {
+          "move": "jab"
+        },
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        }
+      ],
+      "description": "Sol direktle mesafe aç, sağ direktle bitir.",
+      "focus": "teknik",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_003",
+      "nameTr": "Klasik Üçlü",
+      "level": 1,
+      "code": "1-2-3",
+      "steps": [
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "lead_hook"
+        }
+      ],
+      "description": "Sol direkt, sağ direkt, sol kroşe.",
+      "focus": "teknik",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_004",
+      "nameTr": "Sağ Direkt Kroşe",
+      "level": 1,
+      "code": "2-3",
+      "steps": [
+        {
+          "move": "cross"
+        },
+        {
+          "move": "lead_hook"
+        }
+      ],
+      "description": "Sağ direkt, ardından sol kroşe.",
+      "focus": "teknik",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_005",
+      "nameTr": "Dörtlü Klasik",
+      "level": 1,
+      "code": "1-2-3-2",
+      "steps": [
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "lead_hook"
+        },
+        {
+          "move": "cross"
+        }
+      ],
+      "description": "Sol direkt, sağ direkt, sol kroşe, sağ direkt (planın ana kombosu).",
+      "focus": "teknik",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_006",
+      "nameTr": "Direkt Kroşe Direkt",
+      "level": 1,
+      "code": "2-3-2",
+      "steps": [
+        {
+          "move": "cross"
+        },
+        {
+          "move": "lead_hook"
+        },
+        {
+          "move": "cross"
+        }
+      ],
+      "description": "Sağ direkt, sol kroşe, sağ direkt.",
+      "focus": "teknik",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_007",
+      "nameTr": "Aparkat Kombosu",
+      "level": 1,
+      "code": "1-2-5-3",
+      "steps": [
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "lead_uppercut"
+        },
+        {
+          "move": "lead_hook"
+        }
+      ],
+      "description": "Sol direkt, sağ direkt, sol aparkat, sol kroşe.",
+      "focus": "teknik",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_008",
+      "nameTr": "İtme Tekmesiyle Giriş",
+      "level": 1,
+      "code": "TL-1-2",
+      "steps": [
+        {
+          "move": "teep_lead"
+        },
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        }
+      ],
+      "description": "Ön itme tekmesiyle mesafe al, sonra sol-sağ direkt.",
+      "focus": "tekme",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_009",
+      "nameTr": "Direktler ve Diz",
+      "level": 1,
+      "code": "1-2-KL",
+      "steps": [
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "knee_lead"
+        }
+      ],
+      "description": "Sol direkt, sağ direkt, ön diz.",
+      "focus": "diz",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_010",
+      "nameTr": "Direktler ve Alçak Tekme",
+      "level": 1,
+      "code": "1-2-LKR",
+      "steps": [
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "low_kick_rear"
+        }
+      ],
+      "description": "Sol direkt, sağ direkt, arka alçak tekme.",
+      "focus": "tekme",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_011",
+      "nameTr": "Üçlü ve Diz",
+      "level": 1,
+      "code": "1-2-3-KL",
+      "steps": [
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "lead_hook"
+        },
+        {
+          "move": "knee_lead"
+        }
+      ],
+      "description": "Sol direkt, sağ direkt, sol kroşe, ön diz.",
+      "focus": "diz",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_012",
+      "nameTr": "İtme, Direktler, Alçak Tekme",
+      "level": 1,
+      "code": "TL-1-2-LKR",
+      "steps": [
+        {
+          "move": "teep_lead"
+        },
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "low_kick_rear"
+        }
+      ],
+      "description": "Planın tekme kombosu.",
+      "focus": "tekme",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_013",
+      "nameTr": "Blok ve Karşılık",
+      "level": 1,
+      "code": "BLK-1-2",
+      "steps": [
+        {
+          "move": "block"
+        },
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        }
+      ],
+      "description": "Önce blok, sonra sol-sağ direktle karşılık.",
+      "focus": "savunma",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_014",
+      "nameTr": "Kaç ve Vur",
+      "level": 1,
+      "code": "SLIP-2-3",
+      "steps": [
+        {
+          "move": "slip"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "lead_hook"
+        }
+      ],
+      "description": "Kafa kaçır, sağ direkt ve sol kroşe.",
+      "focus": "savunma",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_015",
+      "nameTr": "Geri Adım ve Karşılık",
+      "level": 1,
+      "code": "GERI-1-2",
+      "steps": [
+        {
+          "move": "step_back"
+        },
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        }
+      ],
+      "description": "Geri adım at, sol-sağ direktle karşılık ver.",
+      "focus": "savunma",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_016",
+      "nameTr": "Çift Direkt ve İtme",
+      "level": 1,
+      "code": "1-1-TL",
+      "steps": [
+        {
+          "move": "jab"
+        },
+        {
+          "move": "jab"
+        },
+        {
+          "move": "teep_lead"
+        }
+      ],
+      "description": "Çift sol direkt ve ön itme tekmesi.",
+      "focus": "tekme",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_017",
+      "nameTr": "Hollanda Klasiği",
+      "level": 2,
+      "code": "1-2-3-LKR",
+      "steps": [
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "lead_hook"
+        },
+        {
+          "move": "low_kick_rear"
+        }
+      ],
+      "description": "Sol direkt, sağ direkt, sol kroşe, arka alçak tekme.",
+      "focus": "tekme",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_018",
+      "nameTr": "Çift Direkt ve Arka Diz",
+      "level": 2,
+      "code": "1-1-2-KR",
+      "steps": [
+        {
+          "move": "jab"
+        },
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "knee_rear"
+        }
+      ],
+      "description": "Mesafe ve diz.",
+      "focus": "diz",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_019",
+      "nameTr": "Gövde Kafa",
+      "level": 2,
+      "code": "1-2-3b-3",
+      "steps": [
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "lead_hook_body"
+        },
+        {
+          "move": "lead_hook"
+        }
+      ],
+      "description": "Sol direkt, sağ direkt, gövdeye kroşe, kafaya kroşe.",
+      "focus": "kombinasyon",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_020",
+      "nameTr": "Gövde Direkt, Kafa Kroşe",
+      "level": 2,
+      "code": "2b-3",
+      "steps": [
+        {
+          "move": "cross_body"
+        },
+        {
+          "move": "lead_hook"
+        }
+      ],
+      "description": "Gövdeye sağ direkt, kafaya sol kroşe.",
+      "focus": "kombinasyon",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_021",
+      "nameTr": "Kroşe Direkt Kroşe",
+      "level": 2,
+      "code": "3-2-3",
+      "steps": [
+        {
+          "move": "lead_hook"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "lead_hook"
+        }
+      ],
+      "description": "Sol kroşe, sağ direkt, sol kroşe.",
+      "focus": "kombinasyon",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_022",
+      "nameTr": "Kroşe Serisi ve Alçak Tekme",
+      "level": 2,
+      "code": "3-2-3-LKR",
+      "steps": [
+        {
+          "move": "lead_hook"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "lead_hook"
+        },
+        {
+          "move": "low_kick_rear"
+        }
+      ],
+      "description": "Kroşe serisi ve arka alçak tekme.",
+      "focus": "tekme",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_023",
+      "nameTr": "Aparkat Kroşe Direkt",
+      "level": 2,
+      "code": "5-3-2",
+      "steps": [
+        {
+          "move": "lead_uppercut"
+        },
+        {
+          "move": "lead_hook"
+        },
+        {
+          "move": "cross"
+        }
+      ],
+      "description": "Aparkatla aç, kroşe ve sağ direkt.",
+      "focus": "kombinasyon",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_024",
+      "nameTr": "Direktler ve Orta Tekme",
+      "level": 2,
+      "code": "1-2-MKR",
+      "steps": [
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "mid_kick_rear"
+        }
+      ],
+      "description": "Sol direkt, sağ direkt, arka orta tekme (hoca onayı).",
+      "focus": "tekme",
+      "requiresCoachApproval": true,
+      "isSystem": true
+    },
+    {
+      "id": "combo_025",
+      "nameTr": "İtme, Direkt, Kroşe",
+      "level": 2,
+      "code": "TL-2-3",
+      "steps": [
+        {
+          "move": "teep_lead"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "lead_hook"
+        }
+      ],
+      "description": "İtme tekmesiyle aç, sağ direkt ve sol kroşe.",
+      "focus": "tekme",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_026",
+      "nameTr": "Kaçış ve Karşı Seri",
+      "level": 2,
+      "code": "SLIP-2-3-2",
+      "steps": [
+        {
+          "move": "slip"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "lead_hook"
+        },
+        {
+          "move": "cross"
+        }
+      ],
+      "description": "Kafa kaçır, sağ direkt, kroşe, sağ direkt.",
+      "focus": "savunma",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_027",
+      "nameTr": "Dalış ve Karşılık",
+      "level": 2,
+      "code": "ROL-3-2",
+      "steps": [
+        {
+          "move": "roll"
+        },
+        {
+          "move": "lead_hook"
+        },
+        {
+          "move": "cross"
+        }
+      ],
+      "description": "Altından dal, sol kroşe, sağ direkt.",
+      "focus": "savunma",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_028",
+      "nameTr": "Blok, Direktler, Alçak Tekme",
+      "level": 2,
+      "code": "BLK-1-2-LKR",
+      "steps": [
+        {
+          "move": "block"
+        },
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "low_kick_rear"
+        }
+      ],
+      "description": "Blok, sol-sağ direkt, arka alçak tekme.",
+      "focus": "savunma",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_029",
+      "nameTr": "Geri Adım ve İtme Serisi",
+      "level": 2,
+      "code": "GERI-TL-1-2",
+      "steps": [
+        {
+          "move": "step_back"
+        },
+        {
+          "move": "teep_lead"
+        },
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        }
+      ],
+      "description": "Geri adım, itme tekmesi, sol-sağ direkt.",
+      "focus": "savunma",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_030",
+      "nameTr": "Direktler, Diz, Kroşe",
+      "level": 2,
+      "code": "1-2-KR-3",
+      "steps": [
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "knee_rear"
+        },
+        {
+          "move": "lead_hook"
+        }
+      ],
+      "description": "Sol direkt, sağ direkt, arka diz, sol kroşe.",
+      "focus": "diz",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_031",
+      "nameTr": "Çift Direkt ve Orta Tekme",
+      "level": 2,
+      "code": "1-1-2-MKR",
+      "steps": [
+        {
+          "move": "jab"
+        },
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "mid_kick_rear"
+        }
+      ],
+      "description": "Çift sol direkt, sağ direkt, orta tekme (hoca onayı).",
+      "focus": "tekme",
+      "requiresCoachApproval": true,
+      "isSystem": true
+    },
+    {
+      "id": "combo_032",
+      "nameTr": "Alçak Tekme Savunması",
+      "level": 2,
+      "code": "CHK-1-2-LKR",
+      "steps": [
+        {
+          "move": "leg_check"
+        },
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "low_kick_rear"
+        }
+      ],
+      "description": "Gelen alçak tekmeyi kaval kemiğiyle kalkan yap, karşılık ver.",
+      "focus": "savunma",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_033",
+      "nameTr": "Beşli ve Alçak Tekme",
+      "level": 3,
+      "code": "1-2-3-2-LKR",
+      "steps": [
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "lead_hook"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "low_kick_rear"
+        }
+      ],
+      "description": "Dörtlü klasik ve arka alçak tekme.",
+      "focus": "tekme",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_034",
+      "nameTr": "Aparkat, Kroşe, Alçak Tekme",
+      "level": 3,
+      "code": "1-2-5-3-LKR",
+      "steps": [
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "lead_uppercut"
+        },
+        {
+          "move": "lead_hook"
+        },
+        {
+          "move": "low_kick_rear"
+        }
+      ],
+      "description": "Aparkat serisi ve arka alçak tekme.",
+      "focus": "tekme",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_035",
+      "nameTr": "Gövde Kafa Direkt",
+      "level": 3,
+      "code": "1-2-3b-3-2",
+      "steps": [
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "lead_hook_body"
+        },
+        {
+          "move": "lead_hook"
+        },
+        {
+          "move": "cross"
+        }
+      ],
+      "description": "Gövdeye ve kafaya kroşe, sağ direktle bitir.",
+      "focus": "kombinasyon",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_036",
+      "nameTr": "Direktler ve Yüksek Tekme",
+      "level": 3,
+      "code": "1-2-HKR",
+      "steps": [
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "high_kick_rear"
+        }
+      ],
+      "description": "Sol direkt, sağ direkt, yüksek tekme (hoca onayı, esneklik şart).",
+      "focus": "tekme",
+      "requiresCoachApproval": true,
+      "isSystem": true
+    },
+    {
+      "id": "combo_037",
+      "nameTr": "Dört Vuruş Kroşeli",
+      "level": 3,
+      "code": "1-2-3-4",
+      "steps": [
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "lead_hook"
+        },
+        {
+          "move": "rear_hook"
+        }
+      ],
+      "description": "Sol direkt, sağ direkt, iki kroşe.",
+      "focus": "kombinasyon",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_038",
+      "nameTr": "Altılı Güç",
+      "level": 3,
+      "code": "5-6-3-2",
+      "steps": [
+        {
+          "move": "lead_uppercut"
+        },
+        {
+          "move": "rear_uppercut"
+        },
+        {
+          "move": "lead_hook"
+        },
+        {
+          "move": "cross"
+        }
+      ],
+      "description": "Aparkatlar, kroşe, sağ direkt.",
+      "focus": "kombinasyon",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_039",
+      "nameTr": "Savunma Zinciri",
+      "level": 3,
+      "code": "SLIP-3-ROL-2-LKR",
+      "steps": [
+        {
+          "move": "slip"
+        },
+        {
+          "move": "lead_hook"
+        },
+        {
+          "move": "roll"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "low_kick_rear"
+        }
+      ],
+      "description": "Kaç, kroşe, dal, sağ direkt, alçak tekme.",
+      "focus": "savunma",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_040",
+      "nameTr": "Blok ve İtme Serisi",
+      "level": 3,
+      "code": "BLK-TL-1-2-KL",
+      "steps": [
+        {
+          "move": "block"
+        },
+        {
+          "move": "teep_lead"
+        },
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "knee_lead"
+        }
+      ],
+      "description": "Blok, itme tekmesi, sol-sağ direkt, ön diz.",
+      "focus": "savunma",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    },
+    {
+      "id": "combo_041",
+      "nameTr": "Kroşe, Alçak ve Orta Tekme",
+      "level": 3,
+      "code": "3-2-LKR-MKR",
+      "steps": [
+        {
+          "move": "lead_hook"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "low_kick_rear"
+        },
+        {
+          "move": "mid_kick_rear"
+        }
+      ],
+      "description": "Kroşe, sağ direkt, alçak tekme, orta tekme (hoca onayı).",
+      "focus": "tekme",
+      "requiresCoachApproval": true,
+      "isSystem": true
+    },
+    {
+      "id": "combo_042",
+      "nameTr": "Yan Adım Serisi",
+      "level": 3,
+      "code": "step_left-1-2-3",
+      "steps": [
+        {
+          "move": "step_left"
+        },
+        {
+          "move": "jab"
+        },
+        {
+          "move": "cross"
+        },
+        {
+          "move": "lead_hook"
+        }
+      ],
+      "description": "Sola adım at, sol-sağ direkt ve kroşe.",
+      "focus": "kombinasyon",
+      "requiresCoachApproval": false,
+      "isSystem": true
+    }
+  ]
+}

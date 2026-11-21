@@ -1,0 +1,13 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.vite/
+coverage/
+.DS_Store
+Thumbs.db
+
+# Kişisel geliştirme notları (yayınlanmaz, yalnızca bu bilgisayarda)
+CLAUDE.md
+KICKBOKS_UYGULAMA_SPEC.md
+reports/
+research_notes/

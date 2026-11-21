@@ -1,0 +1,84 @@
+{
+  "_readme": "AVSpeechSynthesizer tr-TR yabancı terimleri yanlış okuyabilir. speak alanı TTS'e verilen yazımdır; ekranda display yazılır. CİHAZDA dinleyerek ayarla (Yelda/Enhanced ses).",
+  "numbers": {
+    "1": "bir",
+    "2": "iki",
+    "3": "üç",
+    "4": "dört",
+    "5": "beş",
+    "6": "altı"
+  },
+  "words": [
+    {
+      "display": "Jab",
+      "speak": "cab",
+      "note": "Türkçede c = dj sesi; \"cab\" ≈ jab"
+    },
+    {
+      "display": "Cross / Düz",
+      "speak": "düz"
+    },
+    {
+      "display": "Kroşe",
+      "speak": "kroşe"
+    },
+    {
+      "display": "Aparkat",
+      "speak": "aparkat"
+    },
+    {
+      "display": "Teep",
+      "speak": "tiip",
+      "note": "dene: \"tip\" / \"tiip\""
+    },
+    {
+      "display": "Low kick",
+      "speak": "lo kik",
+      "note": "dene: \"lov kik\""
+    },
+    {
+      "display": "Middle kick",
+      "speak": "midıl kik"
+    },
+    {
+      "display": "High kick",
+      "speak": "hay kik"
+    },
+    {
+      "display": "Slip",
+      "speak": "kafa kaçır",
+      "note": "Türkçe karşılık tercih edilir"
+    },
+    {
+      "display": "Blok",
+      "speak": "blok"
+    },
+    {
+      "display": "Rol",
+      "speak": "rol"
+    },
+    {
+      "display": "Pivot",
+      "speak": "pivot"
+    },
+    {
+      "display": "Burpee",
+      "speak": "börpi"
+    },
+    {
+      "display": "Plank",
+      "speak": "plank"
+    }
+  ],
+  "systemPhrases": {
+    "prep": "Hazır ol",
+    "roundStart": "Raunt {n} başlıyor",
+    "warn10": "On saniye",
+    "rest": "Dinlen",
+    "roundEnd": "Raunt bitti",
+    "finished": "Antrenman bitti, harika iş",
+    "switchStance": "Stance değiştir",
+    "pause": "Duraklatıldı",
+    "resume": "Devam"
+  }
+}
